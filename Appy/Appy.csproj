@@ -50,6 +50,9 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>App.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CefSharp">
       <HintPath>..\Packages-Indie\CefSharp-1.19.0\CefSharp.dll</HintPath>
@@ -85,6 +88,7 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="App.manifest" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Core\App.resx">
