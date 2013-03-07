@@ -14,14 +14,14 @@ namespace Appy
 {
     public partial class App : Form
     {
-        WebView Browser;
-        HttpFileServer Server;
+        private WebView Browser;
+        private AppyServer Server;
 
-        public App(string url = "http://localhost/")
+        public App(string url = "http://localhost/index")
         {
             InitializeComponent();
 
-            Server = new HttpFileServer();
+            Server = new AppyServer();
             Server.Start();
             Disposed += (a, e) => Server.Dispose();
 

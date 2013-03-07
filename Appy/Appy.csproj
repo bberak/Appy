@@ -60,9 +60,9 @@
     <Reference Include="CefSharp.WinForms">
       <HintPath>..\Packages-Indie\CefSharp-1.19.0\CefSharp.WinForms.dll</HintPath>
     </Reference>
-    <Reference Include="SelfServe, Version=0.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="SelfServe, Version=0.1.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Packages-Indie\SelfServe-0.1.3\SelfServe.exe</HintPath>
+      <HintPath>..\Packages-Indie\SelfServe-0.1.4\SelfServe.exe</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -81,14 +81,21 @@
     <Compile Include="Core\App.Designer.cs">
       <DependentUpon>App.cs</DependentUpon>
     </Compile>
+    <Compile Include="Core\BasicHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Server\AppyServer.cs" />
+    <Compile Include="Server\Route.cs" />
+    <Compile Include="Server\RouteTable.cs" />
+    <Compile Include="Server\UrlAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="App.manifest" />
+    <None Include="App.manifest">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Core\App.resx">
