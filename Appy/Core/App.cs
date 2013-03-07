@@ -1,5 +1,6 @@
 ﻿using CefSharp;
 using CefSharp.WinForms;
+using SelfServe;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,10 +15,16 @@ namespace Appy
     public partial class App : Form
     {
         WebView Browser;
+        HttpFileServer Server;
 
-        public App(string url = "https://github.com/bberak/")
+        public App(string url = "http://localhost/")
         {
             InitializeComponent();
+
+            Server = new HttpFileServer();
+            Server.Start();
+            Disposed += (a, e) => Server.Dispose();
+
             Browser = new WebView(url, new BrowserSettings());
             Browser.Dock = DockStyle.Fill;
             Controls.Add(Browser);
