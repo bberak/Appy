@@ -14,8 +14,8 @@ namespace Appy
 {
     public partial class App : Form
     {
-        private WebView Browser;
-        private AppyServer Server;
+        WebView Browser;
+        AppyServer Server;
 
         public App(string url = "http://localhost/index")
         {

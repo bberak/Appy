@@ -60,9 +60,12 @@
     <Reference Include="CefSharp.WinForms">
       <HintPath>..\Packages-Indie\CefSharp-1.19.0\CefSharp.WinForms.dll</HintPath>
     </Reference>
-    <Reference Include="SelfServe, Version=0.1.3.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="HttpMultipartParser">
+      <HintPath>..\Packages-Indie\HttpMultipartParser-1.0.0\HttpMultipartParser.dll</HintPath>
+    </Reference>
+    <Reference Include="SelfServe, Version=0.1.6.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Packages-Indie\SelfServe-0.1.4\SelfServe.exe</HintPath>
+      <HintPath>..\Packages-Indie\SelfServe-0.1.7\SelfServe.exe</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -81,13 +84,18 @@
     <Compile Include="Core\App.Designer.cs">
       <DependentUpon>App.cs</DependentUpon>
     </Compile>
-    <Compile Include="Core\BasicHandler.cs" />
+    <Compile Include="Framework\BasicHandler.cs" />
+    <Compile Include="Framework\Extensions.cs" />
+    <Compile Include="Framework\Header.cs" />
+    <Compile Include="Framework\HtmlResponse.cs" />
+    <Compile Include="Framework\Request.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server\AppyServer.cs" />
+    <Compile Include="Framework\Response.cs" />
     <Compile Include="Server\Route.cs" />
     <Compile Include="Server\RouteTable.cs" />
-    <Compile Include="Server\UrlAttribute.cs" />
+    <Compile Include="Framework\UrlAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

@@ -9,9 +9,9 @@ namespace Appy
 {
     public class RouteTable
     {
-        private List<Route> Routes;
+        List<Route> Routes;
 
-        private Dictionary<Type, object> Handlers;
+        Dictionary<Type, object> Handlers;
 
         public RouteTable()
         {
@@ -25,9 +25,9 @@ namespace Appy
             Routes.Add(newRoute);
         }
 
-        public bool Execute(HttpListenerRequest request, HttpListenerResponse response)
+        public bool Execute(HttpListenerRequest rawRequest, HttpListenerResponse rawResponse)
         {
-            Route route = Routes.Find(x => x.Attributes.Count(y => Matches(y, request)) > 0);
+            Route route = Routes.Find(x => x.Attributes.Count(y => y.Matches(rawRequest)) > 0);
 
             if (route != null)
             {
@@ -44,9 +44,14 @@ namespace Appy
                     Handlers[handlerType] = handler;
                 }
 
-                var result = route.Method.Invoke(handler, null) as string;
+                Request appyRequest = new Request(rawRequest);
+                Response appyResponse = route.Method.Invoke(handler, new object[] { appyRequest }) as Response;
 
-                response.WriteHtml(result);
+                rawResponse.Cookies = appyResponse.Cookies;
+                rawResponse.Headers = appyResponse.Headers;
+                rawResponse.ContentType = appyResponse.ContentType;
+                rawResponse.StatusCode = appyResponse.Status;
+                rawResponse.WriteBytes(appyResponse.ToBytes());
 
                 return true;
             }
@@ -54,15 +59,6 @@ namespace Appy
             {
                 return false;
             }
-        }
-
-        public bool Matches(UrlAttribute attr, HttpListenerRequest request)
-        {
-            if (attr.Url.Equals(request.RawUrl, StringComparison.InvariantCultureIgnoreCase)
-                && attr.Methods.Contains(request.HttpMethod))
-                return true;
-
-            return false;
-        }
+        }     
     }
 }

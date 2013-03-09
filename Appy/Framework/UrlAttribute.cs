@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Appy
 {
@@ -17,6 +19,17 @@ namespace Appy
             Url = url;
 
             Methods = methods;
+        }
+
+        public bool Matches(HttpListenerRequest request)
+        {
+            Regex expression = new Regex(Url);
+
+            if (expression.IsMatch(request.RawUrl)
+                && Methods.Contains(request.HttpMethod))
+                return true;
+
+            return false;
         }
     }
 }

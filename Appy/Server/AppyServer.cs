@@ -10,7 +10,7 @@ namespace Appy
 {
     public class AppyServer : HttpFileServer
     {
-        private RouteTable RouteTable;
+        RouteTable Router;
 
         public AppyServer()
         {
@@ -19,7 +19,7 @@ namespace Appy
 
         protected void LoadRoutes()
         {
-            RouteTable = new RouteTable();
+            Router = new RouteTable();
 
             Assembly assembly = Assembly.GetExecutingAssembly();
             var methods = assembly.GetTypes()
@@ -40,14 +40,14 @@ namespace Appy
                     route.Attributes.Add(attr);
                 }
 
-                RouteTable.Add(route);
+                Router.Add(route);
             }
         }
 
-        protected override void OnPathNotFound(HttpListenerRequest request, HttpListenerResponse response)
+        protected override void OnPathNotFound(HttpListenerRequest rawRequest, HttpListenerResponse rawResponse)
         {
-            if (!RouteTable.Execute(request, response))
-                base.OnPathNotFound(request, response);
+            if (!Router.Execute(rawRequest, rawResponse))
+                base.OnPathNotFound(rawRequest, rawResponse);
         }
     }
 }
