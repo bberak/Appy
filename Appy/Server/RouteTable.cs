@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Text;
 
 namespace Appy
@@ -16,7 +17,6 @@ namespace Appy
         public RouteTable()
         {
             Routes = new List<Route>();
-
             Handlers = new Dictionary<Type, object>();
         }
 
@@ -27,31 +27,14 @@ namespace Appy
 
         public bool Execute(HttpListenerRequest rawRequest, HttpListenerResponse rawResponse)
         {
-            Route route = Routes.Find(x => x.Attributes.Count(y => y.Matches(rawRequest)) > 0);
+            Route route = FindRoute(rawRequest);
 
             if (route != null)
             {
-                Type handlerType = route.Method.DeclaringType;
-                object handler = null;
-
-                if (Handlers.ContainsKey(handlerType))
-                {
-                    handler = Handlers[handlerType];
-                }
-                else
-                {
-                    handler = Activator.CreateInstance(handlerType);
-                    Handlers[handlerType] = handler;
-                }
-
                 Request appyRequest = new Request(rawRequest);
-                Response appyResponse = route.Method.Invoke(handler, new object[] { appyRequest }) as Response;
+                Response appyResponse = InvokeMethod(route.Method, appyRequest);
 
-                rawResponse.Cookies = appyResponse.Cookies;
-                rawResponse.Headers = appyResponse.Headers;
-                rawResponse.ContentType = appyResponse.ContentType;
-                rawResponse.StatusCode = appyResponse.Status;
-                rawResponse.WriteBytes(appyResponse.ToBytes());
+                rawResponse.WriteResponse(appyResponse);
 
                 return true;
             }
@@ -59,6 +42,42 @@ namespace Appy
             {
                 return false;
             }
-        }     
+        }
+
+        Route FindRoute(HttpListenerRequest rawRequest)
+        {
+            return Routes.Find(x => x.Attributes.Count(y => y.Matches(rawRequest)) > 0);
+        }
+
+        Response InvokeMethod(MethodInfo method, Request arg)
+        {
+            object routeHandler = GetHandlerOfType(method.DeclaringType);
+
+            return method.Invoke(routeHandler, new object[] { arg }) as Response;
+        }
+
+        object GetHandlerOfType(Type handlerType)
+        {
+            object handler = null;
+
+            if (Handlers.ContainsKey(handlerType))
+            {
+                handler = Handlers[handlerType];
+            }
+            else
+            {
+                handler = CreateHandlerFromType(handlerType);
+            }
+
+            return handler;
+        }
+
+        object CreateHandlerFromType(Type handlerType)
+        {
+            object handler = Activator.CreateInstance(handlerType);
+            Handlers[handlerType] = handler;
+
+            return handler;
+        }
     }
 }

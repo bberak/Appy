@@ -24,5 +24,14 @@ namespace Appy
 
             return dic.TryGetValue(key, out result) ? result : defaultValue;
         }
+
+        public static void WriteResponse(this HttpListenerResponse rawResponse, Response appyResponse)
+        {
+            rawResponse.Cookies = appyResponse.Cookies;
+            rawResponse.Headers = appyResponse.Headers;
+            rawResponse.ContentType = appyResponse.ContentType;
+            rawResponse.StatusCode = appyResponse.Status;
+            rawResponse.WriteBytes(appyResponse.ToBytes());
+        }
     }
 }

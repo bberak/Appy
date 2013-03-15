@@ -23,7 +23,8 @@ namespace Appy
 
         public bool Matches(HttpListenerRequest request)
         {
-            Regex expression = new Regex(Url);
+            //-- Case insensitive match
+            Regex expression = new Regex("(?i)" + Url + "(?-i)");
 
             if (expression.IsMatch(request.RawUrl)
                 && Methods.Contains(request.HttpMethod))

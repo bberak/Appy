@@ -63,13 +63,20 @@
     <Reference Include="HttpMultipartParser">
       <HintPath>..\Packages-Indie\HttpMultipartParser-1.0.0\HttpMultipartParser.dll</HintPath>
     </Reference>
-    <Reference Include="SelfServe, Version=0.1.6.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="RazorEngine">
+      <HintPath>..\packages\RazorEngine.3.2.0\lib\net40\RazorEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="SelfServe, Version=0.1.7.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Packages-Indie\SelfServe-0.1.7\SelfServe.exe</HintPath>
+      <HintPath>..\Packages-Indie\SelfServe-0.1.8\SelfServe.exe</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20715.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -87,8 +94,9 @@
     <Compile Include="Framework\BasicHandler.cs" />
     <Compile Include="Framework\Extensions.cs" />
     <Compile Include="Framework\Header.cs" />
-    <Compile Include="Framework\HtmlResponse.cs" />
+    <Compile Include="Framework\BasicResponse.cs" />
     <Compile Include="Framework\Request.cs" />
+    <Compile Include="Framework\ViewResponse.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server\AppyServer.cs" />
@@ -104,11 +112,21 @@
     <None Include="App.manifest">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Packages.config" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Core\App.resx">
       <DependentUpon>App.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Site\Styles\App.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Site\Views\Index.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

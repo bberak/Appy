@@ -17,31 +17,39 @@ namespace Appy
             LoadRoutes();
         }
 
-        protected void LoadRoutes()
+        void LoadRoutes()
         {
             Router = new RouteTable();
 
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            var methods = assembly.GetTypes()
-                  .SelectMany(t => t.GetMethods())
-                  .Where(m => m.GetCustomAttributes(typeof(UrlAttribute), false).Length > 0)
-                  .ToArray();
-
-            foreach (var method in methods)
+            foreach (var method in FindMethodsDecoratedWithUrlAttributes())
             {
                 Route route = new Route { Method = method };
 
-                object[] urlAttributes = method.GetCustomAttributes(typeof(UrlAttribute), true);
-
-                foreach (var obj in urlAttributes)
+                foreach (var urlObj in GetUrlAttributesFromMethod(method))
                 {
-                    UrlAttribute attr = obj as UrlAttribute;
+                    UrlAttribute attr = urlObj as UrlAttribute;
 
                     route.Attributes.Add(attr);
                 }
 
                 Router.Add(route);
             }
+        }
+
+        MethodInfo[] FindMethodsDecoratedWithUrlAttributes()
+        {
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            var methods = assembly.GetTypes()
+                  .SelectMany(t => t.GetMethods())
+                  .Where(m => m.GetCustomAttributes(typeof(UrlAttribute), false).Length > 0)
+                  .ToArray();
+
+            return methods;
+        }
+
+        object[] GetUrlAttributesFromMethod(MethodInfo method)
+        {
+            return method.GetCustomAttributes(typeof(UrlAttribute), true);
         }
 
         protected override void OnPathNotFound(HttpListenerRequest rawRequest, HttpListenerResponse rawResponse)

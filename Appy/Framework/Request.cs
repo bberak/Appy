@@ -37,20 +37,20 @@ namespace Appy
 
         public List<FilePart> Files { get; protected set; }
 
-        public Request(HttpListenerRequest incoming)
+        public Request(HttpListenerRequest raw)
         {
-            AcceptTypes = incoming.AcceptTypes;
-            ContentEncoding = incoming.ContentEncoding;
-            ContentLength = incoming.ContentLength64;
-            ContentType = incoming.ContentType;
-            Cookies = incoming.Cookies;
-            Headers = incoming.Headers;
-            RawUrl = incoming.RawUrl;
-            UserAgent = incoming.UserAgent;
-            QueryString = incoming.QueryString;
-            LowLevelRequest = incoming;
+            AcceptTypes = raw.AcceptTypes;
+            ContentEncoding = raw.ContentEncoding;
+            ContentLength = raw.ContentLength64;
+            ContentType = raw.ContentType;
+            Cookies = raw.Cookies;
+            Headers = raw.Headers;
+            RawUrl = raw.RawUrl;
+            UserAgent = raw.UserAgent;
+            QueryString = raw.QueryString;
+            LowLevelRequest = raw;
 
-            ParsePostData(incoming);
+            ParsePostData(raw);
         }
 
         void ParsePostData(HttpListenerRequest incoming)
