@@ -1,7 +1,24 @@
 ﻿body {
-    background-color:aquamarine;
+    background-color: aquamarine;
+    height: 900px;
 }
 
 a {
     color:darkgrey;
+}
+
+/* Changing scrollbar appearance for Webkit */
+/* http://productforums.google.com/forum/#!category-topic/chrome/give-feature-feedback-and-suggestions/mGJ19Khi0SE */
+::-webkit-scrollbar {
+    height: 12px;
+	width: 12px;
+	background: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #0094ff;
+}
+
+::-webkit-scrollbar-corner {
+    background: #fff;
 }

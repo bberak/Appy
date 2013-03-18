@@ -1,4 +1,5 @@
-﻿using CefSharp;
+﻿using BB.Common.WinForms;
+using CefSharp;
 using CefSharp.WinForms;
 using SelfServe;
 using System;
@@ -12,7 +13,7 @@ using System.Windows.Forms;
 
 namespace Appy
 {
-    public partial class App : Form
+    public partial class App : MetroForm
     {
         WebView Browser;
         AppyServer Server;
@@ -27,7 +28,7 @@ namespace Appy
 
             Browser = new WebView(url, new BrowserSettings());
             Browser.Dock = DockStyle.Fill;
-            Controls.Add(Browser);
+            BrowserContainer.Controls.Add(Browser);
         }
     }
 }

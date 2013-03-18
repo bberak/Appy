@@ -39,12 +39,7 @@ namespace Appy
         MethodInfo[] FindMethodsDecoratedWithUrlAttributes()
         {
             Assembly assembly = Assembly.GetExecutingAssembly();
-            var methods = assembly.GetTypes()
-                  .SelectMany(t => t.GetMethods())
-                  .Where(m => m.GetCustomAttributes(typeof(UrlAttribute), false).Length > 0)
-                  .ToArray();
-
-            return methods;
+            return assembly.FindMethodsDecoratedWithAttribute(typeof(UrlAttribute));
         }
 
         object[] GetUrlAttributesFromMethod(MethodInfo method)
@@ -56,6 +51,8 @@ namespace Appy
         {
             if (!Router.Execute(rawRequest, rawResponse))
                 base.OnPathNotFound(rawRequest, rawResponse);
+            else
+                Console.WriteLine(string.Format("Client requested path ({0})... Handler found", rawRequest.RawUrl));
         }
     }
 }
