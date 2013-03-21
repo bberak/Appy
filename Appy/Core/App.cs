@@ -18,7 +18,7 @@ namespace Appy
         WebView Browser;
         AppyServer Server;
 
-        public App(string url = "http://localhost/Index")
+        public App(string url = "http://localhost/index")
         {
             InitializeComponent();
 
@@ -29,6 +29,13 @@ namespace Appy
             Browser = new WebView(url, new BrowserSettings());
             Browser.Dock = DockStyle.Fill;
             BrowserContainer.Controls.Add(Browser);
+
+            LoadTheme();
+        }
+
+        void LoadTheme()
+        {
+            ThemeManager.ApplyTheme(new AppTheme());
         }
     }
 }

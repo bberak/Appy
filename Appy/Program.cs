@@ -11,6 +11,8 @@ namespace Appy
         [STAThread]
         static void Main(string[] args)
         {
+            Console.ForegroundColor = ConsoleColor.Magenta;
+
             Application.Run(new App());
         }
     }

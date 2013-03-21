@@ -16,19 +16,16 @@ namespace Appy
             RunRazprTemplate(model);
         }
 
-        string FindAndReadFile(string filesMatching)
+        string FindAndReadFile(string viewName)
         {
-            return FindAndReadFile(Environment.CurrentDirectory, filesMatching);
-        }
+            string pattern = @"Site\Views\" + viewName;
 
-        string FindAndReadFile(string startDir, string filesMatching)
-        {
-            string[] files = Directory.GetFiles(startDir, filesMatching, SearchOption.AllDirectories);
+            string[] files = Directory.GetFiles(Environment.CurrentDirectory, pattern, SearchOption.AllDirectories);
 
             if (files != null && files.Length > 0)
                 return File.ReadAllText(files[0]);
 
-            throw new Exception("Could not find any files matching the pattern: " + filesMatching);
+            throw new Exception("Could not find any files matching the pattern: " + pattern);
         }
 
         void RunRazprTemplate(object model)

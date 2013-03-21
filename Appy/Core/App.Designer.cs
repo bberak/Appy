@@ -32,15 +32,21 @@
             this.Canvas.SuspendLayout();
             this.SuspendLayout();
             // 
-            // ResizeButton
+            // ExitButton
             // 
-            this.ResizeButton.BackColor = System.Drawing.Color.White;
+            this.ExitButton.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExitButton.Text = "!";
+            // 
+            // MinimizeButton
+            // 
+            this.MinimizeButton.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Bold);
+            this.MinimizeButton.Location = new System.Drawing.Point(4, 12);
             // 
             // Canvas
             // 
             this.Canvas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.Canvas.Controls.Add(this.BrowserContainer);
-            this.Canvas.Size = new System.Drawing.Size(1096, 646);
+            this.Canvas.Size = new System.Drawing.Size(1196, 646);
             this.Canvas.Controls.SetChildIndex(this.TitleBarPanel, 0);
             this.Canvas.Controls.SetChildIndex(this.StatusBarPanel, 0);
             this.Canvas.Controls.SetChildIndex(this.BrowserContainer, 0);
@@ -48,11 +54,11 @@
             // StatusBarPanel
             // 
             this.StatusBarPanel.Location = new System.Drawing.Point(0, 620);
-            this.StatusBarPanel.Size = new System.Drawing.Size(1096, 26);
+            this.StatusBarPanel.Size = new System.Drawing.Size(1196, 26);
             // 
             // TitleBarPanel
             // 
-            this.TitleBarPanel.Size = new System.Drawing.Size(1096, 42);
+            this.TitleBarPanel.Size = new System.Drawing.Size(1196, 42);
             // 
             // BrowserContainer
             // 
@@ -61,14 +67,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BrowserContainer.Location = new System.Drawing.Point(12, 48);
             this.BrowserContainer.Name = "BrowserContainer";
-            this.BrowserContainer.Size = new System.Drawing.Size(1071, 566);
+            this.BrowserContainer.Size = new System.Drawing.Size(1171, 566);
             this.BrowserContainer.TabIndex = 5;
             // 
             // App
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1100, 650);
+            this.ClientSize = new System.Drawing.Size(1200, 650);
             this.MinimumSize = new System.Drawing.Size(480, 400);
             this.Name = "App";
             this.Text = "App";

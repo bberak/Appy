@@ -10,8 +10,8 @@ namespace Appy
     {
         int Count;
 
-        [Url("/Index")]
-        [Url("/Default")]
+        [Url("/index")]
+        [Url("/default")]
         public Response Index(Request incoming)
         {
             Count++;
@@ -21,7 +21,7 @@ namespace Appy
 
             var cookie = new Cookie("Name", "Value").ExpiresIn(30);
 
-            return new ViewResponse("Index.html", Count);
+            return new ViewResponse("index.html", Count);
         }
     }
 }
