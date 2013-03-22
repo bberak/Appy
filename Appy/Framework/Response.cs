@@ -29,5 +29,19 @@ namespace Appy
 
             Headers = new WebHeaderCollection();
         }
+
+        public static Response operator +(Response response, Cookie cookie)
+        {
+            response.Cookies.Add(cookie);
+
+            return response;
+        }
+
+        public static Response operator +(Response response, Header header)
+        {
+            response.Headers.Add(header.Name, header.Value);
+
+            return response;
+        }
     }
 }

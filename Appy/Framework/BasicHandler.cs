@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -27,6 +28,16 @@ namespace Appy
         [Url("/test")]
         public Response Test(Request incoming)
         {
+            return new ViewResponse("test.html") + new Cookie("abc", "xyz") + new Header("header1", "value1");
+        }
+
+        [Url("/run", "POST")]
+        public Response Run(Request incoming)
+        {
+            var exe = incoming.Form.Get("exe");
+
+            Process.Start(exe);
+
             return new ViewResponse("test.html");
         }
     }
