@@ -99,8 +99,10 @@
       <DependentUpon>App.cs</DependentUpon>
     </Compile>
     <Compile Include="Core\AppTheme.cs" />
+    <Compile Include="Core\TemplateResolver.cs" />
     <Compile Include="Framework\BasicHandler.cs" />
     <Compile Include="Framework\Extensions.cs" />
+    <Compile Include="Framework\Files.cs" />
     <Compile Include="Framework\Header.cs" />
     <Compile Include="Framework\BasicResponse.cs" />
     <Compile Include="Framework\Request.cs" />
@@ -398,6 +400,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Site\Views\index.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Site\Views\master.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Site\Views\partial.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Site\Views\test.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

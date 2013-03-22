@@ -23,5 +23,11 @@ namespace Appy
 
             return new ViewResponse("index.html", Count);
         }
+
+        [Url("/test")]
+        public Response Test(Request incoming)
+        {
+            return new ViewResponse("test.html");
+        }
     }
 }

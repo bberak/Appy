@@ -1,6 +1,9 @@
 ﻿using BB.Common.WinForms;
 using CefSharp;
 using CefSharp.WinForms;
+using RazorEngine;
+using RazorEngine.Configuration;
+using RazorEngine.Templating;
 using SelfServe;
 using System;
 using System.Collections.Generic;
@@ -18,19 +21,37 @@ namespace Appy
         WebView Browser;
         AppyServer Server;
 
-        public App(string url = "http://localhost/index")
+        public App(string url = "http://localhost/test")
         {
             InitializeComponent();
 
+            LoadServer();
+
+            LoadBrowser(url);
+
+            LoadRazorEngine(); 
+      
+            LoadTheme();
+        }
+
+        void LoadServer()
+        {
             Server = new AppyServer();
             Server.Start();
             Disposed += (a, e) => Server.Dispose();
+        }
 
+        void LoadBrowser(string url)
+        {
             Browser = new WebView(url, new BrowserSettings());
             Browser.Dock = DockStyle.Fill;
             BrowserContainer.Controls.Add(Browser);
+        }
 
-            LoadTheme();
+        void LoadRazorEngine()
+        {
+            var razorConfig = new TemplateServiceConfiguration { Resolver = new TemplateResolver() };
+            Razor.SetTemplateService(new TemplateService(razorConfig));
         }
 
         void LoadTheme()

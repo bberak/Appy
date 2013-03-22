@@ -46,14 +46,14 @@
             // 
             this.Canvas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.Canvas.Controls.Add(this.BrowserContainer);
-            this.Canvas.Size = new System.Drawing.Size(1196, 646);
+            this.Canvas.Size = new System.Drawing.Size(1196, 621);
             this.Canvas.Controls.SetChildIndex(this.TitleBarPanel, 0);
             this.Canvas.Controls.SetChildIndex(this.StatusBarPanel, 0);
             this.Canvas.Controls.SetChildIndex(this.BrowserContainer, 0);
             // 
             // StatusBarPanel
             // 
-            this.StatusBarPanel.Location = new System.Drawing.Point(0, 620);
+            this.StatusBarPanel.Location = new System.Drawing.Point(0, 595);
             this.StatusBarPanel.Size = new System.Drawing.Size(1196, 26);
             // 
             // TitleBarPanel
@@ -67,14 +67,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BrowserContainer.Location = new System.Drawing.Point(12, 48);
             this.BrowserContainer.Name = "BrowserContainer";
-            this.BrowserContainer.Size = new System.Drawing.Size(1171, 566);
+            this.BrowserContainer.Size = new System.Drawing.Size(1171, 541);
             this.BrowserContainer.TabIndex = 5;
             // 
             // App
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1200, 650);
+            this.ClientSize = new System.Drawing.Size(1200, 625);
             this.MinimumSize = new System.Drawing.Size(480, 400);
             this.Name = "App";
             this.Text = "App";

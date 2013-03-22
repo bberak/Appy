@@ -11,21 +11,9 @@ namespace Appy
     {
         public ViewResponse(string viewName, object model = null)
         {
-            Content = FindAndReadFile(viewName);
+            Content = Files.ReadView(viewName);
 
             RunRazprTemplate(model);
-        }
-
-        string FindAndReadFile(string viewName)
-        {
-            string pattern = @"Site\Views\" + viewName;
-
-            string[] files = Directory.GetFiles(Environment.CurrentDirectory, pattern, SearchOption.AllDirectories);
-
-            if (files != null && files.Length > 0)
-                return File.ReadAllText(files[0]);
-
-            throw new Exception("Could not find any files matching the pattern: " + pattern);
         }
 
         void RunRazprTemplate(object model)
