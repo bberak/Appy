@@ -31,14 +31,10 @@ namespace Appy
             return new ViewResponse("test.html") + new Cookie("abc", "xyz") + new Header("header1", "value1");
         }
 
-        [Url("/run", "POST")]
-        public Response Run(Request incoming)
+        [Url("/redirect")]
+        public Response Redirect(Request incoming)
         {
-            var exe = incoming.Form.Get("exe");
-
-            Process.Start(exe);
-
-            return new ViewResponse("test.html");
+            return new RedirectResponse("/test");
         }
     }
 }

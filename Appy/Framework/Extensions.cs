@@ -30,7 +30,7 @@ namespace Appy
             rawResponse.Cookies = appyResponse.Cookies;
             rawResponse.Headers = appyResponse.Headers;
             rawResponse.ContentType = appyResponse.ContentType;
-            rawResponse.StatusCode = appyResponse.Status;
+            rawResponse.StatusCode = appyResponse.StatusCode;
             rawResponse.WriteBytes(appyResponse.ToBytes());
         }
     }

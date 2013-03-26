@@ -105,6 +105,7 @@
     <Compile Include="Framework\Files.cs" />
     <Compile Include="Framework\Header.cs" />
     <Compile Include="Framework\BasicResponse.cs" />
+    <Compile Include="Framework\RedirectResponse.cs" />
     <Compile Include="Framework\Request.cs" />
     <Compile Include="Framework\ViewResponse.cs" />
     <Compile Include="Program.cs" />
@@ -124,24 +125,24 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Packages.config" />
-    <None Include="Site\Fonts\Flat-UI-Icons-16.eot">
+    <Content Include="Site\Fonts\Flat-UI-Icons-16.eot">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Site\Fonts\Flat-UI-Icons-16.ttf">
+    </Content>
+    <Content Include="Site\Fonts\Flat-UI-Icons-16.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Site\Fonts\Flat-UI-Icons-16.woff">
+    </Content>
+    <Content Include="Site\Fonts\Flat-UI-Icons-16.woff">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Site\Fonts\Flat-UI-Icons-24.eot">
+    </Content>
+    <Content Include="Site\Fonts\Flat-UI-Icons-24.eot">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Site\Fonts\Flat-UI-Icons-24.ttf">
+    </Content>
+    <Content Include="Site\Fonts\Flat-UI-Icons-24.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Site\Fonts\Flat-UI-Icons-24.woff">
+    </Content>
+    <Content Include="Site\Fonts\Flat-UI-Icons-24.woff">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Core\App.resx">

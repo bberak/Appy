@@ -9,11 +9,6 @@ namespace Appy
 {
     public class AppTheme : JaffasTheme
     {
-        public Color ButtonBackColor
-        {
-            get { return Color.WhiteSmoke; }
-        }
-
         public override string Name
         {
             get

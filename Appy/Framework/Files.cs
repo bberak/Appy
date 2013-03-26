@@ -12,6 +12,9 @@ namespace Appy
         {
             string[] files = Directory.GetFiles(startDir, pattern, SearchOption.AllDirectories);
 
+            if (files.Length == 0)
+                throw new FileNotFoundException("Could not find any files with the pattern: " + pattern);
+
             return files;
         }
 

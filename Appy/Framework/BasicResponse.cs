@@ -8,10 +8,10 @@ namespace Appy
 {
     public class BasicResponse : Response
     {
-        public string Content { get; protected set; }
+        public string Content { get; set; }
 
-        public BasicResponse(string content = "", int status = 200)
-            : base(status, "text/html; charset=UTF-8")
+        public BasicResponse(string content = "", int statusCode = 200)
+            : base(statusCode, "text/html; charset=UTF-8")
         {
             Content = content;
         }

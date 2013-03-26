@@ -9,19 +9,19 @@ namespace Appy
 {    
     public abstract class Response
     {
-        public int Status { get; protected set; }
+        public int StatusCode { get; set; }
 
-        public string ContentType { get; protected set; }
+        public string ContentType { get; set; }
 
-        public CookieCollection Cookies { get; protected set; }
+        public CookieCollection Cookies { get; set; }
 
-        public WebHeaderCollection Headers { get; protected set; }
+        public WebHeaderCollection Headers { get; set; }
 
         public abstract byte[] ToBytes();
 
-        public Response(int status = 200, string contentType = "")
+        public Response(int statusCode = 200, string contentType = "")
         {
-            Status = status;
+            StatusCode = statusCode;
 
             ContentType = contentType;
 
