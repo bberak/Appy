@@ -21,7 +21,7 @@ namespace Appy
         WebView Browser;
         AppyServer Server;
 
-        public App(string url = "http://localhost/test")
+        public App(string url = "http://localhost/index")
         {
             InitializeComponent();
 

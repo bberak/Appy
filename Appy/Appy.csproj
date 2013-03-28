@@ -59,7 +59,7 @@
   <ItemGroup>
     <Reference Include="BB.Common.WinForms, Version=0.1.4.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Packages-Indie\BB.Common.WinForms-0.1.4\BB.Common.WinForms.dll</HintPath>
+      <HintPath>..\Packages-Indie\BB.Common.WinForms-0.1.5\BB.Common.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="CefSharp">
       <HintPath>..\Packages-Indie\CefSharp-1.19.0\CefSharp.dll</HintPath>
@@ -103,7 +103,7 @@
     </Compile>
     <Compile Include="Core\AppTheme.cs" />
     <Compile Include="Core\TemplateResolver.cs" />
-    <Compile Include="Framework\BasicHandler.cs" />
+    <Compile Include="Framework\ExampleHandler.cs" />
     <Compile Include="Framework\Extensions.cs" />
     <Compile Include="Framework\Files.cs" />
     <Compile Include="Framework\Header.cs" />
@@ -403,16 +403,19 @@
     <Content Include="Site\Styles\flat-ui.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Site\Views\index.html">
+    <Content Include="Site\Views\main_menu.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Site\Views\launcher.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Site\Views\flat-ui.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Site\Views\master.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Site\Views\partial.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Views\test.html">
+    <Content Include="Site\Views\testing.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

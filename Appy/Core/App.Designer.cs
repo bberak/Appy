@@ -36,11 +36,13 @@
             // 
             this.ExitButton.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Bold);
             this.ExitButton.Location = new System.Drawing.Point(58, 12);
+            this.DefaultToolTip.SetToolTip(this.ExitButton, "Close");
             // 
             // MinimizeButton
             // 
-            this.MinimizeButton.Font = new System.Drawing.Font("Corbel", 11.25F, System.Drawing.FontStyle.Bold);
+            this.MinimizeButton.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Bold);
             this.MinimizeButton.Location = new System.Drawing.Point(4, 12);
+            this.DefaultToolTip.SetToolTip(this.MinimizeButton, "Minimize");
             // 
             // Canvas
             // 
@@ -64,6 +66,7 @@
             // 
             this.ToggleFullscreenButton.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Bold);
             this.ToggleFullscreenButton.Location = new System.Drawing.Point(31, 12);
+            this.DefaultToolTip.SetToolTip(this.ToggleFullscreenButton, "Toggle Fullscreen");
             // 
             // BrowserContainer
             // 
