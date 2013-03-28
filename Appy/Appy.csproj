@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{4668D95C-8CE9-4E66-A774-0D71311B32E9}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Appy</RootNamespace>
     <AssemblyName>Appy</AssemblyName>
@@ -53,10 +53,13 @@
   <PropertyGroup>
     <ApplicationManifest>App.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BB.Common.WinForms, Version=0.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="BB.Common.WinForms, Version=0.1.4.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Packages-Indie\BB.Common.WinForms-0.1.3\BB.Common.WinForms.dll</HintPath>
+      <HintPath>..\Packages-Indie\BB.Common.WinForms-0.1.4\BB.Common.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="CefSharp">
       <HintPath>..\Packages-Indie\CefSharp-1.19.0\CefSharp.dll</HintPath>

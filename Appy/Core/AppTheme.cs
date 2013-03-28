@@ -44,6 +44,8 @@ namespace Appy
             Units["ResizeButtonBorderSize"] = 2;
             Colors["ResizeButtonBorder"] = Color.DarkGray;
             Colors["ResizeButtonBackground"] = Color.DarkGray;
+            Colors["ToolTipBackground"] = Color.White;
+            Colors["ToolTipForeground"] = Color.Black;
         }
     }
 }

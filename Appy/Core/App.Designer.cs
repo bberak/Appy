@@ -34,12 +34,12 @@
             // 
             // ExitButton
             // 
-            this.ExitButton.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExitButton.Text = "!";
+            this.ExitButton.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Bold);
+            this.ExitButton.Location = new System.Drawing.Point(58, 12);
             // 
             // MinimizeButton
             // 
-            this.MinimizeButton.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Bold);
+            this.MinimizeButton.Font = new System.Drawing.Font("Corbel", 11.25F, System.Drawing.FontStyle.Bold);
             this.MinimizeButton.Location = new System.Drawing.Point(4, 12);
             // 
             // Canvas
@@ -59,6 +59,11 @@
             // TitleBarPanel
             // 
             this.TitleBarPanel.Size = new System.Drawing.Size(1196, 42);
+            // 
+            // ToggleFullscreenButton
+            // 
+            this.ToggleFullscreenButton.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Bold);
+            this.ToggleFullscreenButton.Location = new System.Drawing.Point(31, 12);
             // 
             // BrowserContainer
             // 
