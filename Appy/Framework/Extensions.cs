@@ -1,6 +1,7 @@
 ﻿using SelfServe;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -18,11 +19,19 @@ namespace Appy
             return cookie;
         }
         
-        public static string Get(this Dictionary<string, string> dic, string key, string defaultValue = "")
+        public static string Find(this Dictionary<string, string> dic, string key, string defaultValue = "")
         {
             string result = null;
 
             return dic.TryGetValue(key, out result) ? result : defaultValue;
+        }
+
+        public static string Find(this NameValueCollection collection, string key, string defaultValue = "")
+        {
+            if (collection.AllKeys.Contains(key))
+                return collection[key];
+
+            return defaultValue;
         }
 
         public static void WriteResponse(this HttpListenerResponse rawResponse, Response appyResponse)

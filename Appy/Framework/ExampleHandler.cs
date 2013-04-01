@@ -21,7 +21,9 @@ namespace Appy
         [Url("/launcher/run")]
         public Response Run(Request incoming)
         {
-            var exe = string.IsNullOrEmpty(incoming.Form.Get("exe-input")) ? incoming.Form.Get("exe-select") : incoming.Form.Get("exe-input");
+            var exe = string.IsNullOrEmpty(incoming.Form.Find("exe-input"))
+                ? incoming.Form.Find("exe-select")
+                : incoming.Form.Find("exe-input");
 
             Process.Start(exe);
 
@@ -39,8 +41,8 @@ namespace Appy
         [Url("/flat-ui")]
         public Response FlatUI(Request incoming)
         {
-            var name = incoming.Form.Get("Name");
-            var email = incoming.Form.Get("Email");
+            var name = incoming.Form.Find("Name");
+            var email = incoming.Form.Find("Email");
 
             var cookie = new Cookie("Name", "Value").ExpiresIn(30);
 
