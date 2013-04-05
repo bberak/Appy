@@ -42,5 +42,10 @@ namespace Appy
             rawResponse.StatusCode = appyResponse.StatusCode;
             rawResponse.WriteBytes(appyResponse.ToBytes());
         }
+
+        public static bool Matches<T>(this IEnumerable<T> source, IEnumerable<T> target)
+        {
+            return source.SequenceEqual(target);
+        }
     }
 }

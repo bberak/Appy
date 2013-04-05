@@ -16,7 +16,7 @@
         <script src="../../Site/Scripts/html5shiv.js"></script>
     <![endif]-->
 </head>
-<body style="background-color:#eceff1">
+<body>
     <div class="container">
         @Include("main_menu.html")
         <div class="span9" style="margin-left:35px;">
@@ -44,5 +44,6 @@
         <script src="js/icon-font-ie7.js"></script>
         <script src="js/icon-font-ie7-24.js"></script>
     <![endif]-->
+    @RenderSection("scripts", false)  
 </body>
 </html>

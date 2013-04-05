@@ -70,12 +70,15 @@
     <Reference Include="HttpMultipartParser">
       <HintPath>..\Packages-Indie\HttpMultipartParser-1.0.0\HttpMultipartParser.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="RazorEngine">
       <HintPath>..\packages\RazorEngine.3.2.0\lib\net40\RazorEngine.dll</HintPath>
     </Reference>
-    <Reference Include="SelfServe, Version=0.1.8.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="SelfServe, Version=0.1.9.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Packages-Indie\SelfServe-0.1.9\SelfServe.exe</HintPath>
+      <HintPath>..\Packages-Indie\SelfServe-0.1.10\SelfServe.exe</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -103,11 +106,13 @@
     </Compile>
     <Compile Include="Core\AppTheme.cs" />
     <Compile Include="Core\TemplateResolver.cs" />
-    <Compile Include="Framework\ExampleHandler.cs" />
+    <Compile Include="Framework\Controller.cs" />
+    <Compile Include="Framework\ExampleController.cs" />
     <Compile Include="Framework\Extensions.cs" />
     <Compile Include="Framework\Files.cs" />
     <Compile Include="Framework\Header.cs" />
     <Compile Include="Framework\BasicResponse.cs" />
+    <Compile Include="Framework\JsonResponse.cs" />
     <Compile Include="Framework\RedirectResponse.cs" />
     <Compile Include="Framework\Request.cs" />
     <Compile Include="Framework\ViewResponse.cs" />
@@ -401,6 +406,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Site\Styles\flat-ui.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Site\Views\system_monitor.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Site\Views\main_menu.html">

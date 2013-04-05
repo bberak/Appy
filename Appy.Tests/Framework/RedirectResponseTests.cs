@@ -14,7 +14,7 @@ namespace Appy.Tests
         }
 
         [TestMethod]
-        public void Check_LocationHeader_IsCorrect()
+        public void Verify_LocationHeader_IsCorrect()
         {
             string headerName = "Location";
             string headerValue = "https://github.com/bberak";

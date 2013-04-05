@@ -9,10 +9,11 @@ namespace Appy.Tests
     public class BasicResponseTests
     {
         BasicResponse Response;
+        const string CONTENT = "Some random content";
 
         public BasicResponseTests()
         {
-            Response = new BasicResponse("Some random content");
+            Response = new BasicResponse(CONTENT);
         }
 
         [TestMethod]
@@ -22,11 +23,9 @@ namespace Appy.Tests
         }
 
         [TestMethod]
-        public void Verify_Content_ExpectedBytes()
+        public void Verify_ToBytes_IsCorrect()
         {
-            byte[] contentInBytes = "Some random content".ToBytes();
-
-            Assert.IsTrue(contentInBytes.SequenceEqual(Response.ToBytes()));
+            Assert.IsTrue(CONTENT.ToBytes().Matches(Response.ToBytes()));
         }
 
         [TestMethod]

@@ -7,15 +7,17 @@ using System.Text;
 
 namespace Appy
 {
-    public class ExampleHandler
+    public class ExampleController : Controller
     {
         int Count;
+        PerformanceCounter CpuCounter;
+        PerformanceCounter MemoryCounter;
 
         [Url("/index")]
         [Url("/launcher")]
         public Response Launcher(Request incoming)
         {
-            return new ViewResponse("launcher.html");
+            return View("launcher.html") + Cookie("testCookie", "abc") + Header("testHeader", "123");
         }
      
         [Url("/launcher/run")]
@@ -47,6 +49,40 @@ namespace Appy
             var cookie = new Cookie("Name", "Value").ExpiresIn(30);
 
             return new ViewResponse("flat-ui.html", Count);
+        }
+
+        [Url("/sysmon")]
+        public Response SystemMonitor(Request incoming)
+        {
+            return View("system_monitor.html");
+        }
+
+        [Url("/sysmon/check")]
+        public Response SystemMonitorCheck(Request incoming)
+        {
+            var model = new
+            {
+                cpuLoad = GetCpuLoad(),
+                memoryLoad = GetMemoryLoad()
+            };
+
+            return Json(model);
+        }
+
+        private int GetCpuLoad()
+        {
+            if (CpuCounter == null)
+                CpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
+
+            return (int)CpuCounter.NextValue();
+        }
+
+        private int GetMemoryLoad()
+        {
+            if (MemoryCounter == null)
+                MemoryCounter = new PerformanceCounter("Memory", "% Committed Bytes in Use");
+
+            return (int)MemoryCounter.NextValue();
         }
     }
 }

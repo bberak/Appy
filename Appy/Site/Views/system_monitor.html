@@ -1,0 +1,36 @@
+﻿@{
+    Layout = "master.html";
+}
+
+<h3>System Monitor</h3>
+
+<div id="cpu-load">
+    <div class="span2">
+        CPU Load <span>50%</span>
+    </div>
+    <div class="span6">
+        <div class="progress">
+            <div class="bar" style="width: 50%;"></div>
+        </div>
+    </div>
+</div>
+
+
+<div id="memory-load">
+    <div class="span2">
+        Memory Load <span>50%</span>
+    </div>
+    <div class="span6">
+        <div class="progress">
+            <div class="bar" style="width: 50%;"></div>
+        </div>
+    </div>
+</div>
+
+@section scripts {  
+    <script type="text/javascript">
+        $(function () {
+            app.startMonitoring();
+        });
+    </script>
+}

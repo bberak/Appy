@@ -12,12 +12,12 @@ namespace Appy
     {
         List<Route> Routes;
 
-        Dictionary<Type, object> Handlers;
+        Dictionary<Type, object> Controllers;
 
         public RouteTable()
         {
             Routes = new List<Route>();
-            Handlers = new Dictionary<Type, object>();
+            Controllers = new Dictionary<Type, object>();
         }
 
         public void Add(Route newRoute)
@@ -51,33 +51,33 @@ namespace Appy
 
         Response InvokeMethod(MethodInfo method, Request arg)
         {
-            object routeHandler = GetHandlerOfType(method.DeclaringType);
+            object routeController = GetControllerOfType(method.DeclaringType);
 
-            return method.Invoke(routeHandler, new object[] { arg }) as Response;
+            return method.Invoke(routeController, new object[] { arg }) as Response;
         }
 
-        object GetHandlerOfType(Type handlerType)
+        object GetControllerOfType(Type controllerType)
         {
-            object handler = null;
+            object controller = null;
 
-            if (Handlers.ContainsKey(handlerType))
+            if (Controllers.ContainsKey(controllerType))
             {
-                handler = Handlers[handlerType];
+                controller = Controllers[controllerType];
             }
             else
             {
-                handler = CreateHandlerFromType(handlerType);
+                controller = CreateControllerFromType(controllerType);
             }
 
-            return handler;
+            return controller;
         }
 
-        object CreateHandlerFromType(Type handlerType)
+        object CreateControllerFromType(Type controllerType)
         {
-            object handler = Activator.CreateInstance(handlerType);
-            Handlers[handlerType] = handler;
+            object controller = Activator.CreateInstance(controllerType);
+            Controllers[controllerType] = controller;
 
-            return handler;
+            return controller;
         }
     }
 }
