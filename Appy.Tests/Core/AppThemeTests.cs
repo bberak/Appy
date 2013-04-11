@@ -17,10 +17,11 @@ namespace Appy.Tests
         [TestMethod]
         public void Verify_Colors_Loaded()
         {
-            Color smokeyWhite = Color.FromArgb(255, 236, 239, 241);
+            Color lightGray = Color.FromArgb(255, 212, 212, 212);
             Color electricBlue = Color.FromArgb(255, 0, 148, 255);
 
-            Assert.AreEqual<Color>(smokeyWhite, Theme.Colors["FormBackground"]);
+            Assert.AreEqual<Color>(Color.White, Theme.Colors["FormBackground"]);
+            Assert.AreEqual<Color>(lightGray, Theme.Colors["ResizeButtonBackground"]);
             Assert.AreEqual<Color>(electricBlue, Theme.Colors["ButtonMouseOverBackground"]);
         }
 

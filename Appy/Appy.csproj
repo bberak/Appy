@@ -76,9 +76,8 @@
     <Reference Include="RazorEngine">
       <HintPath>..\packages\RazorEngine.3.2.0\lib\net40\RazorEngine.dll</HintPath>
     </Reference>
-    <Reference Include="SelfServe, Version=0.1.9.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Packages-Indie\SelfServe-0.1.10\SelfServe.exe</HintPath>
+    <Reference Include="SelfServe">
+      <HintPath>..\Packages-Indie\SelfServe-0.1.11\SelfServe.exe</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -122,6 +121,7 @@
     <Compile Include="Framework\Response.cs" />
     <Compile Include="Server\Extensions.cs" />
     <Compile Include="Server\Route.cs" />
+    <Compile Include="Server\RouteNotFoundException.cs" />
     <Compile Include="Server\RouteTable.cs" />
     <Compile Include="Framework\UrlAttribute.cs" />
   </ItemGroup>
@@ -363,7 +363,10 @@
     <Content Include="Site\Images\Video\volume-off.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Site\Scripts\application.js">
+    <Content Include="Site\Scripts\app.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Site\Scripts\flat-ui.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Site\Scripts\bootstrap-tooltip.js">

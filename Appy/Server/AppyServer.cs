@@ -49,10 +49,22 @@ namespace Appy
 
         protected override void OnPathNotFound(HttpListenerRequest rawRequest, HttpListenerResponse rawResponse)
         {
-            if (!Router.Execute(rawRequest, rawResponse))
+            try
+            {
+                Router.TryExecuteRequest(rawRequest, rawResponse);
+
+                Log("Client requested path ({0})... Handler found", rawRequest.RawUrl);
+            }
+            catch(RouteNotFoundException)
+            {
                 base.OnPathNotFound(rawRequest, rawResponse);
-            else
-                Console.WriteLine(string.Format("Client requested path ({0})... Handler found", rawRequest.RawUrl));
+            }
+        }
+
+        protected override void OnException(Exception ex)
+        {
+            //-- This is where I want to invoke an ErrorRoute or something...
+            base.OnException(ex);
         }
     }
 }

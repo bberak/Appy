@@ -25,28 +25,24 @@ namespace Appy
             Routes.Add(newRoute);
         }
 
-        public bool Execute(HttpListenerRequest rawRequest, HttpListenerResponse rawResponse)
+        public void TryExecuteRequest(HttpListenerRequest rawRequest, HttpListenerResponse rawResponse)
         {
             Route route = FindRoute(rawRequest);
 
-            if (route != null)
-            {
-                Request appyRequest = new Request(rawRequest);
-                Response appyResponse = InvokeMethod(route.Method, appyRequest);
+            Request appyRequest = new Request(rawRequest);
+            Response appyResponse = InvokeMethod(route.Method, appyRequest);
 
-                rawResponse.WriteResponse(appyResponse);
-
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            rawResponse.WriteResponse(appyResponse);
         }
 
         Route FindRoute(HttpListenerRequest rawRequest)
         {
-            return Routes.Find(x => x.Attributes.Count(y => y.Matches(rawRequest)) > 0);
+            Route route = Routes.Find(x => x.Attributes.Count(y => y.Matches(rawRequest)) > 0);
+
+            if (route == null)
+                throw new RouteNotFoundException(rawRequest.RawUrl);
+
+            return route;
         }
 
         Response InvokeMethod(MethodInfo method, Request arg)

@@ -69,7 +69,7 @@ namespace Appy
             return Json(model);
         }
 
-        private int GetCpuLoad()
+        int GetCpuLoad()
         {
             if (CpuCounter == null)
                 CpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
@@ -77,7 +77,7 @@ namespace Appy
             return (int)CpuCounter.NextValue();
         }
 
-        private int GetMemoryLoad()
+        int GetMemoryLoad()
         {
             if (MemoryCounter == null)
                 MemoryCounter = new PerformanceCounter("Memory", "% Committed Bytes in Use");
