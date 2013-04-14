@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Windows.Forms;
 
 namespace Appy
 {
@@ -32,14 +33,6 @@ namespace Appy
             return new RedirectResponse("/launcher");
         }
 
-        [Url("/testing")]
-        public Response Testing(Request incoming)
-        {
-            Count++;
-
-            return new ViewResponse("testing.html", Count);
-        }
-
         [Url("/flat-ui")]
         public Response FlatUI(Request incoming)
         {
@@ -49,6 +42,43 @@ namespace Appy
             var cookie = new Cookie("Name", "Value").ExpiresIn(30);
 
             return new ViewResponse("flat-ui.html", Count);
+        }
+
+        [Url("/testing")]
+        public Response Testing(Request incoming)
+        {
+            Count++;
+
+            return new ViewResponse("testing.html", Count);
+        }
+
+        [Url("/throw-exception")]
+        public Response ThrowException(Request incoming)
+        {
+            string type = incoming.QueryString.Find("type");
+
+            if (type.Equals("FieldAccessException"))
+                throw new FieldAccessException("Oops, an error occurred");
+            else
+                throw new Exception("Oops, another error occurred!");
+        }
+
+        [Catches]
+        public void HandleException(Exception ex)
+        {
+            MessageBox.Show(string.Format("Exception occurred:\n\n{0}", ex.ToString()),
+                "Error",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+        }
+
+        [Catches(typeof(FieldAccessException))]
+        public void HandleFieldException(Exception ex)
+        {
+            MessageBox.Show(string.Format("Field Access Exception occurred:\n\n{0}", ex.ToString()),
+                "Error",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
         }
 
         [Url("/sysmon")]

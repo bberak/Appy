@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -10,9 +11,9 @@ namespace Appy
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
     public class UrlAttribute : Attribute
     {
-        public readonly string Url;
+        public string Url { get; protected set; }
 
-        public readonly string Methods;
+        public string Methods { get; protected set; }
 
         public UrlAttribute(string url, string methods = "GET, POST, PUT, UPDATE, DELETE")
         {
@@ -23,8 +24,11 @@ namespace Appy
 
         public bool Matches(HttpListenerRequest request)
         {
+            //-- Strip everything after "?"
+            string rawUrl = request.RawUrl.Contains("?") ? request.RawUrl.Substring(0, request.RawUrl.IndexOf("?")) : request.RawUrl;
+
             //-- Case insensitive match
-            Regex expression = new Regex("(?i)" + request.RawUrl + "(?-i)");
+            Regex expression = new Regex("(?i)" + rawUrl + "(?-i)");
 
             if (expression.IsMatch(Url)
                 && Methods.Contains(request.HttpMethod))

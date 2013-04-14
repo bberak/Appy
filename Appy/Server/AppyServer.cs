@@ -14,37 +14,8 @@ namespace Appy
 
         public AppyServer()
         {
-            LoadRoutes();
-        }
-
-        void LoadRoutes()
-        {
             Router = new RouteTable();
-
-            foreach (var method in FindMethodsDecoratedWithUrlAttributes())
-            {
-                Route route = new Route { Method = method };
-
-                foreach (var urlObj in GetUrlAttributesFromMethod(method))
-                {
-                    UrlAttribute attr = urlObj as UrlAttribute;
-
-                    route.Attributes.Add(attr);
-                }
-
-                Router.Add(route);
-            }
-        }
-
-        MethodInfo[] FindMethodsDecoratedWithUrlAttributes()
-        {
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            return assembly.FindMethodsDecoratedWithAttribute(typeof(UrlAttribute));
-        }
-
-        object[] GetUrlAttributesFromMethod(MethodInfo method)
-        {
-            return method.GetCustomAttributes(typeof(UrlAttribute), true);
+            Router.LoadRoutesFrom(Assembly.GetExecutingAssembly());
         }
 
         protected override void OnPathNotFound(HttpListenerRequest rawRequest, HttpListenerResponse rawResponse)
@@ -55,7 +26,7 @@ namespace Appy
 
                 Log("Client requested path ({0})... Handler found", rawRequest.RawUrl);
             }
-            catch(RouteNotFoundException)
+            catch (RouteNotFoundException)
             {
                 base.OnPathNotFound(rawRequest, rawResponse);
             }
@@ -63,8 +34,7 @@ namespace Appy
 
         protected override void OnException(Exception ex)
         {
-            //-- This is where I want to invoke an ErrorRoute or something...
-            base.OnException(ex);
+            Router.TryHandleException(ex);
         }
     }
 }

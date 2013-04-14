@@ -1,4 +1,4 @@
-CreateApp = function () {
+createApp = function () {
     var self = {
         startMonitoring: function () {
             $.get('/sysmon/check', function (data) {
@@ -14,5 +14,5 @@ CreateApp = function () {
     return self;
 };
 
-var app = CreateApp();
+var app = createApp();
 
