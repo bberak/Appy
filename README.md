@@ -5,7 +5,7 @@ Repository for holding Appy - quick desktop apps for web developers! Like PhoneG
 
 # Read This!
 
-* This work is currently not licensed. If you would like to use this work in any way - contact me.
+* I have not provided a license for this work. If you would like to use this work in any way - contact me.
 * I will put up a more detailed guide with code-walkthroughs shortly.
 
 # How To Use
