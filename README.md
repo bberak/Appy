@@ -12,4 +12,4 @@ Repository for holding Appy - quick desktop apps for web developers! Like PhoneG
 
 * Open solution in VS 2012.
 * Run Appy project.
-* Make changes to the website and/or ExampleController. You can also add your own Controllers.
+* Make changes to the contents of the Site folder and ExampleController class. Feel free to add more of your own 'controller' classes (note: they don't have to inherit from Controller).
