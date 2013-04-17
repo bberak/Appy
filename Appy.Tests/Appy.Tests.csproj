@@ -69,9 +69,12 @@
     <Reference Include="RazorEngine">
       <HintPath>..\packages\RazorEngine.3.2.0\lib\net40\RazorEngine.dll</HintPath>
     </Reference>
-    <Reference Include="SelfServe, Version=0.1.12.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="SelfServe, Version=0.1.13.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Packages-Indie\SelfServe-0.1.13\SelfServe.exe</HintPath>
+      <HintPath>..\Packages-Indie\SelfServe-0.1.14\SelfServe.exe</HintPath>
+    </Reference>
+    <Reference Include="SelfServe.Tests">
+      <HintPath>..\Packages-Indie\SelfServe-0.1.14\SelfServe.Tests.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -103,6 +106,7 @@
     <Compile Include="Framework\ControllerTests.cs" />
     <Compile Include="Framework\JsonResponseTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Server\UrlRouterTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Site\Fonts\Flat-UI-Icons-16.dev.svg">

@@ -76,9 +76,9 @@
     <Reference Include="RazorEngine">
       <HintPath>..\packages\RazorEngine.3.2.0\lib\net40\RazorEngine.dll</HintPath>
     </Reference>
-    <Reference Include="SelfServe, Version=0.1.12.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="SelfServe, Version=0.1.13.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Packages-Indie\SelfServe-0.1.13\SelfServe.exe</HintPath>
+      <HintPath>..\Packages-Indie\SelfServe-0.1.14\SelfServe.exe</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -122,10 +122,12 @@
     <Compile Include="Server\AppyServer.cs" />
     <Compile Include="Framework\Response.cs" />
     <Compile Include="Server\Extensions.cs" />
+    <Compile Include="Server\Router.cs" />
     <Compile Include="Server\Routes.cs" />
     <Compile Include="Server\RouteNotFoundException.cs" />
     <Compile Include="Server\RouteTable.cs" />
     <Compile Include="Framework\UrlAttribute.cs" />
+    <Compile Include="Server\UrlRouter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
