@@ -11,8 +11,16 @@ namespace Appy
     public class ExampleController : Controller
     {
         int Count;
-        PerformanceCounter CpuCounter;
-        PerformanceCounter MemoryCounter;
+
+        Lazy<PerformanceCounter> CpuCounter = new Lazy<PerformanceCounter>(() => 
+        { 
+            return new PerformanceCounter("Processor", "% Processor Time", "_Total"); 
+        });
+
+        Lazy<PerformanceCounter> MemoryCounter = new Lazy<PerformanceCounter>(() =>
+        { 
+            return new PerformanceCounter("Memory", "% Committed Bytes in Use");
+        });
 
         [Url("/index")]
         [Url("/launcher")]
@@ -92,27 +100,11 @@ namespace Appy
         {
             var model = new
             {
-                cpuLoad = GetCpuLoad(),
-                memoryLoad = GetMemoryLoad()
+                cpuLoad = (int)CpuCounter.Value.NextValue(),
+                memoryLoad = (int)MemoryCounter.Value.NextValue()
             };
 
             return Json(model);
-        }
-
-        int GetCpuLoad()
-        {
-            if (CpuCounter == null)
-                CpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
-
-            return (int)CpuCounter.NextValue();
-        }
-
-        int GetMemoryLoad()
-        {
-            if (MemoryCounter == null)
-                MemoryCounter = new PerformanceCounter("Memory", "% Committed Bytes in Use");
-
-            return (int)MemoryCounter.NextValue();
         }
     }
 }

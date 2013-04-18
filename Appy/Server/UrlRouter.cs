@@ -29,7 +29,7 @@ namespace Appy
             UrlRoute route = FindUrlRouteFor(rawRequest);
 
             Request appyRequest = new Request(rawRequest);
-            Response appyResponse = InvokeMethod(route.Method, appyRequest);
+            Response appyResponse = InvokeMethod(route.Method, appyRequest) as Response;
 
             rawResponse.WriteResponse(appyResponse);
         }
@@ -42,13 +42,6 @@ namespace Appy
                 throw new RouteNotFoundException(rawRequest.RawUrl);
 
             return route;
-        }
-
-        Response InvokeMethod(MethodInfo method, Request arg)
-        {
-            object controller = GetControllerOfType(method.DeclaringType);
-
-            return method.Invoke(controller, new object[] { arg }) as Response;
         }
     }
 }

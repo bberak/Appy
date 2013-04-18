@@ -10,19 +10,23 @@ namespace Appy
 {
     public class AppyServer : HttpFileServer
     {
-        RouteTable Router;
+        UrlRouter UrlRouter;
+        ExceptionRouter ExceptionRouter;
 
         public AppyServer()
         {
-            Router = new RouteTable();
-            Router.LoadRoutesFrom(Assembly.GetExecutingAssembly());
+            UrlRouter = new UrlRouter();
+            UrlRouter.LoadRoutesFrom(Assembly.GetExecutingAssembly());
+
+            ExceptionRouter = new ExceptionRouter();
+            ExceptionRouter.LoadRoutesFrom(Assembly.GetExecutingAssembly());
         }
 
         protected override void OnPathNotFound(HttpListenerRequest rawRequest, HttpListenerResponse rawResponse)
         {
             try
             {
-                Router.TryExecuteRequest(rawRequest, rawResponse);
+                UrlRouter.TryExecuteRequest(rawRequest, rawResponse);
 
                 Log("Client requested path ({0})... Handler found", rawRequest.RawUrl);
             }
@@ -34,7 +38,7 @@ namespace Appy
 
         protected override void OnException(Exception ex)
         {
-            Router.TryHandleException(ex);
+            ExceptionRouter.TryHandleException(ex);
         }
     }
 }

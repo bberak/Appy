@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Newtonsoft.Json;
 
-namespace Appy.Tests.Framework
+namespace Appy.Tests
 {
     [TestClass]
     public class ControllerTests

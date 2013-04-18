@@ -24,5 +24,18 @@ namespace Appy
 
             return Array.ConvertAll(urlObjects, item => (T)item);
         }
+
+        public static T As<T>(this object obj)
+        {
+            if (typeof(T).IsAssignableFrom(obj.GetType()))
+                return (T)obj;
+
+            return default(T);
+        }
+
+        public static bool Is<T>(this object obj)
+        {
+            return obj is T;
+        }
     }
 }

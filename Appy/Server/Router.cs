@@ -17,6 +17,8 @@ namespace Appy
             Controllers = new Dictionary<Type, object>();
         }
 
+        public int RouteCount { get { return Routes.Count; } }
+
         public abstract void LoadRoutesFrom(Assembly assembly);
 
         protected object GetControllerOfType(Type controllerType)
@@ -43,6 +45,18 @@ namespace Appy
             return controller;
         }
 
-        public int RouteCount { get { return Routes.Count; } }
+        protected object InvokeMethod(MethodInfo method, object arg)
+        {
+            object controller = GetControllerOfType(method.DeclaringType);
+
+            try
+            {
+                return method.Invoke(controller, new object[] { arg });
+            }
+            catch (TargetInvocationException ex)
+            {
+                throw ex.InnerException;
+            }
+        }  
     }
 }
