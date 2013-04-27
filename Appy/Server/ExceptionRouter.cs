@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Text;
 
@@ -25,9 +26,17 @@ namespace Appy
 
         public void TryHandleException(Exception ex)
         {
+            TryHandleException(null, ex);
+        }
+
+        public void TryHandleException(HttpListenerResponse rawResponse, Exception ex)
+        {
             ExceptionRoute route = FindExceptionRouteFor(ex);
 
-            InvokeMethod(route.Method, ex);
+            Response appyResponse = InvokeMethod(route.Method, ex) as Response;
+
+            if (rawResponse != null && appyResponse != null)
+                rawResponse.WriteResponse(appyResponse);
         }
 
         ExceptionRoute FindExceptionRouteFor(Exception ex)

@@ -36,9 +36,9 @@ namespace Appy
             }
         }
 
-        protected override void OnException(Exception ex)
+        protected override void OnException(HttpListenerRequest rawRequest, HttpListenerResponse rawResponse, Exception ex)
         {
-            ExceptionRouter.TryHandleException(ex);
+            ExceptionRouter.TryHandleException(rawResponse, ex);
         }
     }
 }

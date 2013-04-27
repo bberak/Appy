@@ -45,18 +45,18 @@ namespace Appy
             return controller;
         }
 
-        protected object InvokeMethod(MethodInfo method, object arg)
+        protected object InvokeMethod(MethodInfo method, params object[] args)
         {
             object controller = GetControllerOfType(method.DeclaringType);
 
             try
             {
-                return method.Invoke(controller, new object[] { arg });
+                return method.Invoke(controller, args);
             }
             catch (TargetInvocationException ex)
             {
                 throw ex.InnerException;
             }
-        }  
+        }
     }
 }

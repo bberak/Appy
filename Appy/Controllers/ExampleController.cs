@@ -12,13 +12,13 @@ namespace Appy
     {
         int Count;
 
-        Lazy<PerformanceCounter> CpuCounter = new Lazy<PerformanceCounter>(() => 
-        { 
-            return new PerformanceCounter("Processor", "% Processor Time", "_Total"); 
+        Lazy<PerformanceCounter> CpuCounter = new Lazy<PerformanceCounter>(() =>
+        {
+            return new PerformanceCounter("Processor", "% Processor Time", "_Total");
         });
 
         Lazy<PerformanceCounter> MemoryCounter = new Lazy<PerformanceCounter>(() =>
-        { 
+        {
             return new PerformanceCounter("Memory", "% Committed Bytes in Use");
         });
 
@@ -28,7 +28,7 @@ namespace Appy
         {
             return View("launcher.html") + Cookie("testCookie", "abc") + Header("testHeader", "123");
         }
-     
+
         [Url("/launcher/run")]
         public Response Run(Request incoming)
         {
@@ -58,35 +58,6 @@ namespace Appy
             Count++;
 
             return new ViewResponse("testing.html", Count);
-        }
-
-        [Url("/throw-exception")]
-        public Response ThrowException(Request incoming)
-        {
-            string type = incoming.QueryString.Find("type");
-
-            if (type.Equals("FieldAccessException"))
-                throw new FieldAccessException("Oops, an error occurred");
-            else
-                throw new Exception("Oops, another error occurred!");
-        }
-
-        [Catches]
-        public void HandleException(Exception ex)
-        {
-            MessageBox.Show(string.Format("Exception occurred:\n\n{0}", ex.ToString()),
-                "Error",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Error);
-        }
-
-        [Catches(typeof(FieldAccessException))]
-        public void HandleFieldException(Exception ex)
-        {
-            MessageBox.Show(string.Format("Field Access Exception occurred:\n\n{0}", ex.ToString()),
-                "Error",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Error);
         }
 
         [Url("/sysmon")]

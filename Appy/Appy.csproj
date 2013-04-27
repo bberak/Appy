@@ -56,6 +56,9 @@
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>App.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="BB.Common.WinForms, Version=0.1.4.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -76,9 +79,9 @@
     <Reference Include="RazorEngine">
       <HintPath>..\packages\RazorEngine.3.2.0\lib\net40\RazorEngine.dll</HintPath>
     </Reference>
-    <Reference Include="SelfServe, Version=0.1.13.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="SelfServe, Version=0.1.14.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Packages-Indie\SelfServe-0.1.14\SelfServe.exe</HintPath>
+      <HintPath>..\Packages-Indie\SelfServe-0.1.15\SelfServe.exe</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -98,6 +101,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ExampleController.cs" />
+    <Compile Include="Controllers\ExceptionController.cs" />
     <Compile Include="Core\App.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,7 +113,6 @@
     <Compile Include="Core\TemplateResolver.cs" />
     <Compile Include="Framework\Controller.cs" />
     <Compile Include="Framework\CatchesAttribute.cs" />
-    <Compile Include="Framework\ExampleController.cs" />
     <Compile Include="Framework\Extensions.cs" />
     <Compile Include="Framework\Files.cs" />
     <Compile Include="Framework\Header.cs" />
@@ -137,6 +141,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Packages.config" />
+    <Content Include="App.ico" />
     <Content Include="Site\Fonts\Flat-UI-Icons-16.eot">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
