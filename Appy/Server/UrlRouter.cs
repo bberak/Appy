@@ -24,7 +24,7 @@ namespace Appy
             }
         }
 
-        public void TryExecuteRequest(HttpListenerRequest rawRequest, HttpListenerResponse rawResponse)
+        public void TryHandleRequest(HttpListenerRequest rawRequest, HttpListenerResponse rawResponse)
         {
             UrlRoute route = FindUrlRouteFor(rawRequest);
 

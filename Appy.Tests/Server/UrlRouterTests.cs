@@ -22,7 +22,7 @@ namespace Appy.Tests
         {
             try
             {
-                Router.TryExecuteRequest(e.Request, e.Response);
+                Router.TryHandleRequest(e.Request, e.Response);
             }
             catch (TargetParameterCountException)
             {

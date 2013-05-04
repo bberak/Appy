@@ -16,17 +16,17 @@ namespace Appy
         public AppyServer()
         {
             UrlRouter = new UrlRouter();
-            UrlRouter.LoadRoutesFrom(Assembly.GetExecutingAssembly());
+            UrlRouter.LoadRoutesFrom(Assembly.GetEntryAssembly());
 
             ExceptionRouter = new ExceptionRouter();
-            ExceptionRouter.LoadRoutesFrom(Assembly.GetExecutingAssembly());
+            ExceptionRouter.LoadRoutesFrom(Assembly.GetEntryAssembly());
         }
 
         protected override void OnPathNotFound(HttpListenerRequest rawRequest, HttpListenerResponse rawResponse)
         {
             try
             {
-                UrlRouter.TryExecuteRequest(rawRequest, rawResponse);
+                UrlRouter.TryHandleRequest(rawRequest, rawResponse);
 
                 Log("Client requested path ({0})... Handler found", rawRequest.RawUrl);
             }
