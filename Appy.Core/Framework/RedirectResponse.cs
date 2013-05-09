@@ -8,9 +8,10 @@ namespace Appy.Core
     public class RedirectResponse : BasicResponse
     {
         public RedirectResponse(string redirectUrl, string content = "This page has moved.")
-            : base(content, 302)
+            : base(content)
         {
             Headers.Add("Location", redirectUrl);
+            StatusCode = 302;
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Appy.Core
     {
         public Response Basic(string content, int statusCode = 200)
         {
-            return new BasicResponse(content, statusCode);
+            return new BasicResponse(content).And(r => r.StatusCode = statusCode);
         }
 
         public Response View(string viewName, object model = null)

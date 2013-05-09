@@ -29,6 +29,18 @@ namespace Appy.Core
             Headers = new WebHeaderCollection();
         }
 
+        public Response And(Action<Response> action) 
+        {
+            action(this);
+
+            return this;
+        }
+
+        public Response With(Action<Response> action)
+        {
+            return And(action);
+        }
+
         public static Response operator +(Response response, Cookie cookie)
         {
             response.Cookies.Add(cookie);

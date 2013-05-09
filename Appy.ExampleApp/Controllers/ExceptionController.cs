@@ -32,7 +32,7 @@ namespace Appy.ExampleApp
         [Catches(typeof(FieldAccessException))]
         public Response HandleFieldException(Exception ex)
         {
-            return new BasicResponse(ex.ToString(), 500);
+            return new BasicResponse(ex).With(r => r.StatusCode = 500);
         }
     }
 }

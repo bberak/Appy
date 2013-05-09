@@ -21,10 +21,10 @@ namespace Appy.Core
 
             Model = model;
 
-            RunRazprTemplate();
+            RunRazorTemplate();
         }
 
-        void RunRazprTemplate()
+        protected virtual void RunRazorTemplate()
         {
             Content = Razor.Parse(Content, Model, ViewName);
         }

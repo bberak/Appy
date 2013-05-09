@@ -1,8 +1,8 @@
-﻿using SelfServe;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SelfServe;
 
 namespace Appy.Core
 {
@@ -10,15 +10,15 @@ namespace Appy.Core
     {
         public string Content { get; set; }
 
-        public BasicResponse(string content = "", int statusCode = 200, string contentType = "text/html; charset=UTF-8")
-            : base(statusCode, contentType)
+        public BasicResponse(object  obj)
+            : this(obj.ToString())
         {
-            Content = content;
         }
 
-        public BasicResponse(StringBuilder sb, int status = 200)
-            : this(sb.ToString(), status)
+        public BasicResponse(string content = "")
+            : base(contentType: "text/html; charset=UTF-8")
         {
+            Content = content;
         }
 
         public override byte[] ToBytes()

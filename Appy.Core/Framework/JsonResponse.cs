@@ -9,12 +9,12 @@ namespace Appy.Core
     public class JsonResponse : BasicResponse
     {
         public JsonResponse(object model)
-            : base(contentType: "application/json")
         {
             Content = ToJson(model);
+            ContentType = "application/json";
         }
 
-        public virtual string ToJson(object model)
+        protected virtual string ToJson(object model)
         {
             return JsonConvert.SerializeObject(model);
         }
