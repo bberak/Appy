@@ -14,11 +14,11 @@ namespace Appy
             Tasks = new List<ITask>();
         }
 
-        protected abstract void LoadTasks();
+        protected abstract void BeforeRun();
 
         public virtual void Run()
         {
-            LoadTasks();
+            BeforeRun();
 
             Tasks.ForEach(t => t.Run());
         }

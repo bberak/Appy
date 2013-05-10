@@ -86,6 +86,9 @@
     <None Include="Resources\Libs.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Resources\Other.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\Site.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -30,7 +30,7 @@ namespace Appy
                 .Add("ProjectPath", projectPath);
         }
 
-        protected override void LoadTasks()
+        protected override void BeforeRun()
         {
             string projectPath = Args["ProjectPath"];
 
@@ -39,6 +39,8 @@ namespace Appy
             Tasks.Add(new UnzipTask(Files.FindFirst("Resources/Libs.zip"), projectPath));
 
             Tasks.Add(new UnzipTask(Files.FindFirst("Resources/Site.zip"), projectPath));
+
+            Tasks.Add(new UnzipTask(Files.FindFirst("Resources/Other.zip"), projectPath));
 
             Tasks.Add(new CreatePathTask(Dirs.Combine(projectPath, "Code")));
 
