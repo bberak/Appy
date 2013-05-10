@@ -37,5 +37,10 @@ namespace Appy.Core
         {
             return source.SequenceEqual(target);
         }
+
+        public static string F(this string source, params object[] args)
+        {
+            return string.Format(source, args);
+        }
     }
 }

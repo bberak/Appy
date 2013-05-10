@@ -91,6 +91,7 @@
       <DependentUpon>App.cs</DependentUpon>
     </Compile>
     <Compile Include="App\AppyTheme.cs" />
+    <Compile Include="Framework\Dirs.cs" />
     <Compile Include="Framework\HttpFile.cs" />
     <Compile Include="Server\RequestAdapter.cs" />
     <Compile Include="Server\ResponseAdapter.cs" />
