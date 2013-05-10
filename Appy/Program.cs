@@ -18,6 +18,9 @@ namespace Appy
             catch (Exception ex)
             {
                 ui.WriteException(ex);
+            }
+            finally
+            {
                 ui.ReadLine();
             }
         }

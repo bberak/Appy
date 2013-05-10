@@ -116,36 +116,36 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Site\Fonts\Flat-UI-Icons-16.svg">
+    <None Include="Site\Fonts\Flat-UI-Icons-16.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </None>
     <None Include="Packages.config" />
-    <Content Include="Site\Fonts\Flat-UI-Icons-16.eot">
+    <None Include="Site\Fonts\Flat-UI-Icons-16.eot">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Fonts\Flat-UI-Icons-16.ttf">
+    </None>
+    <None Include="Site\Fonts\Flat-UI-Icons-16.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Fonts\Flat-UI-Icons-16.woff">
+    </None>
+    <None Include="Site\Fonts\Flat-UI-Icons-16.woff">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Site\Fonts\Flat-UI-Icons-16.dev.svg">
+    <None Include="Site\Fonts\Flat-UI-Icons-16.dev.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\checkbox.png">
+    </None>
+    <None Include="Site\Images\checkbox.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Scripts\app.js">
+    </None>
+    <None Include="Site\Scripts\app.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Styles\default.css">
+    </None>
+    <None Include="Site\Styles\default.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Views\index.html">
+    </None>
+    <None Include="Site\Views\index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <Choose>

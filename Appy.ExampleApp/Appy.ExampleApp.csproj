@@ -103,24 +103,24 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Content Include="Site\Fonts\Flat-UI-Icons-16.eot">
+    <None Include="Site\Fonts\Flat-UI-Icons-16.eot">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Fonts\Flat-UI-Icons-16.ttf">
+    </None>
+    <None Include="Site\Fonts\Flat-UI-Icons-16.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Fonts\Flat-UI-Icons-16.woff">
+    </None>
+    <None Include="Site\Fonts\Flat-UI-Icons-16.woff">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Fonts\Flat-UI-Icons-24.eot">
+    </None>
+    <None Include="Site\Fonts\Flat-UI-Icons-24.eot">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Fonts\Flat-UI-Icons-24.ttf">
+    </None>
+    <None Include="Site\Fonts\Flat-UI-Icons-24.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Fonts\Flat-UI-Icons-24.woff">
+    </None>
+    <None Include="Site\Fonts\Flat-UI-Icons-24.woff">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Appy.Core\Appy.Core.csproj">
@@ -130,276 +130,276 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.ico" />
-    <Content Include="Site\Fonts\Flat-UI-Icons-16.dev.svg">
+    <None Include="Site\Fonts\Flat-UI-Icons-16.dev.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Fonts\Flat-UI-Icons-16.svg">
+    </None>
+    <None Include="Site\Fonts\Flat-UI-Icons-16.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Fonts\Flat-UI-Icons-24.dev.svg">
+    </None>
+    <None Include="Site\Fonts\Flat-UI-Icons-24.dev.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Fonts\Flat-UI-Icons-24.svg">
+    </None>
+    <None Include="Site\Fonts\Flat-UI-Icons-24.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\checkbox-2x.png">
+    </None>
+    <None Include="Site\Images\checkbox-2x.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\checkbox.png">
+    </None>
+    <None Include="Site\Images\checkbox.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Demo\browser-2x.png">
+    </None>
+    <None Include="Site\Images\Demo\browser-2x.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Demo\browser-author.jpg">
+    </None>
+    <None Include="Site\Images\Demo\browser-author.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Demo\browser-pic-1.jpg">
+    </None>
+    <None Include="Site\Images\Demo\browser-pic-1.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Demo\browser-pic-2.jpg">
+    </None>
+    <None Include="Site\Images\Demo\browser-pic-2.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Demo\browser-pic-3.jpg">
+    </None>
+    <None Include="Site\Images\Demo\browser-pic-3.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Demo\browser-pic-4.jpg">
+    </None>
+    <None Include="Site\Images\Demo\browser-pic-4.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Demo\browser-pic-5.jpg">
+    </None>
+    <None Include="Site\Images\Demo\browser-pic-5.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Demo\browser-pic-6.jpg">
+    </None>
+    <None Include="Site\Images\Demo\browser-pic-6.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Demo\browser.png">
+    </None>
+    <None Include="Site\Images\Demo\browser.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Demo\html-icon.png">
+    </None>
+    <None Include="Site\Images\Demo\html-icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Demo\logo-mask-2x.png">
+    </None>
+    <None Include="Site\Images\Demo\logo-mask-2x.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Demo\logo-mask.png">
+    </None>
+    <None Include="Site\Images\Demo\logo-mask.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Demo\video.jpg">
+    </None>
+    <None Include="Site\Images\Demo\video.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\favicon.ico">
+    </None>
+    <None Include="Site\Images\favicon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Footer\logo.png">
+    </None>
+    <None Include="Site\Images\Footer\logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Illustrations\bag.png">
+    </None>
+    <None Include="Site\Images\Illustrations\bag.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Illustrations\book.png">
+    </None>
+    <None Include="Site\Images\Illustrations\book.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Illustrations\calendar.png">
+    </None>
+    <None Include="Site\Images\Illustrations\calendar.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Illustrations\clipboard.png">
+    </None>
+    <None Include="Site\Images\Illustrations\clipboard.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Illustrations\colors.png">
+    </None>
+    <None Include="Site\Images\Illustrations\colors.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Illustrations\compass.png">
+    </None>
+    <None Include="Site\Images\Illustrations\compass.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Illustrations\gift.png">
+    </None>
+    <None Include="Site\Images\Illustrations\gift.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Illustrations\infinity.png">
+    </None>
+    <None Include="Site\Images\Illustrations\infinity.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Illustrations\mail.png">
+    </None>
+    <None Include="Site\Images\Illustrations\mail.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Illustrations\map.png">
+    </None>
+    <None Include="Site\Images\Illustrations\map.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Illustrations\paper.png">
+    </None>
+    <None Include="Site\Images\Illustrations\paper.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Illustrations\retina.png">
+    </None>
+    <None Include="Site\Images\Illustrations\retina.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Illustrations\share.png">
+    </None>
+    <None Include="Site\Images\Illustrations\share.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Illustrations\time.png">
+    </None>
+    <None Include="Site\Images\Illustrations\time.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Login\icon.png">
+    </None>
+    <None Include="Site\Images\Login\icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Login\imac-2x.png">
+    </None>
+    <None Include="Site\Images\Login\imac-2x.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Login\imac.png">
+    </None>
+    <None Include="Site\Images\Login\imac.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Pager\next.png">
+    </None>
+    <None Include="Site\Images\Pager\next.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Pager\previous.png">
+    </None>
+    <None Include="Site\Images\Pager\previous.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\radio-2x.png">
+    </None>
+    <None Include="Site\Images\radio-2x.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\radio.png">
+    </None>
+    <None Include="Site\Images\radio.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Select\toggle.png">
+    </None>
+    <None Include="Site\Images\Select\toggle.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Tile\ribbon-2x.png">
+    </None>
+    <None Include="Site\Images\Tile\ribbon-2x.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Tile\ribbon.png">
+    </None>
+    <None Include="Site\Images\Tile\ribbon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Todo\done-2x.png">
+    </None>
+    <None Include="Site\Images\Todo\done-2x.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Todo\done.png">
+    </None>
+    <None Include="Site\Images\Todo\done.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Todo\search-2x.png">
+    </None>
+    <None Include="Site\Images\Todo\search-2x.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Todo\search.png">
+    </None>
+    <None Include="Site\Images\Todo\search.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Todo\todo-2x.png">
+    </None>
+    <None Include="Site\Images\Todo\todo-2x.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Todo\todo.png">
+    </None>
+    <None Include="Site\Images\Todo\todo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Toggle\block-off.png">
+    </None>
+    <None Include="Site\Images\Toggle\block-off.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Toggle\block-on.png">
+    </None>
+    <None Include="Site\Images\Toggle\block-on.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Toggle\icon-off-2x.png">
+    </None>
+    <None Include="Site\Images\Toggle\icon-off-2x.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Toggle\icon-off.png">
+    </None>
+    <None Include="Site\Images\Toggle\icon-off.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Toggle\icon-on-2x.png">
+    </None>
+    <None Include="Site\Images\Toggle\icon-on-2x.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Toggle\icon-on.png">
+    </None>
+    <None Include="Site\Images\Toggle\icon-on.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Video\fullscreen-2x.png">
+    </None>
+    <None Include="Site\Images\Video\fullscreen-2x.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Video\fullscreen.png">
+    </None>
+    <None Include="Site\Images\Video\fullscreen.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Video\pause-2x.png">
+    </None>
+    <None Include="Site\Images\Video\pause-2x.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Video\pause.png">
+    </None>
+    <None Include="Site\Images\Video\pause.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Video\play-2x.png">
+    </None>
+    <None Include="Site\Images\Video\play-2x.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Video\play.png">
+    </None>
+    <None Include="Site\Images\Video\play.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Video\poster.jpg">
+    </None>
+    <None Include="Site\Images\Video\poster.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Video\volume-full-2x.png">
+    </None>
+    <None Include="Site\Images\Video\volume-full-2x.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Video\volume-full.png">
+    </None>
+    <None Include="Site\Images\Video\volume-full.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Video\volume-off-2x.png">
+    </None>
+    <None Include="Site\Images\Video\volume-off-2x.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Images\Video\volume-off.png">
+    </None>
+    <None Include="Site\Images\Video\volume-off.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Scripts\app.js">
+    </None>
+    <None Include="Site\Scripts\app.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Scripts\bootstrap-tooltip.js">
+    </None>
+    <None Include="Site\Scripts\bootstrap-tooltip.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Scripts\custom_checkbox_and_radio.js">
+    </None>
+    <None Include="Site\Scripts\custom_checkbox_and_radio.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Scripts\custom_radio.js">
+    </None>
+    <None Include="Site\Scripts\custom_radio.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Scripts\flat-ui.js">
+    </None>
+    <None Include="Site\Scripts\flat-ui.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Scripts\html5shiv.js">
+    </None>
+    <None Include="Site\Scripts\html5shiv.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Scripts\icon-font-ie7.js">
+    </None>
+    <None Include="Site\Scripts\icon-font-ie7.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Scripts\jquery-1.8.2.min.js">
+    </None>
+    <None Include="Site\Scripts\jquery-1.8.2.min.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Scripts\jquery-ui-1.10.0.custom.min.js">
+    </None>
+    <None Include="Site\Scripts\jquery-ui-1.10.0.custom.min.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Scripts\jquery.dropkick-1.0.0.js">
+    </None>
+    <None Include="Site\Scripts\jquery.dropkick-1.0.0.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Scripts\jquery.placeholder.js">
+    </None>
+    <None Include="Site\Scripts\jquery.placeholder.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Scripts\jquery.tagsinput.js">
+    </None>
+    <None Include="Site\Scripts\jquery.tagsinput.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Scripts\lte-ie7-24.js">
+    </None>
+    <None Include="Site\Scripts\lte-ie7-24.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Styles\app.css">
+    </None>
+    <None Include="Site\Styles\app.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Styles\bootstrap.css">
+    </None>
+    <None Include="Site\Styles\bootstrap.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Styles\flat-ui.css">
+    </None>
+    <None Include="Site\Styles\flat-ui.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Views\flat-ui.html">
+    </None>
+    <None Include="Site\Views\flat-ui.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Views\launcher.html">
+    </None>
+    <None Include="Site\Views\launcher.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Views\main_menu.html">
+    </None>
+    <None Include="Site\Views\main_menu.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Views\master.html">
+    </None>
+    <None Include="Site\Views\master.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Views\system_monitor.html">
+    </None>
+    <None Include="Site\Views\system_monitor.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Site\Views\testing.html">
+    </None>
+    <None Include="Site\Views\testing.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

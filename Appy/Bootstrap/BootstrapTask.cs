@@ -36,9 +36,9 @@ namespace Appy
 
             Tasks.Add(new CreatePathTask(projectPath));
 
-            Tasks.Add(new CreatePathTask(Dirs.Combine(projectPath, "Libs")));
+            Tasks.Add(new UnzipTask(Files.FindFirst("Resources/Libs.zip"), projectPath));
 
-            Tasks.Add(new CreatePathTask(Dirs.Combine(projectPath, "Site")));
+            Tasks.Add(new UnzipTask(Files.FindFirst("Resources/Site.zip"), projectPath));
 
             Tasks.Add(new CreatePathTask(Dirs.Combine(projectPath, "Code")));
 
