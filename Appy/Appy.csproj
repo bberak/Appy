@@ -69,7 +69,7 @@
     <Compile Include="Bootstrap\CreatePathTask.cs" />
     <Compile Include="Bootstrap\UnzipTask.cs" />
     <Compile Include="Common\Args.cs" />
-    <Compile Include="Common\BaseTask.cs" />
+    <Compile Include="Common\ComponentTask.cs" />
     <Compile Include="Common\ConsoleUserInterface.cs" />
     <Compile Include="Common\ITask.cs" />
     <Compile Include="Common\IUserInterface.cs" />

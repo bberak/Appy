@@ -7,7 +7,7 @@ using Appy.Core;
 
 namespace Appy
 {
-    public class BootstrapTask : BaseTask
+    public class BootstrapTask : ComponentTask
     {
         Args Args;
 
@@ -34,17 +34,17 @@ namespace Appy
         {
             string projectPath = Args["ProjectPath"];
 
-            Tasks.Add(new CreatePathTask(projectPath));
+            Add(new CreatePathTask(projectPath));
 
-            Tasks.Add(new UnzipTask(Files.FindFirst("Resources/Libs.zip"), projectPath));
+            Add(new UnzipTask(Files.FindFirst("Resources/Libs.zip"), projectPath));
 
-            Tasks.Add(new UnzipTask(Files.FindFirst("Resources/Site.zip"), projectPath));
+            Add(new UnzipTask(Files.FindFirst("Resources/Site.zip"), projectPath));
 
-            Tasks.Add(new UnzipTask(Files.FindFirst("Resources/Other.zip"), projectPath));
+            Add(new UnzipTask(Files.FindFirst("Resources/Other.zip"), projectPath));
 
-            Tasks.Add(new CreatePathTask(Dirs.Combine(projectPath, "Code")));
+            Add(new CreatePathTask(Dirs.Combine(projectPath, "Code")));
 
-            Tasks.Add(new CreatePathTask(Dirs.Combine(projectPath, "Builds")));
+            Add(new CreatePathTask(Dirs.Combine(projectPath, "Builds")));
         }
     }
 }
