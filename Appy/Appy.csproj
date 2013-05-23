@@ -67,14 +67,28 @@
   <ItemGroup>
     <Compile Include="Bootstrap\BootstrapTask.cs" />
     <Compile Include="Bootstrap\CreatePathTask.cs" />
+    <Compile Include="Bootstrap\GenerateCodeTask.cs" />
     <Compile Include="Bootstrap\UnzipTask.cs" />
-    <Compile Include="Common\Args.cs" />
+    <Compile Include="Compile\CompileTask.cs" />
+    <Compile Include="Common\InteractiveTask.cs" />
+    <Compile Include="Common\Settings.cs" />
     <Compile Include="Common\ComponentTask.cs" />
     <Compile Include="Common\ConsoleUserInterface.cs" />
     <Compile Include="Common\ITask.cs" />
     <Compile Include="Common\IUserInterface.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Code\ExampleControllerTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExampleControllerTemplate.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Resources\Code\StartTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StartTemplate.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Appy.Core\Appy.Core.csproj">
@@ -83,6 +97,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Code\ExampleControllerTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ExampleControllerTemplate.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>Appy</CustomToolNamespace>
+    </None>
+    <None Include="Resources\Code\StartTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>StartTemplate.cs</LastGenOutput>
+      <CustomToolNamespace>Appy</CustomToolNamespace>
+    </None>
     <None Include="Resources\Libs.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -98,6 +123,10 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -7,33 +7,34 @@ namespace Appy
 {
     public class ConsoleUserInterface : IUserInterface
     {
-        public void Write(object output, ConsoleColor color = ConsoleColor.Magenta)
-        {
-            Console.ForegroundColor = color;
-            Console.Write(output);
-        }
-
-        public void WriteLine(string output = "")
-        {
-            Write(output + Environment.NewLine);
-        }
-
         public void WriteException(Exception ex)
         {
-            Write(ex, ConsoleColor.Red);
-            WriteLine();
-        }
+            Console.ForegroundColor = ConsoleColor.Red;
 
-        public string ReadLine(ConsoleColor color = ConsoleColor.Cyan)
-        {
-            Console.ForegroundColor = color;
-            return Console.ReadLine();
+            Console.WriteLine(ex);
         }
 
         public string Ask(string question)
         {
-            Write(question);
-            return ReadLine();
+            Console.ForegroundColor = ConsoleColor.Gray;
+
+            Console.Write(question + " ");
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+
+            return Console.ReadLine();
+        }
+
+        public void Say(string something)
+        {
+            Console.ForegroundColor = ConsoleColor.Gray;
+
+            Console.WriteLine(something);
+        }
+
+        public void Wait()
+        {
+            Console.ReadLine();
         }
     }
 }

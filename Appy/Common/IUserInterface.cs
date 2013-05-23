@@ -7,12 +7,12 @@ namespace Appy
 {
     public interface IUserInterface
     {
-        void Write(object output, ConsoleColor color); 
-
-        void WriteLine(string output);
-
-        string ReadLine(ConsoleColor color);
+        void WriteException(Exception ex);
 
         string Ask(string question);
+
+        void Say(string something);
+
+        void Wait();
     }
 }

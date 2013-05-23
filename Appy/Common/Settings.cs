@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Appy
 {
-    public class Args : Dictionary<string, string>
+    public class Settings : Dictionary<string, string>
     {
-        public new Args Add(string key, string value)
+        public new Settings Add(string key, string value)
         {
             base.Add(key, value);
 

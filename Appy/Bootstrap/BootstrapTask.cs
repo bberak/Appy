@@ -9,16 +9,16 @@ namespace Appy
 {
     public class BootstrapTask : ComponentTask
     {
-        Args Args;
+        Settings Settings;
 
-        public BootstrapTask(Args args)
+        public BootstrapTask(Settings settings)
         {
-            Args = args;
+            Settings = settings;
         }
 
         public BootstrapTask(IUserInterface ui)
         {
-            Args = new Args();
+            Settings = new Settings();
 
             string projectName = ui.Ask("What is the name of your new project? ");
 
@@ -26,13 +26,13 @@ namespace Appy
 
             string projectPath = Dirs.CleanAndCombine(partialProjectPath, projectName);
 
-            Args.Add("ProjectName", projectName)
+            Settings.Add("ProjectName", projectName)
                 .Add("ProjectPath", projectPath);
         }
 
         protected override void BeforeRun()
         {
-            string projectPath = Args["ProjectPath"];
+            string projectPath = Settings["ProjectPath"];
 
             Add(new CreatePathTask(projectPath));
 
@@ -42,7 +42,13 @@ namespace Appy
 
             Add(new UnzipTask(Files.FindFirst("Resources/Other.zip"), projectPath));
 
-            Add(new CreatePathTask(Dirs.Combine(projectPath, "Code")));
+            string codeFolderPath = Dirs.Combine(projectPath, "Code");
+
+            Add(new CreatePathTask(codeFolderPath));
+
+            string appNamespace = Dirs.GetCleanPath(Settings["ProjectName"]);
+
+            Add(new GenerateCodeTask(appNamespace, codeFolderPath));
 
             Add(new CreatePathTask(Dirs.Combine(projectPath, "Builds")));
         }
