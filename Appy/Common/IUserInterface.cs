@@ -7,6 +7,8 @@ namespace Appy
 {
     public interface IUserInterface
     {
+        void Splash();
+
         void WriteException(Exception ex);
 
         string Ask(string question);

@@ -9,48 +9,38 @@ namespace Appy
 {
     public class BootstrapTask : ComponentTask
     {
-        Settings Settings;
+        public string ProjectName { get; protected set; }
 
-        public BootstrapTask(Settings settings)
-        {
-            Settings = settings;
-        }
+        public string ProjectPath { get; protected set; }
 
         public BootstrapTask(IUserInterface ui)
         {
-            Settings = new Settings();
-
-            string projectName = ui.Ask("What is the name of your new project? ");
+            ProjectName = ui.Ask("What is the name of your new project? ");
 
             string partialProjectPath = ui.Ask("Where should your new app be stored (full path)? ");
 
-            string projectPath = Dirs.CleanAndCombine(partialProjectPath, projectName);
-
-            Settings.Add("ProjectName", projectName)
-                .Add("ProjectPath", projectPath);
+            ProjectPath = Dirs.CleanAndCombine(partialProjectPath, ProjectName);
         }
 
         protected override void BeforeRun()
         {
-            string projectPath = Settings["ProjectPath"];
+            Add(new CreatePathTask(ProjectPath));
 
-            Add(new CreatePathTask(projectPath));
+            Add(new UnzipTask(Files.FindFirst("Resources/Libs.zip"), ProjectPath));
 
-            Add(new UnzipTask(Files.FindFirst("Resources/Libs.zip"), projectPath));
+            Add(new UnzipTask(Files.FindFirst("Resources/Site.zip"), ProjectPath));
 
-            Add(new UnzipTask(Files.FindFirst("Resources/Site.zip"), projectPath));
+            Add(new UnzipTask(Files.FindFirst("Resources/Other.zip"), ProjectPath));
 
-            Add(new UnzipTask(Files.FindFirst("Resources/Other.zip"), projectPath));
-
-            string codeFolderPath = Dirs.Combine(projectPath, "Code");
+            string codeFolderPath = Dirs.Combine(ProjectPath, "Code");
 
             Add(new CreatePathTask(codeFolderPath));
 
-            string appNamespace = Dirs.GetCleanPath(Settings["ProjectName"]);
+            string appNamespace = Dirs.GetCleanPath(ProjectName);
 
             Add(new GenerateCodeTask(appNamespace, codeFolderPath));
 
-            Add(new CreatePathTask(Dirs.Combine(projectPath, "Builds")));
+            Add(new CreatePathTask(Dirs.Combine(ProjectPath, "Builds")));
         }
     }
 }

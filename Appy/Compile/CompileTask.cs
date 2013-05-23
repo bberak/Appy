@@ -8,38 +8,25 @@ using System.Threading.Tasks;
 
 namespace Appy
 {
-    public class CompileTask : InteractiveTask
+    public class CompileTask : ComponentTask
     {
-        public CompileTask(Settings settings)
-            :base(settings)
-        {
-        }
+        public string ProjectPath { get; protected set; }
 
         public CompileTask(IUserInterface ui)
-            : base(ui)
         {
+            ProjectPath = ui.Ask("What is the root path of your project?");
         }
 
-        protected override void BeginInteraction(IUserInterface ui)
+        public CompileTask(string projectPath)
         {
-            base.BeginInteraction(ui);
-
-            string projectRootPath = ui.Ask("What is the root path of your project?");
-
-            Settings.Add("ProjectRootPath", projectRootPath);
+            ProjectPath = projectPath;
         }
 
-        public override void Run()
+        protected override void BeforeRun()
         {
             CodeDomProvider codeProvider = CodeDomProvider.CreateProvider("CSharp");
 
-            string projectRootPath = Settings["ProjectRootPath"];
-
-            string[] assemblies = Directory.GetFiles(Path.Combine(projectRootPath, "Libs"));
-
-            //assemblies = new string[]{ "System.Linq.dll" };
-
-
+            string[] assemblies = Directory.GetFiles(Path.Combine(ProjectPath, "Libs"));
 
             CompilerParameters parameters = new CompilerParameters(assemblies, "Out.exe");
             parameters.GenerateExecutable = true;
@@ -49,17 +36,13 @@ namespace Appy
             parameters.ReferencedAssemblies.Add("System.Net.dll");
             parameters.ReferencedAssemblies.Add("System.Windows.Forms.dll");
             parameters.ReferencedAssemblies.Add("System.dll");
-            
-        
 
-
-            string[] files = Directory.GetFiles(Path.Combine(projectRootPath, "Code"));
+            string[] files = Directory.GetFiles(Path.Combine(ProjectPath, "Code"));
 
             CompilerResults results = codeProvider.CompileAssemblyFromFile(parameters, files);
 
             if (results.Errors.Count > 0)
-                throw new Exception(results.Errors[0].ErrorText);
-           
+                throw new Exception(results.Errors[0].ErrorText);  
         }
     }
 }

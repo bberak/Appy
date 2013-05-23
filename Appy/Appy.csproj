@@ -70,8 +70,6 @@
     <Compile Include="Bootstrap\GenerateCodeTask.cs" />
     <Compile Include="Bootstrap\UnzipTask.cs" />
     <Compile Include="Compile\CompileTask.cs" />
-    <Compile Include="Common\InteractiveTask.cs" />
-    <Compile Include="Common\Settings.cs" />
     <Compile Include="Common\ComponentTask.cs" />
     <Compile Include="Common\ConsoleUserInterface.cs" />
     <Compile Include="Common\ITask.cs" />

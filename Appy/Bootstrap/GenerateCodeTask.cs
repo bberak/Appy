@@ -20,21 +20,29 @@ namespace Appy
 
         public void Run()
         {
+            ExtractStartTemplate();
+
+            ExtractExampleControllerTemplate();
+        }
+
+        void ExtractStartTemplate()
+        {
+            StartTemplate template = new StartTemplate();
+            template.AppNamespace = AppNamespace;
+
+            string output = template.TransformText();
+
+            File.WriteAllText(Path.Combine(CodeFolderPath, "Start.cs"), output);
+        }
+
+        void ExtractExampleControllerTemplate()
+        {
             ExampleControllerTemplate template = new ExampleControllerTemplate();
             template.AppNamespace = AppNamespace;
 
             string output = template.TransformText();
 
             File.WriteAllText(Path.Combine(CodeFolderPath, "ExampleController.cs"), output);
-
-            StartTemplate startTemplate = new StartTemplate();
-            startTemplate.AppNamespace = AppNamespace;
-
-            string output2 = startTemplate.TransformText();
-
-            File.WriteAllText(Path.Combine(CodeFolderPath, "Start.cs"), output2);
-
-
         }
     }
 }
