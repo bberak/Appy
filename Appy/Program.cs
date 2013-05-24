@@ -32,15 +32,13 @@ namespace Appy
 
                 case "e":
                 case "x":
-                case "exit": return;
+                case "exit": Environment.Exit(0); break;
 
                 default:
                     UI.Say("Sorry, I didn't quite get that..");
                     Start();
                     break;
             }
-
-            Start();
         }
 
         static void Bootstrap()
@@ -57,6 +55,10 @@ namespace Appy
             catch (Exception ex)
             {
                 UI.WriteException(ex);
+            }
+            finally
+            {
+                Start();
             }
         }
 
@@ -87,11 +89,15 @@ namespace Appy
                 {
                     task.Run();
                 }
-                while(Repeat());
+                while (Repeat());
             }
             catch (Exception ex)
             {
                 UI.WriteException(ex);
+            }
+            finally
+            {
+                Start();
             }
         }
 

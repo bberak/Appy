@@ -7,40 +7,30 @@ namespace Appy
 {
     public class ConsoleUserInterface : IUserInterface
     {
-        public void WriteException(Exception ex)
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
+        List<ConsoleColor> AcceptableColors;
 
-            Console.WriteLine(ex);
+        public ConsoleUserInterface()
+        {
+            Console.WindowWidth = 98;
+
+            Console.WindowHeight = 48;
+
+            PopulateAcceptableColors();
         }
 
-        public string Ask(string question)
+        void PopulateAcceptableColors()
         {
-            Console.ForegroundColor = ConsoleColor.Gray;
+            Array allColors = Enum.GetValues(typeof(ConsoleColor));
 
-            Console.Write(question + " ");
-
-            Console.ForegroundColor = ConsoleColor.Cyan;
-
-            return Console.ReadLine();
-        }
-
-        public void Say(string something)
-        {
-            Console.ForegroundColor = ConsoleColor.Gray;
-
-            Console.WriteLine(something);
-        }
-
-        public void Wait()
-        {
-            Console.ReadLine();
+            AcceptableColors = allColors.OfType<ConsoleColor>().ToList();
+            AcceptableColors.Remove(ConsoleColor.Black);
+            AcceptableColors.Remove(ConsoleColor.DarkGreen);
+            AcceptableColors.Remove(ConsoleColor.DarkBlue);
+            AcceptableColors.Remove(ConsoleColor.DarkGray);
         }
 
         public void Splash()
         {
-            Console.WindowWidth = 98;
-
             List<string> header = new List<string>();
             header.Add(@"          _____                    _____                    _____                _____          ");
             header.Add(@"         /\    \                  /\    \                  /\    \              |\    \         ");
@@ -65,20 +55,61 @@ namespace Appy
             header.Add(@"         \/____/                                                                  By Boris Berak");
             header.Add(@"                                                                                                ");
 
-            Array allColors = Enum.GetValues(typeof(ConsoleColor));
-            List<ConsoleColor> acceptableColors = allColors.OfType<ConsoleColor>().ToList();
-            acceptableColors.Remove(ConsoleColor.Black);
-            acceptableColors.Remove(ConsoleColor.DarkGreen);
-            acceptableColors.Remove(ConsoleColor.DarkBlue);
-            acceptableColors.Remove(ConsoleColor.DarkGray);
-            Random random = new Random();
-            
+            Random rng = new Random(Environment.TickCount);
+
             foreach (string line in header)
             {
-                ConsoleColor randomColor = (ConsoleColor)acceptableColors[random.Next(acceptableColors.Count)];
-                Console.ForegroundColor = randomColor;
+                int r = rng.Next(AcceptableColors.Count);
+                ConsoleColor randomColor = (ConsoleColor)AcceptableColors[r];
+                ChangeColor(randomColor);
                 Console.WriteLine(line);
             }
         }
+
+        void ChangeColor(ConsoleColor newColor)
+        {
+            Console.ForegroundColor = newColor;
+        }
+
+        public string Ask(string question)
+        {
+            ChangeColor(ConsoleColor.Gray);
+
+            PrintLineBreak();
+
+            Console.Write(question + " ");
+
+            ChangeColor(ConsoleColor.Cyan);
+
+            return Console.ReadLine();
+        }
+
+        void PrintLineBreak()
+        {
+            Console.WriteLine("------------------------------------------------------------------------------------------------");
+        }
+
+        public void Say(string something)
+        {
+            ChangeColor(ConsoleColor.Gray);
+
+            PrintLineBreak();
+
+            Console.WriteLine(something);
+        }
+
+        public void WriteException(Exception ex)
+        {
+            ChangeColor(ConsoleColor.Red);
+
+            PrintLineBreak();
+
+            Console.WriteLine(ex);
+        }
+
+        public void Wait()
+        {
+            Console.ReadLine();
+        }     
     }
 }

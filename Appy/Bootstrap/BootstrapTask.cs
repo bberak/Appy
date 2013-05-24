@@ -40,7 +40,7 @@ namespace Appy
 
             Add(new GenerateCodeTask(appNamespace, codeFolderPath));
 
-            Add(new CreatePathTask(Dirs.Combine(ProjectPath, "Builds")));
+            Add(new CreatePathTask(Dirs.Combine(ProjectPath, "Build")));
         }
     }
 }

@@ -24,25 +24,55 @@ namespace Appy
 
         protected override void BeforeRun()
         {
+            Add(new ClearFolderTask(GetBuildFolder()));
+        }
+
+        public override void Run()
+        {
+            base.Run();
+
             CodeDomProvider codeProvider = CodeDomProvider.CreateProvider("CSharp");
 
-            string[] assemblies = Directory.GetFiles(Path.Combine(ProjectPath, "Libs"));
-
-            CompilerParameters parameters = new CompilerParameters(assemblies, "Out.exe");
+            CompilerParameters parameters = new CompilerParameters(GetAssemblyFiles(), GetExeOutputPath());
+            parameters.IncludeDebugInformation = false;
             parameters.GenerateExecutable = true;
-            parameters.ReferencedAssemblies.Add("System.Linq.dll");
-            parameters.ReferencedAssemblies.Add("System.Collections.dll");
-            parameters.ReferencedAssemblies.Add("System.Core.dll");
-            parameters.ReferencedAssemblies.Add("System.Net.dll");
-            parameters.ReferencedAssemblies.Add("System.Windows.Forms.dll");
-            parameters.ReferencedAssemblies.Add("System.dll");
 
-            string[] files = Directory.GetFiles(Path.Combine(ProjectPath, "Code"));
-
-            CompilerResults results = codeProvider.CompileAssemblyFromFile(parameters, files);
+            CompilerResults results = codeProvider.CompileAssemblyFromFile(parameters, GetSourceFiles());
 
             if (results.Errors.Count > 0)
                 throw new Exception(results.Errors[0].ErrorText);  
+        }
+
+        string GetBuildFolder()
+        {
+            string buildFolder = Path.Combine(ProjectPath, "Build");
+
+            return buildFolder;
+        }
+
+        string GetExeOutputPath()
+        {
+            string fullOutputPath = Path.Combine(GetBuildFolder(), Path.GetFileName(ProjectPath) + ".exe");
+
+            return fullOutputPath;
+        }
+
+        string[] GetAssemblyFiles()
+        {
+            List<string> assemblies = Directory.GetFiles(Path.Combine(ProjectPath, "Libs")).ToList();
+            assemblies.Add("System.Linq.dll");
+            assemblies.Add("System.Collections.dll");
+            assemblies.Add("System.Core.dll");
+            assemblies.Add("System.Net.dll");
+            assemblies.Add("System.Windows.Forms.dll");
+            assemblies.Add("System.dll");
+
+            return assemblies.ToArray();
+        }
+
+        string[] GetSourceFiles()
+        {
+            return Directory.GetFiles(Path.Combine(ProjectPath, "Code"));
         }
     }
 }
