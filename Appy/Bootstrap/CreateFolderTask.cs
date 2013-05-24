@@ -7,11 +7,11 @@ using Appy.Core;
 
 namespace Appy
 {
-    public class CreatePathTask : ITask
+    public class CreateFolderTask : ITask
     {
         string NewPath;
 
-        public CreatePathTask(string newPath)
+        public CreateFolderTask(string newPath)
         {
             NewPath = newPath;
         }

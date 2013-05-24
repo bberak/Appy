@@ -18,7 +18,7 @@ namespace Appy.Tests
         [TestMethod]
         public void CreatePathTask_Verify_NewPath()
         {
-            var task = new CreatePathTask(NewPath);
+            var task = new CreateFolderTask(NewPath);
 
             task.Run();
 

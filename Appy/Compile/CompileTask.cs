@@ -25,41 +25,85 @@ namespace Appy
         protected override void BeforeRun()
         {
             Add(new ClearFolderTask(GetBuildFolder()));
+
+            Add(new CopyFolderTask(GetLibsFolder(), GetBuildFolder()));
+
+            Add(new CopyFolderTask(GetOtherFolder(), GetBuildFolder()));
+
+            Add(new CopyFolderTask(GetSiteFolder(), Combine(GetBuildFolder(), "Site")));
+
+            Add(new CopyFileTask(GetConfigFile(), GetExeOutputPath() + ".config"));
+        }
+
+        string GetBuildFolder()
+        {
+            return GetProjectFolder("Build");
+        }
+
+        string GetLibsFolder()
+        {
+            return GetProjectFolder("Libs");
+        }
+
+        string GetOtherFolder()
+        {
+            return GetProjectFolder("Other");
+        }
+
+        string GetSiteFolder()
+        {
+            return GetProjectFolder("Site");
+        }
+
+        string GetProjectFolder(string subfolderName)
+        {
+            return Path.Combine(ProjectPath, subfolderName);
+        }
+
+        string Combine(params string[] paths)
+        {
+            return Path.Combine(paths);
+        }
+
+        string GetConfigFile()
+        {
+            return Path.Combine(GetProjectFolder("Config"), "App.config");
+        }
+
+        string GetExeOutputPath()
+        {
+            return Path.Combine(GetBuildFolder(), Path.GetFileName(ProjectPath) + ".exe");
         }
 
         public override void Run()
         {
             base.Run();
 
+            CompilerResults compilerResults = CompileProject();
+
+            VerifyCompilation(compilerResults);
+        }
+
+        CompilerResults CompileProject()
+        {
             CodeDomProvider codeProvider = CodeDomProvider.CreateProvider("CSharp");
 
             CompilerParameters parameters = new CompilerParameters(GetAssemblyFiles(), GetExeOutputPath());
             parameters.IncludeDebugInformation = false;
             parameters.GenerateExecutable = true;
+            parameters.CompilerOptions = "/platform:x86 /target:winexe /win32manifest:" + GetManifestFile();
 
-            CompilerResults results = codeProvider.CompileAssemblyFromFile(parameters, GetSourceFiles());
-
-            if (results.Errors.Count > 0)
-                throw new Exception(results.Errors[0].ErrorText);  
+            return codeProvider.CompileAssemblyFromFile(parameters, GetSourceFiles());
         }
 
-        string GetBuildFolder()
+        string GetManifestFile()
         {
-            string buildFolder = Path.Combine(ProjectPath, "Build");
-
-            return buildFolder;
-        }
-
-        string GetExeOutputPath()
-        {
-            string fullOutputPath = Path.Combine(GetBuildFolder(), Path.GetFileName(ProjectPath) + ".exe");
-
-            return fullOutputPath;
+            return Path.Combine(GetProjectFolder("Config"), "App.manifest");
         }
 
         string[] GetAssemblyFiles()
         {
-            List<string> assemblies = Directory.GetFiles(Path.Combine(ProjectPath, "Libs")).ToList();
+            List<string> assemblies = Directory.GetFiles(GetLibsFolder()).ToList();
             assemblies.Add("System.Linq.dll");
             assemblies.Add("System.Collections.dll");
             assemblies.Add("System.Core.dll");
@@ -72,7 +116,22 @@ namespace Appy
 
         string[] GetSourceFiles()
         {
-            return Directory.GetFiles(Path.Combine(ProjectPath, "Code"));
+            return Directory.GetFiles(GetProjectFolder("Code"), "*.cs", SearchOption.AllDirectories);
         }
+
+        void VerifyCompilation(CompilerResults compilerResults)
+        {
+            if (compilerResults.Errors.Count > 0)
+            {
+                StringBuilder sb = new StringBuilder();
+
+                foreach (CompilerError error in compilerResults.Errors)
+                {
+                    sb.AppendLine(string.Format("{0}---{1}---{2}", error.ErrorText, Path.GetFileName(error.FileName), error.Line));
+                }
+
+                throw new Exception(sb.ToString());
+            }
+        }   
     }
 }

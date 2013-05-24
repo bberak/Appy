@@ -20,7 +20,7 @@ namespace Appy
         {
             foreach (string subfolder in Directory.GetDirectories(FolderPath))
             {
-                Directory.Delete(subfolder);
+                Directory.Delete(subfolder, true);
             }
 
             foreach (string file in Directory.GetFiles(FolderPath))

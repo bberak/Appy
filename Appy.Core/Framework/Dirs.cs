@@ -30,5 +30,19 @@ namespace Appy.Core
 
             return Combine(cleanPaths.ToArray());
         }
+
+        public static void Copy(string sourceDir, string destinationDir)
+        {
+            Copy(new DirectoryInfo(sourceDir), new DirectoryInfo(destinationDir));
+        }
+
+        public static void Copy(DirectoryInfo source, DirectoryInfo destination)
+        {
+            foreach (DirectoryInfo dir in source.GetDirectories())
+                Copy(dir, destination.CreateSubdirectory(dir.Name));
+
+            foreach (FileInfo file in source.GetFiles())
+                file.CopyTo(Path.Combine(destination.FullName, file.Name));
+        }
     }
 }
