@@ -28,17 +28,82 @@ namespace Appy
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("using System;\r\nusing System.Collections.Generic;\r\nusing System.Linq;\r\nusing Syste" +
-                    "m.Windows.Forms;\r\nusing Appy.Core;\r\n\r\nnamespace ");
+            this.Write(@"using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
+using Appy.Core;
+
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+[assembly: AssemblyTitle(""");
             
-            #line 12 "C:\Dev\GitHub\Appy\Appy\Resources\Code\StartTemplate.tt"
+            #line 18 "C:\Dev\GitHub\Appy\Appy\Resources\Code\StartTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.AppNamespace));
+            
+            #line default
+            #line hidden
+            this.Write("\")]\r\n[assembly: AssemblyDescription(\"\")]\r\n[assembly: AssemblyConfiguration(\"\")]\r\n" +
+                    "[assembly: AssemblyCompany(\"\")]\r\n[assembly: AssemblyProduct(\"");
+            
+            #line 22 "C:\Dev\GitHub\Appy\Appy\Resources\Code\StartTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.AppNamespace));
+            
+            #line default
+            #line hidden
+            this.Write("\")]\r\n[assembly: AssemblyCopyright(\"Copyright ©  ");
+            
+            #line 23 "C:\Dev\GitHub\Appy\Appy\Resources\Code\StartTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(DateTime.Now.Year));
+            
+            #line default
+            #line hidden
+            this.Write(@""")]
+[assembly: AssemblyTrademark("""")]
+[assembly: AssemblyCulture("""")]
+
+// Setting ComVisible to false makes the types in this assembly not visible 
+// to COM components.  If you need to access a type in this assembly from 
+// COM, set the ComVisible attribute to true on that type.
+[assembly: ComVisible(false)]
+
+// The following GUID is for the ID of the typelib if this project is exposed to COM
+[assembly: Guid(""");
+            
+            #line 33 "C:\Dev\GitHub\Appy\Appy\Resources\Code\StartTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Guid.NewGuid().ToString()));
+            
+            #line default
+            #line hidden
+            this.Write(@""")]
+
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Build and Revision Numbers 
+// by using the '*' as shown below:
+// [assembly: AssemblyVersion(""1.0.*"")]
+[assembly: AssemblyVersion(""1.0.0.0"")]
+[assembly: AssemblyFileVersion(""1.0.0.0"")]
+
+namespace ");
+            
+            #line 48 "C:\Dev\GitHub\Appy\Appy\Resources\Code\StartTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.AppNamespace));
             
             #line default
             #line hidden
             this.Write(@"
 {
-    static class Program
+    static class Start
     {
         /// <summary>
         /// The main entry point for the application.
@@ -59,7 +124,7 @@ namespace Appy
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 31 "C:\Dev\GitHub\Appy\Appy\Resources\Code\StartTemplate.tt"
+        #line 67 "C:\Dev\GitHub\Appy\Appy\Resources\Code\StartTemplate.tt"
 
 	public string AppNamespace {get; set; }
 
