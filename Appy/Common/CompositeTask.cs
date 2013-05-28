@@ -5,11 +5,11 @@ using System.Text;
 
 namespace Appy
 {
-    public abstract class ComponentTask : ITask
+    public abstract class CompositeTask : ITask
     {
         protected List<ITask> Components;
 
-        public ComponentTask()
+        public CompositeTask()
         {
             Components = new List<ITask>();
         }

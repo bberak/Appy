@@ -7,28 +7,49 @@ namespace Appy.Tests
     [TestClass]
     public class BootstrapTaskTests
     {
-        string NewPath = @"C:\AppyTesting";
+        string BaseTestFolder = @"C:\BootstrapTaskTests";
 
         [TestCleanup]
         public void CleanUp()
         {
-            Directory.Delete(NewPath);
+            if (Directory.Exists(BaseTestFolder))
+                Directory.Delete(BaseTestFolder, true);
         }
 
         [TestMethod]
-        public void CreatePathTask_Verify_NewPath()
+        public void Verify_CreateFolderTask_NewPath()
         {
-            var task = new CreateFolderTask(NewPath);
+            var newFolder = Path.Combine(BaseTestFolder, "CreateFolderTest");
+            var task = new CreateFolderTask(newFolder);
 
             task.Run();
 
-            Assert.IsTrue(Directory.Exists(NewPath));
+            Assert.IsTrue(Directory.Exists(newFolder));
         }
 
         [TestMethod]
-        public void Verify_RunMethod_CreatesProject()
+        [ExpectedException(typeof(DirectoryNotFoundException))]
+        public void Verify_CopyFileTask_PathDoesNotExist()
         {
-            throw new NotImplementedException();
+            var source = Path.GetTempFileName();
+            var destination = @"C:\DoesNotExist\CopyFileTest\testing.txt";
+            var task = new CopyFileTask(source, destination);
+
+            task.Run();
+        }
+
+        [TestMethod]
+        public void Verify_CopyFileTask_FileIsCopied()
+        {
+            var source = Path.GetTempFileName();
+            var destinationFolder = Path.Combine(BaseTestFolder, "CopyFileTest");
+            Directory.CreateDirectory(destinationFolder);
+            var destinationFile = Path.Combine(destinationFolder, "testing.tmp"); ;
+            var task = new CopyFileTask(source, destinationFile);
+
+            task.Run();
+
+            Assert.IsTrue(File.Exists(destinationFile));
         }
     }
 }

@@ -72,7 +72,7 @@
     <Compile Include="Bootstrap\UnzipTask.cs" />
     <Compile Include="Compile\ClearFolderTask.cs" />
     <Compile Include="Compile\CompileTask.cs" />
-    <Compile Include="Common\ComponentTask.cs" />
+    <Compile Include="Common\CompositeTask.cs" />
     <Compile Include="Common\ConsoleUserInterface.cs" />
     <Compile Include="Common\ITask.cs" />
     <Compile Include="Common\IUserInterface.cs" />

@@ -7,7 +7,7 @@ using Appy.Core;
 
 namespace Appy
 {
-    public class BootstrapTask : ComponentTask
+    public class BootstrapTask : CompositeTask
     {
         public string ProjectName { get; protected set; }
 

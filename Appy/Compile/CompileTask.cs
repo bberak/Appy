@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Appy
 {
-    public class CompileTask : ComponentTask
+    public class CompileTask : CompositeTask
     {
         public string ProjectPath { get; protected set; }
 

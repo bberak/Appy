@@ -77,6 +77,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Bootstrap\BootstrapTaskTests.cs" />
+    <Compile Include="Compile\CompileTaskTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
