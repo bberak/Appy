@@ -120,25 +120,4 @@
   <metadata name="DefaultToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAABAAEAEBAAAAEAGABoAwAAFgAAACgAAAAQAAAAIAAAAAEAGAAAAAAAAAMAAAAAAAAAAAAAAAAAAAAA
-        AAD///94kQCFoQCFoQCFoQCFoQCFoQCFoQCFoQCFoQCFoQCFoQCFoQCFoQB3kAD///94kQCFoQCFoQCF
-        oQCFoQCFoQCFoQCFoQCFoQCFoQCFoQCFoQCFoQCFoQCFoQB4kQCFoQCFoQCFoQCFoQCFoQCFoQCFoQB7
-        lQB7lQCFoQCFoQCFoQCFoQCFoQCFoQCFoQCFoQCFoQCFoQCFoQCFoQCFoQB7lQCHowCHowB7lQCFoQCF
-        oQCFoQCFoQCFoQCFoQCFoQCFoQCFoQCFoQCFoQB7lQCHowCcvQCcvQCHowB7lQCFoQCFoQCFoQCFoQCF
-        oQCFoQCFoQCFoQCFoQB7lQCHowCcvQCcvQCcvQCcvQCHowB7lQCFoQCFoQCFoQCFoQCFoQCFoQCFoQB7
-        lQCHowCcvQCcvQCcvQCcvQCcvQCcvQCHowB7lQCFoQCFoQCFoQCFoQCFoQB7lQCHowCcvQCcvQCcvQCc
-        vQCcvQCcvQCcvQCxy0KHowB7lQCFoQCFoQCFoQCFoQCZsymevgGcvQCcvQCcvQCcvQCcvQCcvQCcvQDf
-        6bOevgGZsymFoQCFoQCFoQCFoQCctS+50FujwRicvQCcvQCcvQCcvQCcvQDH2nz////Y5KSctS+FoQCF
-        oQCFoQCFoQCFoQCPqhi2zFqqxzGcvQCcvQCuyTzd6K/////////////V36+bszqFoQCFoQCFoQCFoQCF
-        oQCHowWrwknC1m3C1m3C1m3C1m3Q3Jr///+6yniFoQCFoQCFoQCFoQCFoQCFoQCFoQCFoQCFoQCFoQCF
-        oQCFoQCFoQCFoQDY4LOFoQCFoQCFoQCFoQCFoQCFoQCFoQCFoQCFoQCFoQCFoQCFoQCFoQCFoQCFoQCe
-        tUCFoQCFoQCFoQCFoQB4kQCFoQCFoQCFoQCFoQCFoQCFoQCFoQCFoQCFoQCFoQCFoQCFoQCFoQCFoQB4
-        kQD///94kQCFoQCFoQCFoQCFoQCFoQCFoQCFoQCFoQCFoQCFoQCFoQCFoQB4kQD///+AAQAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAQAAPCEtLQok
-        KCdib2R5JykuZXEoMCkuY3NzKCd3aWR0aCcpCi0tPgo=
-</value>
-  </data>
 </root>

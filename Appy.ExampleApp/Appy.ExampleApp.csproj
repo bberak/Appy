@@ -129,7 +129,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App.ico" />
+    <Content Include="App.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Site\Fonts\Flat-UI-Icons-16.dev.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

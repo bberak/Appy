@@ -46,5 +46,10 @@ namespace Appy.Core
 
             return File.ReadAllText(viewPath);
         }
+
+        public static bool Exists(string file)
+        {
+            return File.Exists(file);
+        }
     }
 }

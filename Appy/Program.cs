@@ -89,7 +89,7 @@ namespace Appy
                 {
                     task.Run();
                 }
-                while (Repeat());
+                while (CompileAgain());
             }
             catch (Exception ex)
             {
@@ -101,14 +101,14 @@ namespace Appy
             }
         }
 
-        static bool Repeat()
+        static bool CompileAgain()
         {
-            var answer = UI.Ask("Would you like to (r)epeat the last command?");
+            var answer = UI.Ask("Would you like to (c)ompile again?");
 
             switch (answer.ToLower())
             {
-                case "r":
-                case "repeat":
+                case "c":
+                case "compile":
                 case "y":
                 case "yes":
                     return true;

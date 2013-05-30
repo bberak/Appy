@@ -32,7 +32,9 @@ namespace Appy
 
             Add(new CopyFolderTask(GetSiteFolder(), Combine(GetBuildFolder(), "Site")));
 
-            Add(new CopyFileTask(GetConfigFile(), GetExeOutputPath() + ".config"));
+            Add(new CopyFileTask(GetAppConfigFile(), GetExeOutputPath() + ".config"));
+
+            Add(new CopyFileTask(GetAppIcon(), Combine(GetBuildFolder(), "App.ico")));
         }
 
         string GetBuildFolder()
@@ -55,6 +57,11 @@ namespace Appy
             return GetProjectFolder("Site");
         }
 
+        string GetConfigFolder()
+        {
+            return GetProjectFolder("Config");
+        }
+
         string GetProjectFolder(string subfolderName)
         {
             return Path.Combine(ProjectPath, subfolderName);
@@ -65,14 +72,19 @@ namespace Appy
             return Path.Combine(paths);
         }
 
-        string GetConfigFile()
+        string GetAppConfigFile()
         {
-            return Path.Combine(GetProjectFolder("Config"), "App.config");
+            return Path.Combine(GetConfigFolder(), "App.config");
         }
 
         string GetExeOutputPath()
         {
             return Path.Combine(GetBuildFolder(), Path.GetFileName(ProjectPath) + ".exe");
+        }
+
+        string GetAppIcon()
+        {
+            return Path.Combine(GetConfigFolder(), "App.ico");
         }
 
         public override void Run()
@@ -91,14 +103,19 @@ namespace Appy
             CompilerParameters parameters = new CompilerParameters(GetAssemblyFiles(), GetExeOutputPath());
             parameters.IncludeDebugInformation = false;
             parameters.GenerateExecutable = true;
-            parameters.CompilerOptions = "/platform:x86 /target:winexe /win32manifest:" + GetManifestFile();
+            parameters.CompilerOptions = string.Format("/platform:x86 /target:winexe /win32manifest:{0} /win32icon:{1}", GetManifestFile(), GetExeIcon());
 
             return codeProvider.CompileAssemblyFromFile(parameters, GetSourceFiles());
         }
 
         string GetManifestFile()
         {
-            return Path.Combine(GetProjectFolder("Config"), "App.manifest");
+            return Path.Combine(GetConfigFolder(), "App.manifest");
+        }
+
+        string GetExeIcon()
+        {
+            return Path.Combine(GetConfigFolder(), "Exe.ico");
         }
 
         string[] GetAssemblyFiles()

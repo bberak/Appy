@@ -35,6 +35,8 @@ namespace Appy.Core
             LoadRazorEngine(); 
       
             LoadTheme();
+
+            LoadIcon();
         }
 
         void LoadServer(HttpServer server)
@@ -60,6 +62,14 @@ namespace Appy.Core
         void LoadTheme()
         {
             ThemeManager.ApplyTheme(new AppyTheme());
+        }
+
+        void LoadIcon()
+        {
+            string iconFile = "App.ico";
+
+            if (Files.Exists(iconFile))
+                Icon = new Icon(iconFile);
         }
     }
 }
