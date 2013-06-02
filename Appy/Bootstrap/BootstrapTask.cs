@@ -9,56 +9,41 @@ namespace Appy
 {
     public class BootstrapTask : CompositeTask
     {
-        public string ProjectName { get; protected set; }
-
-        public string ProjectPath { get; protected set; }
+        public AppSettings Settings { get; protected set; }
 
         public BootstrapTask(IUserInterface ui)
         {
-            ProjectName = ui.Ask("What is the name of your new project?");
+            string appName = ui.Ask("What is the name of your new app?");
 
-            string partialProjectPath = ui.Ask("Where should your new app be stored?");
+            string partialAppPath = ui.Ask("Where should " + appName + " be stored?");
 
-            ProjectPath = Dirs.CleanAndCombine(partialProjectPath, ProjectName);
+            string fullAppPath = Dirs.CleanAndCombine(partialAppPath, appName);
+
+            Settings = new AppSettings(fullAppPath);
         }
 
         protected override void BeforeRun()
         {
-            Add(new CreateFolderTask(ProjectPath));
+            Add(new CreateFolderTask(Settings.AppFolder));
 
-            Add(new CreateFolderTask(GetBuildPath()));
+            Add(new CreateFolderTask(Settings.BuildFolder));
 
-            Add(new UnzipTask(FindFile("Resources/Libs.zip"), ProjectPath));
+            Add(new UnzipTask(FindFile("Resources/Libs.zip"), Settings.AppFolder));
 
-            Add(new UnzipTask(FindFile("Resources/Site.zip"), ProjectPath));
+            Add(new UnzipTask(FindFile("Resources/Site.zip"), Settings.AppFolder));
 
-            Add(new UnzipTask(FindFile("Resources/Other.zip"), ProjectPath));
+            Add(new UnzipTask(FindFile("Resources/Other.zip"), Settings.AppFolder));
 
-            Add(new UnzipTask(FindFile("Resources/Config.zip"), ProjectPath));
+            Add(new UnzipTask(FindFile("Resources/Config.zip"), Settings.AppFolder));
 
-            Add(new CreateFolderTask(GetCodePath()));
+            Add(new CreateFolderTask(Settings.CodeFolder));
 
-            Add(new GenerateCodeTask(GetAppNamespace(), GetCodePath())); 
-        }
-
-        string GetBuildPath()
-        {
-            return Dirs.Combine(ProjectPath, "Build");
+            Add(new GenerateCodeTask(Settings.AppNamespace, Settings.CodeFolder)); 
         }
 
         string FindFile(string criteria)
         {
             return Files.FindFirst(criteria);
-        }
-
-        string GetCodePath()
-        {
-            return Dirs.Combine(ProjectPath, "Code"); ;
-        }
-
-        string GetAppNamespace()
-        {
-            return Dirs.GetCleanPath(ProjectName);
         }
     }
 }

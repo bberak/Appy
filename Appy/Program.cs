@@ -48,8 +48,8 @@ namespace Appy
                 var task = new BootstrapTask(UI);
                 task.Run();
 
-                if (CompileNewProject(task.ProjectName))
-                    Compile(task.ProjectPath);
+                if (CompileNewProject(task.Settings.AppName))
+                    Compile(task.Settings.AppFolder);
 
             }
             catch (Exception ex)

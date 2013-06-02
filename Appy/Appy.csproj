@@ -70,6 +70,7 @@
     <Compile Include="Bootstrap\CreateFolderTask.cs" />
     <Compile Include="Bootstrap\GenerateCodeTask.cs" />
     <Compile Include="Bootstrap\UnzipTask.cs" />
+    <Compile Include="Common\AppSettings.cs" />
     <Compile Include="Compile\ClearFolderTask.cs" />
     <Compile Include="Compile\CompileTask.cs" />
     <Compile Include="Common\CompositeTask.cs" />

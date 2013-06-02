@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Appy.Core
 {
@@ -13,13 +14,30 @@ namespace Appy.Core
         UrlRouter UrlRouter;
         ExceptionRouter ExceptionRouter;
 
-        public AppyServer()
+        public AppyServer(string prefix)
+            :base(new string[] { prefix })
         {
             UrlRouter = new UrlRouter();
             UrlRouter.LoadRoutesFrom(Assembly.GetEntryAssembly());
 
             ExceptionRouter = new ExceptionRouter();
             ExceptionRouter.LoadRoutesFrom(Assembly.GetEntryAssembly());
+        }
+
+        public static AppyServer FromUrl(string url)
+        {
+            Regex prefixRegex = new Regex("(http://.+/).+");
+
+            var match = prefixRegex.Match(url);
+
+            if (match.Success)
+            {
+                var group = match.Groups[1];
+                string prefix = group.Value;
+                return new AppyServer(prefix);
+            }
+            else
+                throw new Exception("Url must be in the format: http://localhost:{PORT}/{PAGE} eg http://localhost:80/index");
         }
 
         protected override void OnPathNotFound(HttpListenerRequest rawRequest, HttpListenerResponse rawResponse)

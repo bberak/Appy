@@ -21,8 +21,10 @@ namespace Appy.Core
         WebView Browser;
         HttpServer Server;
 
-        public App()
-            :this(new AppyServer(), "http://localhost/index"){ }
+        public App(string url = "http://localhost/index")
+            : this(AppyServer.FromUrl(url), url) 
+        { 
+        }
 
         public App(HttpServer server, string url)
         {
