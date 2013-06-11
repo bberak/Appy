@@ -406,8 +406,8 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>Copy $(SolutionDir)Packages-Indie\CefSharp-1.19.0\ $(ProjectDir)$(OutDir)
-Mkdir $(ProjectDir)$(OutDir)\locales\
-Copy $(SolutionDir)Packages-Indie\CefSharp-1.19.0\locales\ $(ProjectDir)$(OutDir)\locales\</PostBuildEvent>
+Mkdir $(ProjectDir)$(OutDir)\Locales\
+Copy $(SolutionDir)Packages-Indie\CefSharp-1.19.0\Locales\ $(ProjectDir)$(OutDir)\Locales\</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
