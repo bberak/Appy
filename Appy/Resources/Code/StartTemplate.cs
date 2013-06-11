@@ -116,17 +116,27 @@ namespace ");
             //Application.SetCompatibleTextRenderingDefault(false);
             Control.CheckForIllegalCrossThreadCalls = false;
 
-            Application.Run(new App());
-        }
-    }
-}
-");
+            Application.Run(new App(""http://localhost:");
+            
+            #line 63 "C:\Dev\GitHub\Appy\Appy\Resources\Code\StartTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.GetRandomPort()));
+            
+            #line default
+            #line hidden
+            this.Write("/index\"));\r\n        }\r\n    }\r\n}\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
         #line 67 "C:\Dev\GitHub\Appy\Appy\Resources\Code\StartTemplate.tt"
 
 	public string AppNamespace {get; set; }
+
+	public int GetRandomPort()
+	{
+		Random rng = new Random(Environment.TickCount);
+
+		return rng.Next(49152, 65535);
+	}
 
         
         #line default

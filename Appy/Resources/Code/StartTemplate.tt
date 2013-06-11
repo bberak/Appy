@@ -60,10 +60,17 @@ namespace <#= this.AppNamespace #>
             //Application.SetCompatibleTextRenderingDefault(false);
             Control.CheckForIllegalCrossThreadCalls = false;
 
-            Application.Run(new App());
+            Application.Run(new App("http://localhost:<#= this.GetRandomPort() #>/index"));
         }
     }
 }
 <#+
 	public string AppNamespace {get; set; }
+
+	public int GetRandomPort()
+	{
+		Random rng = new Random(Environment.TickCount);
+
+		return rng.Next(49152, 65535);
+	}
 #>

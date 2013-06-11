@@ -14,8 +14,8 @@ namespace Appy.Core
         UrlRouter UrlRouter;
         ExceptionRouter ExceptionRouter;
 
-        public AppyServer(string prefix)
-            :base(new string[] { prefix })
+        public AppyServer(string binding)
+            : base(new string[] { binding })
         {
             UrlRouter = new UrlRouter();
             UrlRouter.LoadRoutesFrom(Assembly.GetEntryAssembly());
