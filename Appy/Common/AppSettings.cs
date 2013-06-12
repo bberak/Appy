@@ -124,6 +124,14 @@ namespace Appy
             }
         }
 
+        public string GlobalAssemblyCacheFile
+        {
+            get
+            {
+                return Path.Combine(LibsFolder, "GAC.txt");
+            }
+        }
+
         public string[] GetAssemblyFiles()
         {
             List<string> assemblies = new List<string>();
@@ -131,12 +139,14 @@ namespace Appy
             assemblies.AddRange(Directory.GetFiles(LibsFolder, "*.dll", SearchOption.AllDirectories).ToList());
             assemblies.AddRange(Directory.GetFiles(LibsFolder, "*.exe", SearchOption.AllDirectories).ToList());
 
-            assemblies.Add("System.Linq.dll");
-            assemblies.Add("System.Collections.dll");
-            assemblies.Add("System.Core.dll");
-            assemblies.Add("System.Net.dll");
-            assemblies.Add("System.Windows.Forms.dll");
-            assemblies.Add("System.dll");
+
+            if (File.Exists(GlobalAssemblyCacheFile))
+            {
+                foreach (string dll in File.ReadAllLines(GlobalAssemblyCacheFile))
+                    assemblies.Add(dll);
+            }
+            else
+                throw new Exception("Could not find the Global Assembly Cache file at: " + GlobalAssemblyCacheFile);
 
             return assemblies.ToArray();
         }
