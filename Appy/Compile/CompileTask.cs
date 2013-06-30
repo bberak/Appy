@@ -28,6 +28,8 @@ namespace Appy
 
             Add(new CopyFolderTask(Settings.LibsFolder, Settings.BuildFolder));
 
+            Add(new RemoveFileTask(Path.Combine(Settings.BuildFolder, "GAC.txt")));
+
             Add(new CopyFolderTask(Settings.OtherFolder, Settings.BuildFolder));
 
             Add(new CopyFolderTask(Settings.SiteFolder, Path.Combine(Settings.BuildFolder, "Site")));
