@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
@@ -48,6 +49,8 @@ namespace Appy
                 var task = new BootstrapTask(UI);
                 task.Run();
 
+                UI.Say("Bootstrap complete.");
+
                 if (CompileNewProject(task.Settings.AppName))
                     Compile(task.Settings.AppFolder);
 
@@ -84,12 +87,12 @@ namespace Appy
             try
             {
                 var task = string.IsNullOrEmpty(projectPath) ? new CompileTask(UI) : new CompileTask(projectPath);
+                projectPath = task.Settings.AppFolder;
+                task.Run();
 
-                do
-                {
-                    task.Run();
-                }
-                while (CompileAgain());
+                UI.Say("Compilation complete.");
+
+                Run(task.Settings.ExeOutputFile);
             }
             catch (Exception ex)
             {
@@ -97,7 +100,10 @@ namespace Appy
             }
             finally
             {
-                Start();
+                if (CompileAgain())
+                    Compile(projectPath);
+                else
+                    Start();
             }
         }
 
@@ -116,6 +122,26 @@ namespace Appy
                 default:
                     return false;
             }
-        }    
+        }
+
+        static void Run(string exePath)
+        {
+            var answer = UI.Ask("Would you like to (r)un you app?");
+
+            switch (answer.ToLower())
+            {
+                case "r":
+                case "run":
+                case "y":
+                case "yes":
+                    ProcessStartInfo startInfo = new ProcessStartInfo(exePath);
+                    startInfo.WorkingDirectory = System.IO.Path.GetDirectoryName(exePath);
+                    Process.Start(startInfo);
+                    return;
+
+                default:
+                    return;
+            }
+        }
     }
 }

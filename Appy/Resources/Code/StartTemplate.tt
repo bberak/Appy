@@ -6,10 +6,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Drawing;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using BB.Common.WinForms;
 using Appy.Core;
 
 // General Information about an assembly is controlled through the following 
@@ -60,7 +62,18 @@ namespace <#= this.AppNamespace #>
             //Application.SetCompatibleTextRenderingDefault(false);
             Control.CheckForIllegalCrossThreadCalls = false;
 
-            Application.Run(new App("http://localhost:<#= this.GetRandomPort() #>/index"));
+			App app = new App("http://localhost:<#= this.GetRandomPort() #>/index");
+            ThemeManager.ApplyTheme(GetModifiedTheme());
+            Application.Run(app);
+        }
+
+		static BaseTheme GetModifiedTheme()
+        {
+            var modifiedTheme = new AppyTheme();
+            //-- Uncomment line below to see the effects!
+            //modifiedTheme.Colors["ButtonMouseOverForeground"] = Color.Red;
+
+            return modifiedTheme;
         }
     }
 }

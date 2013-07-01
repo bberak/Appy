@@ -19,7 +19,7 @@ namespace Appy.Core.Tests
         [Catches]
         public void HandleDefaultExceptions(Exception ex)
         {
-            if (ex is ExecutionEngineException)
+            if (ex is IndexOutOfRangeException)
                 throw ex;
         }
 
@@ -52,10 +52,10 @@ namespace Appy.Core.Tests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ExecutionEngineException))]
-        public void Verify_ExecutionEngineException_IsCaaughtAndThrown()
+        [ExpectedException(typeof(IndexOutOfRangeException))]
+        public void Verify_IndexOutOfRangeException_IsCaaughtAndThrown()
         {
-            ExecutionEngineException ex = new ExecutionEngineException();
+            IndexOutOfRangeException ex = new IndexOutOfRangeException();
 
             Router.TryHandleException(ex);
         }

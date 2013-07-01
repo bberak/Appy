@@ -14,6 +14,11 @@ namespace Appy
             Components = new List<ITask>();
         }
 
+        protected void Add(ITask component)
+        {
+            Components.Add(component);
+        }
+
         protected abstract void BeforeRun();
 
         public virtual void Run()
@@ -21,11 +26,6 @@ namespace Appy
             BeforeRun();
 
             Components.ForEach(t => t.Run());
-        }
-
-        protected void Add(ITask component)
-        {
-            Components.Add(component);
         }
     }
 }

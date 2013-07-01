@@ -23,6 +23,8 @@ namespace Appy
             ExtractStartTemplate();
 
             ExtractExampleControllerTemplate();
+
+            ExtractExceptionControllerTemplate();
         }
 
         void ExtractStartTemplate()
@@ -43,6 +45,16 @@ namespace Appy
             string output = template.TransformText();
 
             File.WriteAllText(Path.Combine(CodeFolderPath, "ExampleController.cs"), output);
+        }
+
+        void ExtractExceptionControllerTemplate()
+        {
+            ExceptionControllerTemplate template = new ExceptionControllerTemplate();
+            template.AppNamespace = AppNamespace;
+
+            string output = template.TransformText();
+
+            File.WriteAllText(Path.Combine(CodeFolderPath, "ExceptionController.cs"), output);
         }
     }
 }

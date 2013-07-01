@@ -10,7 +10,7 @@ Repository for holding Appy - quick desktop apps for web developers! Like PhoneG
 
 # How To Start
 
-* Build solution in VS 2012 or stay tuned for the binaries (uploading soon).
+* Build solution in VS 2012 or stay tuned for the binaries (uploading soon). Ensure that your platform config is set to x86 when buidling!
 * Run the 'Appy' project or Appy.exe (if you downloaded the binaries).
 * To bootstrap a new project press b + enter and follow the prompts.
 * To compile an existing project press c + enter and follow the prompts.

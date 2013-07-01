@@ -18,9 +18,9 @@ namespace Appy
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\GitHub\Appy\Appy\Resources\Code\StartTemplate.tt"
+    #line 1 "C:\Dev\GitHub\Appy\Appy\Resources\Code\ExceptionControllerTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "11.0.0.0")]
-    public partial class StartTemplate : StartTemplateBase
+    public partial class ExceptionControllerTemplate : ExceptionControllerTemplateBase
     {
 #line hidden
         /// <summary>
@@ -28,115 +28,42 @@ namespace Appy
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write(@"using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Drawing;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using BB.Common.WinForms;
-using Appy.Core;
-
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-[assembly: AssemblyTitle(""");
+            this.Write("\r\nusing System;\r\nusing System.Collections.Generic;\r\nusing System.Linq;\r\nusing Sys" +
+                    "tem.Text;\r\nusing System.Windows.Forms;\r\nusing Appy.Core;\r\n\r\nnamespace ");
             
-            #line 20 "C:\Dev\GitHub\Appy\Appy\Resources\Code\StartTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.AppNamespace));
-            
-            #line default
-            #line hidden
-            this.Write("\")]\r\n[assembly: AssemblyDescription(\"\")]\r\n[assembly: AssemblyConfiguration(\"\")]\r\n" +
-                    "[assembly: AssemblyCompany(\"\")]\r\n[assembly: AssemblyProduct(\"");
-            
-            #line 24 "C:\Dev\GitHub\Appy\Appy\Resources\Code\StartTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.AppNamespace));
-            
-            #line default
-            #line hidden
-            this.Write("\")]\r\n[assembly: AssemblyCopyright(\"Copyright ©  ");
-            
-            #line 25 "C:\Dev\GitHub\Appy\Appy\Resources\Code\StartTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(DateTime.Now.Year));
-            
-            #line default
-            #line hidden
-            this.Write(@""")]
-[assembly: AssemblyTrademark("""")]
-[assembly: AssemblyCulture("""")]
-
-// Setting ComVisible to false makes the types in this assembly not visible 
-// to COM components.  If you need to access a type in this assembly from 
-// COM, set the ComVisible attribute to true on that type.
-[assembly: ComVisible(false)]
-
-// The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid(""");
-            
-            #line 35 "C:\Dev\GitHub\Appy\Appy\Resources\Code\StartTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Guid.NewGuid().ToString()));
-            
-            #line default
-            #line hidden
-            this.Write(@""")]
-
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Build and Revision Numbers 
-// by using the '*' as shown below:
-// [assembly: AssemblyVersion(""1.0.*"")]
-[assembly: AssemblyVersion(""1.0.0.0"")]
-[assembly: AssemblyFileVersion(""1.0.0.0"")]
-
-namespace ");
-            
-            #line 50 "C:\Dev\GitHub\Appy\Appy\Resources\Code\StartTemplate.tt"
+            #line 14 "C:\Dev\GitHub\Appy\Appy\Resources\Code\ExceptionControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.AppNamespace));
             
             #line default
             #line hidden
             this.Write(@"
 {
-    static class Start
+    public class ExceptionController
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
-        [STAThread]
-        static void Main()
+        [Url(""/throw-exception"")]
+        public Response ThrowException(Request incoming)
         {
-            //-- TODO:
-            //Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
-            Control.CheckForIllegalCrossThreadCalls = false;
+            string type = incoming.QueryString.Find(""type"");
 
-			App app = new App(""http://localhost:");
-            
-            #line 65 "C:\Dev\GitHub\Appy\Appy\Resources\Code\StartTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.GetRandomPort()));
-            
-            #line default
-            #line hidden
-            this.Write(@"/index"");
-            ThemeManager.ApplyTheme(GetModifiedTheme());
-            Application.Run(app);
+            if (type.Equals(""FieldAccessException""))
+                throw new FieldAccessException(""Oops, an error occurred"");
+            else
+                throw new Exception(""Oops, another error occurred!"");
         }
 
-		static BaseTheme GetModifiedTheme()
+        [Catches]
+        public void HandleException(Exception ex)
         {
-            var modifiedTheme = new AppyTheme();
-            //-- Uncomment line below to see the effects!
-            //modifiedTheme.Colors[""ButtonMouseOverForeground""] = Color.Red;
+            MessageBox.Show(string.Format(""Exception occurred:\n\n{0}"", ex.ToString()),
+                ""Error"",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+        }
 
-            return modifiedTheme;
+        [Catches(typeof(FieldAccessException))]
+        public Response HandleFieldException(Exception ex)
+        {
+            return new BasicResponse(ex).With(r => r.StatusCode = 500);
         }
     }
 }
@@ -144,16 +71,9 @@ namespace ");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 80 "C:\Dev\GitHub\Appy\Appy\Resources\Code\StartTemplate.tt"
+        #line 45 "C:\Dev\GitHub\Appy\Appy\Resources\Code\ExceptionControllerTemplate.tt"
 
 	public string AppNamespace {get; set; }
-
-	public int GetRandomPort()
-	{
-		Random rng = new Random(Environment.TickCount);
-
-		return rng.Next(49152, 65535);
-	}
 
         
         #line default
@@ -167,7 +87,7 @@ namespace ");
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "11.0.0.0")]
-    public class StartTemplateBase
+    public class ExceptionControllerTemplateBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;
