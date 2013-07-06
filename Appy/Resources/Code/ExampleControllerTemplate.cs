@@ -38,41 +38,43 @@ namespace Appy
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public class ExampleController : Controller\r\n    {\r\n        int Count;\r\n" +
-                    "\r\n        Lazy<PerformanceCounter> CpuCounter = new Lazy<PerformanceCounter>(() " +
-                    "=>\r\n        {\r\n            return new PerformanceCounter(\"Processor\", \"% Process" +
-                    "or Time\", \"_Total\");\r\n        });\r\n\r\n        Lazy<PerformanceCounter> MemoryCoun" +
-                    "ter = new Lazy<PerformanceCounter>(() =>\r\n        {\r\n            return new Perf" +
-                    "ormanceCounter(\"Memory\", \"% Committed Bytes in Use\");\r\n        });\r\n\r\n        [U" +
-                    "rl(\"/index\")]\r\n        [Url(\"/launcher\")]\r\n        public Response Launcher(Requ" +
-                    "est incoming)\r\n        {\r\n            return View(\"launcher.html\") + Cookie(\"tes" +
-                    "tCookie\", \"abc\") + Header(\"testHeader\", \"123\");\r\n        }\r\n\r\n        [Url(\"/lau" +
-                    "ncher/run\")]\r\n        public Response Run(Request incoming)\r\n        {\r\n        " +
-                    "    var exe = string.IsNullOrEmpty(incoming.Form.Find(\"exe-input\"))\r\n           " +
-                    "     ? incoming.Form.Find(\"exe-select\")\r\n                : incoming.Form.Find(\"e" +
-                    "xe-input\");\r\n\r\n            Process.Start(exe);\r\n\r\n            return new Redirec" +
-                    "tResponse(\"/launcher\");\r\n        }\r\n\r\n        [Url(\"/flat-ui\")]\r\n        public " +
-                    "Response FlatUI(Request incoming)\r\n        {\r\n            var name = incoming.Fo" +
-                    "rm.Find(\"Name\");\r\n            var email = incoming.Form.Find(\"Email\");\r\n\r\n      " +
-                    "      var cookie = new Cookie(\"Name\", \"Value\").ExpiresIn(30);\r\n\r\n            ret" +
-                    "urn new ViewResponse(\"flat-ui.html\", Count);\r\n        }\r\n\r\n        [Url(\"/testin" +
-                    "g\")]\r\n        public Response Testing(Request incoming)\r\n        {\r\n            " +
-                    "Count++;\r\n\r\n            return new ViewResponse(\"testing.html\", Count);\r\n       " +
-                    " }\r\n\r\n        [Url(\"/change-theme\")]\r\n        public Response ChangeTheme(Reques" +
-                    "t incoming)\r\n        {\r\n            string themeName = incoming.QueryString.Find" +
-                    "(\"theme\");\r\n\r\n            if (themeName.Equals(\"JaffasTheme\"))\r\n                " +
-                    "ThemeManager.ApplyTheme(new JaffasTheme());\r\n            else\r\n                T" +
-                    "hemeManager.ApplyTheme(new AppyTheme());\r\n \r\n            return Redirect(\"/testi" +
-                    "ng\");\r\n        }\r\n\r\n        [Url(\"/sysmon\")]\r\n        public Response SystemMoni" +
-                    "tor(Request incoming)\r\n        {\r\n            return View(\"system_monitor.html\")" +
-                    ";\r\n        }\r\n\r\n        [Url(\"/sysmon/check\")]\r\n        public Response SystemMo" +
-                    "nitorCheck(Request incoming)\r\n        {\r\n            var model = new\r\n          " +
-                    "  {\r\n                cpuLoad = (int)CpuCounter.Value.NextValue(),\r\n             " +
-                    "   memoryLoad = (int)MemoryCounter.Value.NextValue()\r\n            };\r\n\r\n        " +
-                    "    return Json(model);\r\n        }\r\n    }\r\n}\r\n");
+                    "        Lazy<PerformanceCounter> CpuCounter;\r\n        Lazy<PerformanceCounter> M" +
+                    "emoryCounter;\r\n\r\n        public ExampleController()\r\n        {\r\n            CpuC" +
+                    "ounter = new Lazy<PerformanceCounter>(() =>\r\n            {\r\n                retu" +
+                    "rn new PerformanceCounter(\"Processor\", \"% Processor Time\", \"_Total\");\r\n         " +
+                    "   });\r\n\r\n            MemoryCounter = new Lazy<PerformanceCounter>(() =>\r\n      " +
+                    "      {\r\n                return new PerformanceCounter(\"Memory\", \"% Committed By" +
+                    "tes in Use\");\r\n            });\r\n        }\r\n\r\n\t\t[Url(\"/index\")]\r\n        [Url(\"/f" +
+                    "lat-ui\")]\r\n        public Response FlatUI(Request incoming)\r\n        {\r\n        " +
+                    "    var name = incoming.Form.Find(\"Name\");\r\n            var email = incoming.For" +
+                    "m.Find(\"Email\");\r\n\r\n            var cookie = new Cookie(\"Name\", \"Value\").Expires" +
+                    "In(30);\r\n\r\n            return new ViewResponse(\"flat-ui.html\", Count);\r\n        " +
+                    "}\r\n\r\n        [Url(\"/launcher\")]\r\n        public Response Launcher(Request incomi" +
+                    "ng)\r\n        {\r\n            return View(\"launcher.html\") + Cookie(\"testCookie\", " +
+                    "\"abc\") + Header(\"testHeader\", \"123\");\r\n        }\r\n\r\n        [Url(\"/launcher/run\"" +
+                    ")]\r\n        public Response Run(Request incoming)\r\n        {\r\n            var ex" +
+                    "e = string.IsNullOrEmpty(incoming.Form.Find(\"exe-input\"))\r\n                ? inc" +
+                    "oming.Form.Find(\"exe-select\")\r\n                : incoming.Form.Find(\"exe-input\")" +
+                    ";\r\n\r\n            Process.Start(exe);\r\n\r\n            return new RedirectResponse(" +
+                    "\"/launcher\");\r\n        }\r\n\r\n        [Url(\"/testing\")]\r\n        public Response T" +
+                    "esting(Request incoming)\r\n        {\r\n            Count++;\r\n\r\n            return " +
+                    "new ViewResponse(\"testing.html\", Count);\r\n        }\r\n\r\n        [Url(\"/change-the" +
+                    "me\")]\r\n        public Response ChangeTheme(Request incoming)\r\n        {\r\n       " +
+                    "     string themeName = incoming.QueryString.Find(\"theme\");\r\n\r\n            if (t" +
+                    "hemeName.Equals(\"JaffasTheme\"))\r\n                ThemeManager.ApplyTheme(new Jaf" +
+                    "fasTheme());\r\n            else\r\n                ThemeManager.ApplyTheme(new Appy" +
+                    "Theme());\r\n \r\n            return Redirect(\"/testing\");\r\n        }\r\n\r\n        [Ur" +
+                    "l(\"/sysmon\")]\r\n        public Response SystemMonitor(Request incoming)\r\n        " +
+                    "{\r\n            return View(\"system_monitor.html\");\r\n        }\r\n\r\n        [Url(\"/" +
+                    "sysmon/check\")]\r\n        public Response SystemMonitorCheck(Request incoming)\r\n " +
+                    "       {\r\n            var model = new\r\n            {\r\n                cpuLoad = " +
+                    "(int)CpuCounter.Value.NextValue(),\r\n                memoryLoad = (int)MemoryCoun" +
+                    "ter.Value.NextValue()\r\n            };\r\n\r\n            return Json(model);\r\n      " +
+                    "  }\r\n    }\r\n}\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 102 "C:\Dev\GitHub\Appy\Appy\Resources\Code\ExampleControllerTemplate.tt"
+        #line 107 "C:\Dev\GitHub\Appy\Appy\Resources\Code\ExampleControllerTemplate.tt"
 
 	public string AppNamespace {get; set; }
 

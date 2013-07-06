@@ -13,18 +13,34 @@ namespace Appy.ExampleApp
     public class ExampleController : Controller
     {
         int Count;
+        Lazy<PerformanceCounter> CpuCounter;
+        Lazy<PerformanceCounter> MemoryCounter;
 
-        Lazy<PerformanceCounter> CpuCounter = new Lazy<PerformanceCounter>(() =>
+        public ExampleController()
         {
-            return new PerformanceCounter("Processor", "% Processor Time", "_Total");
-        });
+            CpuCounter = new Lazy<PerformanceCounter>(() =>
+            {
+                return new PerformanceCounter("Processor", "% Processor Time", "_Total");
+            });
 
-        Lazy<PerformanceCounter> MemoryCounter = new Lazy<PerformanceCounter>(() =>
-        {
-            return new PerformanceCounter("Memory", "% Committed Bytes in Use");
-        });
+            MemoryCounter = new Lazy<PerformanceCounter>(() =>
+            {
+                return new PerformanceCounter("Memory", "% Committed Bytes in Use");
+            });
+        }
 
         [Url("/index")]
+        [Url("/flat-ui")]
+        public Response FlatUI(Request incoming)
+        {
+            var name = incoming.Form.Find("Name");
+            var email = incoming.Form.Find("Email");
+
+            var cookie = new Cookie("Name", "Value").ExpiresIn(30);
+
+            return new ViewResponse("flat-ui.html", Count);
+        }
+        
         [Url("/launcher")]
         public Response Launcher(Request incoming)
         {
@@ -41,17 +57,6 @@ namespace Appy.ExampleApp
             Process.Start(exe);
 
             return new RedirectResponse("/launcher");
-        }
-
-        [Url("/flat-ui")]
-        public Response FlatUI(Request incoming)
-        {
-            var name = incoming.Form.Find("Name");
-            var email = incoming.Form.Find("Email");
-
-            var cookie = new Cookie("Name", "Value").ExpiresIn(30);
-
-            return new ViewResponse("flat-ui.html", Count);
         }
 
         [Url("/testing")]
