@@ -23,4 +23,10 @@ Repository for holding Appy - quick desktop apps for web developers! Like PhoneG
 
 # Apologies
 
-* I know this is such a poor guide.. I promise to publish something comprehensive very soon. However, if you need help now, send me an email and I will get back to you ASAP. 
+* I know this is such a poor guide.. I promise to publish something comprehensive very soon. However, if you need help now, send me an email and I will get back to you ASAP.
+
+# Special Thanks
+
+* <a href="https://github.com/chillitom/CefSharp">CefSharp by chillitom</a>
+* <a href="https://github.com/Vodurden/Http-Multipart-Data-Parser">Http-Multipart-Data-Parser by Vodurden</a>
+* <a href="https://github.com/Antaris/RazorEngine">RazorEngine by Antaris</a>
