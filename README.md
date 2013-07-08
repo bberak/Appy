@@ -1,19 +1,19 @@
 Appy
 ====================
 
-Repository for holding Appy - quick desktop apps for web developers! Like PhoneGap for the desktop.
+Repository for holding Appy - quick desktop apps for web developers! Like PhoneGap, but for the desktop.
 
 # Read This!
 
-* I have not provided a license for this work. If you would like to use this work in any way - contact me.
+* I have not provided a license for this work as of yet (mainly out of laziness).
+* If you would like to use this tool for commercial purposes just get in touch with me.
 * I will put up a more detailed guide with code-walkthroughs shortly.
 
 # How To Start
 
 * Build the solution in VS 2012 or <a href="https://www.dropbox.com/s/lclj040breddq4a/Appy.0.8.0.zip" target="_blank">download the binaries here</a>. Ensure that your platform config is set to x86 if buidling!
 * Run the 'Appy' project or Appy.exe (if you downloaded the binaries).
-* To bootstrap a new project press b + enter and follow the prompts.
-* To compile an existing project press c + enter and follow the prompts.
+* Follow the prompts to bootstrap a new project or compile an existing project.
 
 # Developing Your App
 
