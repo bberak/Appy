@@ -85,13 +85,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ExampleControllerTemplate.tt</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Resources\Code\ExceptionControllerTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ExceptionControllerTemplate.tt</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Resources\Code\StartTemplate.cs">
       <AutoGen>True</AutoGen>
@@ -109,13 +107,11 @@
     <None Include="Resources\Code\ExampleControllerTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>ExampleControllerTemplate.cs</LastGenOutput>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CustomToolNamespace>Appy</CustomToolNamespace>
     </None>
     <None Include="Resources\Code\ExceptionControllerTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>ExceptionControllerTemplate.cs</LastGenOutput>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CustomToolNamespace>Appy</CustomToolNamespace>
     </None>
     <None Include="Resources\Code\StartTemplate.tt">
