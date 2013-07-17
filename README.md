@@ -9,6 +9,12 @@ Repository for holding Appy - quick desktop apps for web developers! Like PhoneG
 * If you would like to use this tool for commercial purposes just get in touch with me.
 * I will put up a more detailed guide with code-walkthroughs shortly.
 
+# What's the point of all this?
+
+* Build your desktop apps using the MVC pattern. Allows for better testability and maintainability.
+* Allow designers to transfer their web development skills to the desktop.
+* Develop fluent user interfaces using HTML, CSS and JavaScript rather than WPF (XAML) and WinForms.
+
 # How To Start
 
 * Build the solution in VS 2012 or <a href="https://www.dropbox.com/s/lclj040breddq4a/Appy.0.8.0.zip" target="_blank">download the binaries here</a>. Ensure that your platform config is set to x86 if buidling!
