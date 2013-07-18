@@ -24,18 +24,13 @@ namespace Appy
 
         protected override void BeforeRun()
         {
+            Add(new VerifyFolderTask(Settings.BuildFolder));
             Add(new ClearFolderTask(Settings.BuildFolder));
-
             Add(new CopyFolderTask(Settings.LibsFolder, Settings.BuildFolder));
-
             Add(new RemoveFileTask(Path.Combine(Settings.BuildFolder, "GAC.txt")));
-
             Add(new CopyFolderTask(Settings.OtherFolder, Settings.BuildFolder));
-
             Add(new CopyFolderTask(Settings.SiteFolder, Path.Combine(Settings.BuildFolder, "Site")));
-
             Add(new CopyFileTask(Settings.AppConfigFile, Settings.ExeOutputFile + ".config"));
-
             Add(new CopyFileTask(Settings.AppIconFile, Path.Combine(Settings.BuildFolder, "App.ico")));
         }
 

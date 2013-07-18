@@ -79,6 +79,7 @@
     <Compile Include="Common\IUserInterface.cs" />
     <Compile Include="Compile\CopyFolderTask.cs" />
     <Compile Include="Compile\RemoveFileTask.cs" />
+    <Compile Include="Compile\VerifyFolderTask.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Code\ExampleControllerTemplate.cs">

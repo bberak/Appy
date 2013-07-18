@@ -13,6 +13,11 @@ namespace Appy.Core
             return new BasicResponse(content).And(r => r.StatusCode = statusCode);
         }
 
+        public Response Basic(object obj, int statusCode = 200)
+        {
+            return Basic(obj.ToString(), statusCode);
+        }
+
         public Response View(string viewName, object model = null)
         {
             return new ViewResponse(viewName, model);
