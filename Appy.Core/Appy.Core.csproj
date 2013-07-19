@@ -99,6 +99,8 @@
     <Compile Include="App\AppyTheme.cs" />
     <Compile Include="Framework\Dirs.cs" />
     <Compile Include="Framework\HttpFile.cs" />
+    <Compile Include="Framework\Json.cs" />
+    <Compile Include="Framework\Web.cs" />
     <Compile Include="Server\RequestAdapter.cs" />
     <Compile Include="Server\ResponseAdapter.cs" />
     <Compile Include="Server\TemplateResolver.cs" />

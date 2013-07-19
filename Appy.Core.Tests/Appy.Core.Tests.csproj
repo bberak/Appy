@@ -61,6 +61,7 @@
     <Reference Include="BB.Common.WinForms">
       <HintPath>..\Packages-Indie\BB.Common.WinForms-0.1.5\BB.Common.WinForms.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Moq">
       <HintPath>..\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
     </Reference>
@@ -101,6 +102,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="App\AppThemeTests.cs" />
+    <Compile Include="Framework\WebTests.cs" />
     <Compile Include="Server\TemplateResolverTests.cs" />
     <Compile Include="Framework\BasicResponseTests.cs" />
     <Compile Include="Framework\ControllerTests.cs" />
