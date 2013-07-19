@@ -28,11 +28,11 @@ namespace Appy
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("using System;\r\nusing System.Collections.Generic;\r\nusing System.Diagnostics;\r\nusin" +
-                    "g System.Linq;\r\nusing System.Net;\r\nusing System.Text;\r\nusing System.Windows.Form" +
-                    "s;\r\nusing BB.Common.WinForms;\r\nusing Appy.Core;\r\n\r\nnamespace ");
+            this.Write("using System;\r\nusing System.Collections.Generic;\r\nusing System.Linq;\r\nusing Syste" +
+                    "m.Net;\r\nusing System.Text;\r\nusing System.Windows.Forms;\r\nusing BB.Common.WinForm" +
+                    "s;\r\nusing Appy.Core;\r\n\r\nnamespace ");
             
-            #line 16 "C:\Dev\GitHub\Appy\Appy\Resources\Code\ExampleControllerTemplate.tt"
+            #line 15 "C:\Dev\GitHub\Appy\Appy\Resources\Code\ExampleControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.AppNamespace));
             
             #line default
@@ -74,7 +74,7 @@ namespace Appy
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 107 "C:\Dev\GitHub\Appy\Appy\Resources\Code\ExampleControllerTemplate.tt"
+        #line 106 "C:\Dev\GitHub\Appy\Appy\Resources\Code\ExampleControllerTemplate.tt"
 
 	public string AppNamespace {get; set; }
 

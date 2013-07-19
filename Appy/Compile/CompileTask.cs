@@ -11,15 +11,17 @@ namespace Appy
     public class CompileTask : CompositeTask
     {
         public AppSettings Settings { get; protected set; }
+        public bool DebugMode { get; protected set; }
 
         public CompileTask(IUserInterface ui)
-            : this(ui.Ask("What is the root path of your app?"))
+            : this(ui.Ask("What is the root path of your app?"), ui.Ask("Turn on (d)ebug mode?", "d,y"))
         {     
         }
 
-        public CompileTask(string rootAppPath)
+        public CompileTask(string rootAppPath, bool enableDebugMode)
         {
             Settings = new AppSettings(rootAppPath);
+            DebugMode = enableDebugMode;
         }
 
         protected override void BeforeRun()
@@ -50,7 +52,10 @@ namespace Appy
             CompilerParameters parameters = new CompilerParameters(Settings.GetAssemblyFiles(), Settings.ExeOutputFile);
             parameters.IncludeDebugInformation = false;
             parameters.GenerateExecutable = true;
-            parameters.CompilerOptions = string.Format("/platform:x86 /target:winexe /win32manifest:\"{0}\" /win32icon:\"{1}\"", Settings.ManifestFile, Settings.ExeIconFile);
+            parameters.CompilerOptions = string.Format("/platform:x86 /target:{0}exe /win32manifest:\"{1}\" /win32icon:\"{2}\"", 
+                DebugMode ? "" : "win",
+                Settings.ManifestFile, 
+                Settings.ExeIconFile);
 
             return codeProvider.CompileAssemblyFromFile(parameters, Settings.GetSourceCodeFiles());
         }

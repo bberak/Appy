@@ -84,6 +84,19 @@ namespace Appy
             return Console.ReadLine();
         }
 
+        public bool Ask(string yesNoQuestion, string yesOptions)
+        {
+            string answer = Ask(yesNoQuestion);
+
+            foreach (var item in yesOptions.Replace(" ", "").Split(','))
+            {
+                if (answer.ToLower() == item.ToLower())
+                    return true;
+            }
+
+            return false;
+        }
+
         void PrintLineBreak()
         {
             Console.WriteLine("------------------------------------------------------------------------------------------------");
@@ -110,6 +123,6 @@ namespace Appy
         public void Wait()
         {
             Console.ReadLine();
-        }     
+        }
     }
 }

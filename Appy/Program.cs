@@ -82,12 +82,13 @@ namespace Appy
             }
         }
 
-        static void Compile(string projectPath = "")
+        static void Compile(string projectPath = "", bool enableDebugMode = false)
         {
             try
             {
-                var task = string.IsNullOrEmpty(projectPath) ? new CompileTask(UI) : new CompileTask(projectPath);
+                var task = string.IsNullOrEmpty(projectPath) ? new CompileTask(UI) : new CompileTask(projectPath, enableDebugMode);
                 projectPath = task.Settings.AppFolder;
+                enableDebugMode = task.DebugMode;
                 task.Run();
 
                 UI.Say("Compilation complete.");
@@ -101,7 +102,7 @@ namespace Appy
             finally
             {
                 if (CompileAgain())
-                    Compile(projectPath);
+                    Compile(projectPath, enableDebugMode);
                 else
                     Start();
             }

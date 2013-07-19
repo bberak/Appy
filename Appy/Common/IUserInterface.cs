@@ -13,6 +13,8 @@ namespace Appy
 
         string Ask(string question);
 
+        bool Ask(string yesNoQuestion, string yesOptions);
+
         void Say(string something);
 
         void Wait();
