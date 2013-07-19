@@ -76,6 +76,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="..\Solution Items\SolutionAssemblyInfo.cs">
+      <Link>Properties\SolutionAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="Bootstrap\BootstrapTaskTests.cs" />
     <Compile Include="Compile\CompileTaskTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

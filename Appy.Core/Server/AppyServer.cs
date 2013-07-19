@@ -44,9 +44,9 @@ namespace Appy.Core
         {
             try
             {
-                UrlRouter.TryHandleRequest(rawRequest, rawResponse);
+                Log("Client requested path ({0})... Searching for handler", rawRequest.RawUrl);
 
-                Log("Client requested path ({0})... Handler found", rawRequest.RawUrl);
+                UrlRouter.TryHandleRequest(rawRequest, rawResponse);
             }
             catch (RouteNotFoundException)
             {

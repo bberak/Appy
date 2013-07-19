@@ -101,6 +101,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="..\Solution Items\SolutionAssemblyInfo.cs">
+      <Link>Properties\SolutionAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="App\AppThemeTests.cs" />
     <Compile Include="Framework\WebTests.cs" />
     <Compile Include="Server\TemplateResolverTests.cs" />
