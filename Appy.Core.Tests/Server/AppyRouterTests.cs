@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Reflection;
+using System.IO;
 using SelfServe.Tests;
 using SelfServe;
 using System.Net;
@@ -8,13 +9,13 @@ using System.Net;
 namespace Appy.Core.Tests
 {
     [TestClass]
-    public class UrlRouterTests : TestBase
+    public class AppyRouterTests : TestBase
     {
-        UrlRouter Router;
+        AppyRouter Router;
 
-        public UrlRouterTests()
+        public AppyRouterTests()
         {
-            Router = new UrlRouter();
+            Router = new AppyRouter();
             Router.LoadRoutesFrom(Assembly.GetExecutingAssembly());
         }
 
@@ -27,8 +28,8 @@ namespace Appy.Core.Tests
             catch (TargetParameterCountException)
             {
                 e.Response.StatusCode = 500;
-                e.Response.WriteText("Exception was thrown.");               
-            }  
+                e.Response.WriteText("Exception was thrown.");
+            }
         }
 
         [Url("/Route1")]
@@ -46,7 +47,7 @@ namespace Appy.Core.Tests
         [TestMethod]
         public void Verify_UrlRoutes_AreFound()
         {
-            Assert.IsTrue(Router.RouteCount == 2);
+            Assert.IsTrue(Router.UrlRouteCount == 2);
         }
 
         [TestMethod]
@@ -80,6 +81,50 @@ namespace Appy.Core.Tests
                 Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
                 Assert.AreEqual("Reached Route2", response.GetContents());
             }
+        }
+
+        [Catches]
+        public void HandleDefaultExceptions(Exception ex)
+        {
+            if (ex is IndexOutOfRangeException)
+                throw ex;
+        }
+
+        [Catches(typeof(FileNotFoundException))]
+        public void HandleSpecificException(FileNotFoundException ex)
+        {
+
+        }
+
+        [TestMethod]
+        public void Verify_ExceptionRoutes_AreFound()
+        {
+            Assert.IsTrue(Router.ExceptionRouteCoumt == 2);
+        }
+
+        [TestMethod]
+        public void Verify_FileNotFoundException_IsCaaught()
+        {
+            FileNotFoundException ex = new FileNotFoundException();
+
+            Router.TryHandleException(ex);
+        }
+
+        [TestMethod]
+        public void Verify_FieldAccessException_IsCaaught()
+        {
+            FieldAccessException ex = new FieldAccessException();
+
+            Router.TryHandleException(ex);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(IndexOutOfRangeException))]
+        public void Verify_IndexOutOfRangeException_IsCaaughtAndThrown()
+        {
+            IndexOutOfRangeException ex = new IndexOutOfRangeException();
+
+            Router.TryHandleException(ex);
         }
     }
 }

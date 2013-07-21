@@ -11,17 +11,13 @@ namespace Appy.Core
 {
     public class AppyServer : HttpFileServer
     {
-        UrlRouter UrlRouter;
-        ExceptionRouter ExceptionRouter;
+        AppyRouter Router;
 
         public AppyServer(string binding)
             : base(new string[] { binding })
         {
-            UrlRouter = new UrlRouter();
-            UrlRouter.LoadRoutesFrom(Assembly.GetEntryAssembly());
-
-            ExceptionRouter = new ExceptionRouter();
-            ExceptionRouter.LoadRoutesFrom(Assembly.GetEntryAssembly());
+            Router = new AppyRouter();
+            Router.LoadRoutesFrom(Assembly.GetEntryAssembly());
         }
 
         public static AppyServer FromUrl(string url)
@@ -46,7 +42,7 @@ namespace Appy.Core
             {
                 Log("Client requested path ({0})... Searching for handler", rawRequest.RawUrl);
 
-                UrlRouter.TryHandleRequest(rawRequest, rawResponse);
+                Router.TryHandleRequest(rawRequest, rawResponse);
             }
             catch (RouteNotFoundException)
             {
@@ -56,7 +52,14 @@ namespace Appy.Core
 
         protected override void OnException(HttpListenerRequest rawRequest, HttpListenerResponse rawResponse, Exception ex)
         {
-            ExceptionRouter.TryHandleException(rawResponse, ex);
+            Router.TryHandleException(rawResponse, ex);
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+
+            Router.Dispose();
         }
     }
 }

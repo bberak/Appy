@@ -6,18 +6,22 @@ using System.Text;
 
 namespace Appy.Core
 {
-    public abstract class Router<T>
+    public abstract class Router : IDisposable
     {
-        protected List<T> Routes;
+        protected List<UrlRoute> UrlRoutes;
+        protected List<ExceptionRoute> ExceptionRoutes;
         protected Dictionary<Type, object> Controllers;
-
+        
         public Router()
         {
-            Routes = new List<T>();
+            UrlRoutes = new List<UrlRoute>();
+            ExceptionRoutes = new List<ExceptionRoute>();
             Controllers = new Dictionary<Type, object>();
         }
 
-        public int RouteCount { get { return Routes.Count; } }
+        public int UrlRouteCount { get { return UrlRoutes.Count; } }
+
+        public int ExceptionRouteCoumt { get { return ExceptionRoutes.Count; } }
 
         public abstract void LoadRoutesFrom(Assembly assembly);
 
@@ -56,6 +60,17 @@ namespace Appy.Core
             catch (TargetInvocationException ex)
             {
                 throw ex.InnerException;
+            }
+        }
+
+        public virtual void Dispose()
+        {
+            foreach (object controller in Controllers.Values)
+            {
+                IDisposable disposable = controller as IDisposable;
+
+                if (disposable != null)
+                    disposable.Dispose();
             }
         }
     }

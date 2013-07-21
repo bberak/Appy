@@ -7,7 +7,7 @@ using Appy.Core;
 
 namespace Appy.ExampleApp
 {
-    public class ExceptionController
+    public class ExceptionController : Controller
     {
         [Url("/throw-exception")]
         public Response ThrowException(Request incoming)
@@ -33,6 +33,13 @@ namespace Appy.ExampleApp
         public Response HandleFieldException(Exception ex)
         {
             return new BasicResponse(ex).With(r => r.StatusCode = 500);
+        }
+
+        protected override void CleanUpManagedResources()
+        {
+            base.CleanUpManagedResources();
+
+            MessageBox.Show("Disposing Exception controller!");
         }
     }
 }

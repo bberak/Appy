@@ -97,5 +97,12 @@ namespace Appy.ExampleApp
 
             return Json(model);
         }
+
+        protected override void CleanUpManagedResources()
+        {
+            base.CleanUpManagedResources();
+
+            MessageBox.Show("Disposing Example controller!");
+        }
     }
 }

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Appy.Core
 {
-    public abstract class Controller
+    public abstract class Controller : DisposableObject
     {
         public Response Basic(string content, int statusCode = 200)
         {

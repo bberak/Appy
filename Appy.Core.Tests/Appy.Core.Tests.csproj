@@ -73,10 +73,10 @@
       <HintPath>..\packages\RazorEngine.3.2.0\lib\net40\RazorEngine.dll</HintPath>
     </Reference>
     <Reference Include="SelfServe">
-      <HintPath>..\Packages-Indie\SelfServe-0.1.15\SelfServe.exe</HintPath>
+      <HintPath>..\Packages-Indie\SelfServe-0.1.16\SelfServe.exe</HintPath>
     </Reference>
     <Reference Include="SelfServe.Tests">
-      <HintPath>..\Packages-Indie\SelfServe-0.1.15\SelfServe.Tests.dll</HintPath>
+      <HintPath>..\Packages-Indie\SelfServe-0.1.16\SelfServe.Tests.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -112,8 +112,7 @@
     <Compile Include="Framework\JsonResponseTests.cs" />
     <Compile Include="Framework\RedirectResponseTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Server\ExceptionRouterTests.cs" />
-    <Compile Include="Server\UrlRouterTests.cs" />
+    <Compile Include="Server\AppyRouterTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Appy.Core\Appy.Core.csproj">
