@@ -14,8 +14,13 @@ namespace Appy
         public bool DebugMode { get; protected set; }
 
         public CompileTask(IUserInterface ui)
-            : this(ui.Ask("What is the root path of your app?"), ui.Ask("Turn on (d)ebug mode?", "d,y"))
+            : this(ui, ui.Ask("What is the root path of your app?"))
         {     
+        }
+
+        public CompileTask(IUserInterface ui, string rootAppPath)
+            : this(rootAppPath, ui.Ask("Turn on (d)ebug mode?", "d,y"))
+        {
         }
 
         public CompileTask(string rootAppPath, bool enableDebugMode)
@@ -50,7 +55,7 @@ namespace Appy
             CodeDomProvider codeProvider = CodeDomProvider.CreateProvider("CSharp");
 
             CompilerParameters parameters = new CompilerParameters(Settings.GetAssemblyFiles(), Settings.ExeOutputFile);
-            parameters.IncludeDebugInformation = false;
+            parameters.IncludeDebugInformation = DebugMode;
             parameters.GenerateExecutable = true;
             parameters.CompilerOptions = string.Format("/platform:x86 /target:{0}exe /win32manifest:\"{1}\" /win32icon:\"{2}\"", 
                 DebugMode ? "" : "win",

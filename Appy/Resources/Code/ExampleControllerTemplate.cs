@@ -28,9 +28,9 @@ namespace Appy
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("using System;\r\nusing System.Collections.Generic;\r\nusing System.Linq;\r\nusing Syste" +
-                    "m.Net;\r\nusing System.Text;\r\nusing System.Windows.Forms;\r\nusing BB.Common.WinForm" +
-                    "s;\r\nusing Appy.Core;\r\n\r\nnamespace ");
+            this.Write("using System;\r\nusing System.Collections.Generic;\r\nusing System.Diagnostics;\r\nusin" +
+                    "g System.Linq;\r\nusing System.Net;\r\nusing System.Text;\r\nusing BB.Common.WinForms;" +
+                    "\r\nusing Appy.Core;\r\n\r\nnamespace ");
             
             #line 15 "C:\Dev\GitHub\Appy\Appy\Resources\Code\ExampleControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.AppNamespace));
@@ -69,12 +69,23 @@ namespace Appy
                     "sysmon/check\")]\r\n        public Response SystemMonitorCheck(Request incoming)\r\n " +
                     "       {\r\n            var model = new\r\n            {\r\n                cpuLoad = " +
                     "(int)CpuCounter.Value.NextValue(),\r\n                memoryLoad = (int)MemoryCoun" +
-                    "ter.Value.NextValue()\r\n            };\r\n\r\n            return Json(model);\r\n      " +
-                    "  }\r\n    }\r\n}\r\n");
+                    "ter.Value.NextValue()\r\n            };\r\n\r\n\t\t\tDebugging.WriteLine(\"Getting cpu and" +
+                    " memory values: {0}, {1}\", model.cpuLoad, model.memoryLoad);\r\n\r\n            retu" +
+                    "rn Json(model);\r\n        }\r\n\r\n\t\tprotected override void CleanUpManagedResources(" +
+                    ")\r\n        {\r\n\t\t\t//-- The \"cleanup\" methods are only available if your class inh" +
+                    "erits from Controller \r\n\t\t\t//-- or DisposableObject.\r\n\r\n            base.CleanUp" +
+                    "ManagedResources();\r\n\r\n            if (CpuCounter.IsValueCreated)\r\n             " +
+                    "   CpuCounter.Value.Dispose();\r\n\r\n            if (MemoryCounter.IsValueCreated)\r" +
+                    "\n                MemoryCounter.Value.Dispose();\r\n        }\r\n\r\n        protected " +
+                    "override void CleanUpNativeResources()\r\n        {\r\n\t\t\t//-- The \"cleanup\" methods" +
+                    " are only available if your class inherits from Controller \r\n\t\t\t//-- or Disposab" +
+                    "leObject.\r\n\r\n            base.CleanUpNativeResources();\r\n\r\n            //-- Clea" +
+                    "n up any native resources here (pointers or handles etc).\r\n        }\r\n    }\r\n}\r\n" +
+                    "");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 106 "C:\Dev\GitHub\Appy\Appy\Resources\Code\ExampleControllerTemplate.tt"
+        #line 132 "C:\Dev\GitHub\Appy\Appy\Resources\Code\ExampleControllerTemplate.tt"
 
 	public string AppNamespace {get; set; }
 

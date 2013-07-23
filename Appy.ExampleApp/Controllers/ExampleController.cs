@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Text;
-using System.Windows.Forms;
 using BB.Common.WinForms;
 using Appy.Core;
 
@@ -95,14 +94,33 @@ namespace Appy.ExampleApp
                 memoryLoad = (int)MemoryCounter.Value.NextValue()
             };
 
+            Debugging.WriteLine("Getting cpu and memory values: {0}, {1}", model.cpuLoad, model.memoryLoad);
+
             return Json(model);
         }
 
         protected override void CleanUpManagedResources()
         {
+            //-- The "cleanup" methods are only available if your class inherits from Controller 
+            //-- or DisposableObject.
+
             base.CleanUpManagedResources();
 
-            MessageBox.Show("Disposing Example controller!");
+            if (CpuCounter.IsValueCreated)
+                CpuCounter.Value.Dispose();
+
+            if (MemoryCounter.IsValueCreated)
+                MemoryCounter.Value.Dispose();
+        }
+
+        protected override void CleanUpNativeResources()
+        {
+            //-- The "cleanup" methods are only available if your class inherits from Controller 
+            //-- or DisposableObject.
+
+            base.CleanUpNativeResources();
+
+            //-- Clean up any native resources here (pointers or handles etc).
         }
     }
 }

@@ -100,7 +100,7 @@
       <DependentUpon>App.cs</DependentUpon>
     </Compile>
     <Compile Include="App\AppyTheme.cs" />
-    <Compile Include="Framework\Debug.cs" />
+    <Compile Include="Framework\Debugging.cs" />
     <Compile Include="Framework\Dirs.cs" />
     <Compile Include="Framework\DisposableObject.cs" />
     <Compile Include="Framework\HttpFile.cs" />

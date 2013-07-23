@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Windows.Forms;
 using Appy.Core;
 
 namespace Appy.ExampleApp
 {
-    public class ExceptionController : Controller
+    public class ExceptionController
     {
         [Url("/throw-exception")]
         public Response ThrowException(Request incoming)
@@ -33,13 +34,6 @@ namespace Appy.ExampleApp
         public Response HandleFieldException(Exception ex)
         {
             return new BasicResponse(ex).With(r => r.StatusCode = 500);
-        }
-
-        protected override void CleanUpManagedResources()
-        {
-            base.CleanUpManagedResources();
-
-            MessageBox.Show("Disposing Exception controller!");
         }
     }
 }

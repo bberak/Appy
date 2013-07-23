@@ -29,9 +29,10 @@ namespace Appy
         public virtual string TransformText()
         {
             this.Write("using System;\r\nusing System.Collections.Generic;\r\nusing System.Linq;\r\nusing Syste" +
-                    "m.Text;\r\nusing System.Windows.Forms;\r\nusing Appy.Core;\r\n\r\nnamespace ");
+                    "m.Net;\r\nusing System.Text;\r\nusing System.Windows.Forms;\r\nusing Appy.Core;\r\n\r\nnam" +
+                    "espace ");
             
-            #line 13 "C:\Dev\GitHub\Appy\Appy\Resources\Code\ExceptionControllerTemplate.tt"
+            #line 14 "C:\Dev\GitHub\Appy\Appy\Resources\Code\ExceptionControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.AppNamespace));
             
             #line default
@@ -71,7 +72,7 @@ namespace Appy
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 44 "C:\Dev\GitHub\Appy\Appy\Resources\Code\ExceptionControllerTemplate.tt"
+        #line 45 "C:\Dev\GitHub\Appy\Appy\Resources\Code\ExceptionControllerTemplate.tt"
 
 	public string AppNamespace {get; set; }
 

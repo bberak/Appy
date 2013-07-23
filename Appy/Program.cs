@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -29,7 +30,7 @@ namespace Appy
                 case "bootstrap": Bootstrap(); break;
 
                 case "c":
-                case "compile": Compile(); break;
+                case "compile": Compile(new CompileTask(UI)); break;
 
                 case "e":
                 case "x":
@@ -51,9 +52,8 @@ namespace Appy
 
                 UI.Say("Bootstrap complete.");
 
-                if (CompileNewProject(task.Settings.AppName))
-                    Compile(task.Settings.AppFolder);
-
+                if (UI.Ask("Do you wan't to (c)ompile " + task.Settings.AppName + "?", "c,compile,y,yes"))
+                    Compile(new CompileTask(UI, task.Settings.AppFolder));
             }
             catch (Exception ex)
             {
@@ -65,35 +65,20 @@ namespace Appy
             }
         }
 
-        static bool CompileNewProject(string projectName)
-        {
-            var answer = UI.Ask("Do you wan't to (c)ompile " + projectName + "?");
-
-            switch (answer.ToLower())
-            {
-                case "c":
-                case "compile":
-                case "y":
-                case "yes":
-                    return true;
-
-                default:
-                    return false;
-            }
-        }
-
-        static void Compile(string projectPath = "", bool enableDebugMode = false)
+        static void Compile(CompileTask task)
         {
             try
             {
-                var task = string.IsNullOrEmpty(projectPath) ? new CompileTask(UI) : new CompileTask(projectPath, enableDebugMode);
-                projectPath = task.Settings.AppFolder;
-                enableDebugMode = task.DebugMode;
                 task.Run();
 
                 UI.Say("Compilation complete.");
 
-                Run(task.Settings.ExeOutputFile);
+                if (UI.Ask("Would you like to (r)un you app?", "y,yes,r,run"))
+                {
+                    ProcessStartInfo startInfo = new ProcessStartInfo(task.Settings.ExeOutputFile);
+                    startInfo.WorkingDirectory = Path.GetDirectoryName(task.Settings.ExeOutputFile);
+                    Process.Start(startInfo);
+                }
             }
             catch (Exception ex)
             {
@@ -101,47 +86,10 @@ namespace Appy
             }
             finally
             {
-                if (CompileAgain())
-                    Compile(projectPath, enableDebugMode);
+                if (UI.Ask("Would you like to (c)ompile again?", "c,compile,y,yes"))
+                    Compile(task);
                 else
                     Start();
-            }
-        }
-
-        static bool CompileAgain()
-        {
-            var answer = UI.Ask("Would you like to (c)ompile again?");
-
-            switch (answer.ToLower())
-            {
-                case "c":
-                case "compile":
-                case "y":
-                case "yes":
-                    return true;
-
-                default:
-                    return false;
-            }
-        }
-
-        static void Run(string exePath)
-        {
-            var answer = UI.Ask("Would you like to (r)un you app?");
-
-            switch (answer.ToLower())
-            {
-                case "r":
-                case "run":
-                case "y":
-                case "yes":
-                    ProcessStartInfo startInfo = new ProcessStartInfo(exePath);
-                    startInfo.WorkingDirectory = System.IO.Path.GetDirectoryName(exePath);
-                    Process.Start(startInfo);
-                    return;
-
-                default:
-                    return;
             }
         }
     }
