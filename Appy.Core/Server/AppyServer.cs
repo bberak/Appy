@@ -11,13 +11,12 @@ namespace Appy.Core
 {
     public class AppyServer : HttpFileServer
     {
-        AppyRouter Router;
+        Router Router;
 
         public AppyServer(string binding)
             : base(new string[] { binding })
         {
-            Router = new AppyRouter();
-            Router.LoadRoutesFrom(Assembly.GetEntryAssembly());
+            Router = AppyRouter.LoadFromAssemblies(Assembly.GetEntryAssembly());
         }
 
         public static AppyServer FromUrl(string url)

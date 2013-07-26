@@ -15,8 +15,7 @@ namespace Appy.Core.Tests
 
         public AppyRouterTests()
         {
-            Router = new AppyRouter();
-            Router.LoadRoutesFrom(Assembly.GetExecutingAssembly());
+            Router = AppyRouter.LoadFromAssemblies(Assembly.GetExecutingAssembly());
         }
 
         void HandleRequest(object sender, RequestReceivedArgs e)

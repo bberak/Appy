@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Text;
 
@@ -11,19 +12,55 @@ namespace Appy.Core
         protected List<UrlRoute> UrlRoutes;
         protected List<ExceptionRoute> ExceptionRoutes;
         protected Dictionary<Type, object> Controllers;
+
+        public int UrlRouteCount { get { return UrlRoutes.Count; } }
+        public int ExceptionRouteCoumt { get { return ExceptionRoutes.Count; } }
         
-        public Router()
+        public Router(params Assembly[] assembliesWithRoutes)
         {
             UrlRoutes = new List<UrlRoute>();
             ExceptionRoutes = new List<ExceptionRoute>();
             Controllers = new Dictionary<Type, object>();
+
+            foreach (var assembly in assembliesWithRoutes)
+                LoadRoutesFrom(assembly);
         }
 
-        public int UrlRouteCount { get { return UrlRoutes.Count; } }
+        protected virtual void LoadRoutesFrom(Assembly assembly)
+        {
+            LoadUrlRoutes(assembly);
+            LoadExceptionRoutes(assembly);
+        }
 
-        public int ExceptionRouteCoumt { get { return ExceptionRoutes.Count; } }
+        protected virtual void LoadUrlRoutes(Assembly assembly)
+        {
+            foreach (var method in assembly.FindMethodsWithAttribute<UrlAttribute>())
+            {
+                UrlRoute route = new UrlRoute { Method = method };
 
-        public abstract void LoadRoutesFrom(Assembly assembly);
+                foreach (var attr in method.GetAttributes<UrlAttribute>())
+                {
+                    route.Attributes.Add(attr);
+                }
+
+                UrlRoutes.Add(route);
+            }
+        }
+
+        protected virtual void LoadExceptionRoutes(Assembly assembly)
+        {
+            foreach (var method in assembly.FindMethodsWithAttribute<CatchesAttribute>())
+            {
+                ExceptionRoute route = new ExceptionRoute { Method = method };
+
+                foreach (var attr in method.GetAttributes<CatchesAttribute>())
+                {
+                    route.Attributes.Add(attr);
+                }
+
+                ExceptionRoutes.Add(route);
+            }
+        }
 
         protected object GetControllerOfType(Type controllerType)
         {
@@ -73,5 +110,15 @@ namespace Appy.Core
                     disposable.Dispose();
             }
         }
+
+        public abstract void TryHandleRequest(HttpListenerRequest rawRequest, HttpListenerResponse rawResponse);
+
+        protected abstract UrlRoute FindUrlRouteFor(HttpListenerRequest rawRequest);
+
+        public abstract void TryHandleException(Exception ex);
+
+        public abstract void TryHandleException(HttpListenerResponse rawResponse, Exception ex);
+
+        protected abstract ExceptionRoute FindExceptionRouteFor(Exception ex);
     }
 }

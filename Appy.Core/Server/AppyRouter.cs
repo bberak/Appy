@@ -9,43 +9,17 @@ namespace Appy.Core
 {
     public class AppyRouter : Router
     {
-        public override void LoadRoutesFrom(Assembly assembly)
+        private AppyRouter(params Assembly[] assembliesWithRoutes)
+            : base(assembliesWithRoutes)
         {
-            LoadUrlRoutes(assembly);
-            LoadExceptionRoutes(assembly);
         }
 
-        void LoadUrlRoutes(Assembly assembly)
+        public static AppyRouter LoadFromAssemblies(params Assembly[] assembliesWithRoutes)
         {
-            foreach (var method in assembly.FindMethodsWithAttribute<UrlAttribute>())
-            {
-                UrlRoute route = new UrlRoute { Method = method };
-
-                foreach (var attr in method.GetAttributes<UrlAttribute>())
-                {
-                    route.Attributes.Add(attr);
-                }
-
-                UrlRoutes.Add(route);
-            }
+            return new AppyRouter(assembliesWithRoutes);
         }
 
-        void LoadExceptionRoutes(Assembly assembly)
-        {
-            foreach (var method in assembly.FindMethodsWithAttribute<CatchesAttribute>())
-            {
-                ExceptionRoute route = new ExceptionRoute { Method = method };
-
-                foreach (var attr in method.GetAttributes<CatchesAttribute>())
-                {
-                    route.Attributes.Add(attr);
-                }
-
-                ExceptionRoutes.Add(route);
-            }
-        }
-
-        public void TryHandleRequest(HttpListenerRequest rawRequest, HttpListenerResponse rawResponse)
+        public override void TryHandleRequest(HttpListenerRequest rawRequest, HttpListenerResponse rawResponse)
         {
             UrlRoute route = FindUrlRouteFor(rawRequest);
 
@@ -55,7 +29,7 @@ namespace Appy.Core
             ResponseAdapter.Write(appyResponse, rawResponse);
         }
 
-        UrlRoute FindUrlRouteFor(HttpListenerRequest rawRequest)
+        protected override UrlRoute FindUrlRouteFor(HttpListenerRequest rawRequest)
         {
             UrlRoute route = UrlRoutes.Find(x => x.Attributes.Count(y => y.Matches(rawRequest)) > 0);
 
@@ -65,12 +39,12 @@ namespace Appy.Core
             return route;
         }
 
-        public void TryHandleException(Exception ex)
+        public override void TryHandleException(Exception ex)
         {
             TryHandleException(null, ex);
         }
 
-        public void TryHandleException(HttpListenerResponse rawResponse, Exception ex)
+        public override void TryHandleException(HttpListenerResponse rawResponse, Exception ex)
         {
             ExceptionRoute route = FindExceptionRouteFor(ex);
 
@@ -80,7 +54,7 @@ namespace Appy.Core
                 ResponseAdapter.Write(appyResponse, rawResponse);
         }
 
-        ExceptionRoute FindExceptionRouteFor(Exception ex)
+        protected override ExceptionRoute FindExceptionRouteFor(Exception ex)
         {
             ExceptionRoute route = ExceptionRoutes.Find(x => x.Attributes.Count(y => y.Matches(ex)) > 0);
 

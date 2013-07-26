@@ -52,8 +52,6 @@ namespace Appy
 
         CompilerResults CompileProject()
         {
-            CodeDomProvider codeProvider = CodeDomProvider.CreateProvider("CSharp");
-
             CompilerParameters parameters = new CompilerParameters(Settings.GetAssemblyFiles(), Settings.ExeOutputFile);
             parameters.IncludeDebugInformation = DebugMode;
             parameters.GenerateExecutable = true;
@@ -62,6 +60,7 @@ namespace Appy
                 Settings.ManifestFile, 
                 Settings.ExeIconFile);
 
+            CodeDomProvider codeProvider = CodeDomProvider.CreateProvider("CSharp");
             return codeProvider.CompileAssemblyFromFile(parameters, Settings.GetSourceCodeFiles());
         }
 

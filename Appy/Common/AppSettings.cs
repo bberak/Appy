@@ -153,7 +153,7 @@ namespace Appy
 
         public string[] GetSourceCodeFiles()
         {
-            return Directory.GetFiles(CodeFolder, "*.cs", SearchOption.AllDirectories);
+            return Directory.GetFiles(CodeFolder, "*.*", SearchOption.AllDirectories);
         }
 
         private string GetAppFolder(string subfolder)
