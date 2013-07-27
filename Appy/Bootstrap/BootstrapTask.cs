@@ -38,7 +38,7 @@ namespace Appy
 
             Add(new CreateFolderTask(Settings.CodeFolder));
 
-            Add(new GenerateCodeTask(Settings.AppNamespace, Settings.CodeFolder)); 
+            Add(new GenerateCodeTask(Settings.AppName, Settings.AppNamespace, Settings.CodeFolder)); 
         }
 
         string FindFile(string criteria)

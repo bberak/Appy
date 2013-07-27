@@ -9,11 +9,13 @@ namespace Appy
 {
     public class GenerateCodeTask : ITask
     {
+        string AppName;
         string AppNamespace;
         string CodeFolderPath;
 
-        public GenerateCodeTask(string appNamespace, string codeFolderPath)
+        public GenerateCodeTask(string appName, string appNamespace, string codeFolderPath)
         {
+            AppName = appName;
             AppNamespace = appNamespace;
             CodeFolderPath = codeFolderPath;
         }
@@ -30,6 +32,7 @@ namespace Appy
         void ExtractStartTemplate()
         {
             StartTemplate template = new StartTemplate();
+            template.AppName = AppName;
             template.AppNamespace = AppNamespace;
 
             string output = template.TransformText();

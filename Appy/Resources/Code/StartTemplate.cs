@@ -125,26 +125,43 @@ namespace ");
             
             #line default
             #line hidden
-            this.Write(@"/index"");
-            ThemeManager.ApplyTheme(GetModifiedTheme());
-            Application.Run(app);
-        }
-
-		static BaseTheme GetModifiedTheme()
-        {
-            var modifiedTheme = new AppyTheme();
-            //-- Uncomment line below to see the effects!
-            //modifiedTheme.Colors[""ButtonMouseOverForeground""] = Color.Red;
-
-            return modifiedTheme;
-        }
-    }
-}
-");
+            this.Write("/index\");\r\n\t\t\tapp.Text = \"");
+            
+            #line 66 "C:\Dev\GitHub\Appy\Appy\Resources\Code\StartTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.AppName));
+            
+            #line default
+            #line hidden
+            this.Write("\";\r\n            ThemeManager.ApplyTheme(GetMyTheme());\r\n            Application.R" +
+                    "un(app);\r\n        }\r\n\r\n\t\tstatic BaseTheme GetMyTheme()\r\n        {\r\n            v" +
+                    "ar myTheme = new AppyTheme();\r\n\r\n            //-- Uncomment lines below to see t" +
+                    "he effects!\r\n            //myTheme.Units[\"PanelBorderWidth\"] = 0;\r\n            /" +
+                    "/myTheme.Colors[\"PanelBorder\"] = Color.DarkGray;\r\n            //myTheme.Colors[\"" +
+                    "FormBorder\"] = Color.DarkGray;\r\n            //myTheme.Colors[\"FormBackground\"] =" +
+                    " Color.Pink;\r\n            //myTheme.Colors[\"ButtonMouseOverForeground\"] = Color." +
+                    "White;\r\n            //myTheme.Colors[\"ButtonMouseOverBorder\"] = Color.DeepPink;\r" +
+                    "\n            //myTheme.Colors[\"ButtonMouseOverBackground\"] = Color.DeepPink;\r\n  " +
+                    "          //myTheme.Colors[\"ButtonMouseDownBackground\"] = Color.DeepPink;\r\n     " +
+                    "       //myTheme.Colors[\"ButtonForeground\"] = Color.DarkGray;\r\n            //myT" +
+                    "heme.Units[\"ButtonBorderSize\"] = 2;\r\n            //myTheme.Colors[\"ButtonBorder\"" +
+                    "] = Color.White;\r\n            //myTheme.Colors[\"ButtonBackground\"] = Color.White" +
+                    ";\r\n            //myTheme.Colors[\"ResizeButtonMouseOverForeground\"] = Color.DeepP" +
+                    "ink;\r\n            //myTheme.Colors[\"ResizeButtonMouseOverBorder\"] = Color.DeepPi" +
+                    "nk;\r\n            //myTheme.Colors[\"ResizeButtonMouseOverBackground\"] = Color.Dee" +
+                    "pPink;\r\n            //myTheme.Colors[\"ResizeButtonMouseDownBackground\"] = Color." +
+                    "DeepPink;\r\n            //myTheme.Colors[\"ResizeButtonForeground\"] = Color.DarkGr" +
+                    "ay;\r\n            //myTheme.Units[\"ResizeButtonBorderSize\"] = 2;\r\n            //m" +
+                    "yTheme.Colors[\"ResizeButtonBorder\"] = Color.Lavender;\r\n            //myTheme.Col" +
+                    "ors[\"ResizeButtonBackground\"] = Color.Lavender;\r\n            //myTheme.Colors[\"T" +
+                    "oolTipBackground\"] = Color.White;\r\n            //myTheme.Colors[\"ToolTipForegrou" +
+                    "nd\"] = Color.Black;\r\n            //myTheme.Units[\"FormBorderWidth\"] = 2;\r\n\r\n    " +
+                    "        return myTheme;\r\n        }\r\n    }\r\n}\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 80 "C:\Dev\GitHub\Appy\Appy\Resources\Code\StartTemplate.tt"
+        #line 104 "C:\Dev\GitHub\Appy\Appy\Resources\Code\StartTemplate.tt"
+
+	public string AppName {get; set; }
 
 	public string AppNamespace {get; set; }
 
