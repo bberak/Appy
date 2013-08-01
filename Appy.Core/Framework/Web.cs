@@ -28,5 +28,13 @@ namespace Appy.Core
                 return defaultResult;
             }
         }
+
+        public static byte[] GetBytes(string url)
+        {
+            using (var client = new WebClient())
+            {
+                return client.DownloadData(url);
+            }
+        }
     }
 }
