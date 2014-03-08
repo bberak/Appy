@@ -25,7 +25,7 @@ namespace Appy.Core.Tests.Framework
         [TestMethod]
         public void Get_Page_With_Valid_Url()
         {
-            var result = Web.Get("http://isohunt.com/js/json.php?ihq=ubuntu&start=21&rows=20&sort=seeds");
+            var result = Web.Get("http://google.com");
 
             Assert.IsTrue(result.Length > 0);
         }
@@ -33,7 +33,7 @@ namespace Appy.Core.Tests.Framework
         [TestMethod]
         public void TryGet_Page_With_Valid_Url()
         {
-            var result = Web.TryGet("http://isohunt.com/js/json.php?ihq=ubuntu&start=21&rows=20&sort=seeds", "error");
+            var result = Web.TryGet("http://google.com", "error");
 
             Assert.IsTrue(result.Length > 0);
             Assert.AreNotEqual("error", result);

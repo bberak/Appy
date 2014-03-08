@@ -128,7 +128,7 @@ namespace Appy
         {
             get
             {
-                return Path.Combine(LibsFolder, "GAC.txt");
+                return Path.Combine(ConfigFolder, "GAC.config");
             }
         }
 
