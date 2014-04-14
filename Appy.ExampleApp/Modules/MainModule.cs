@@ -13,7 +13,7 @@ namespace Appy.ExampleApp.Modules
         {
             Get["/"] = parameters =>
             {
-                return "The list of products";
+                return View["flat-ui"];
             };
         }
     }
