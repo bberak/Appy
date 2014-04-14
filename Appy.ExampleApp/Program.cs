@@ -21,7 +21,7 @@ namespace Appy.ExampleApp
             //Application.SetCompatibleTextRenderingDefault(false);
             Control.CheckForIllegalCrossThreadCalls = false;
 
-            App app = new App();
+            App app = new App("http://localhost:8989/");
             app.Text = "Example App";
             ThemeManager.ApplyTheme(GetMyTheme());
             Application.Run(app);

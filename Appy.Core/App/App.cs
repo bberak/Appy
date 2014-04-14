@@ -1,6 +1,7 @@
 ﻿using BB.Common.WinForms;
 using CefSharp;
 using CefSharp.WinForms;
+using Nancy.Hosting.Self;
 using RazorEngine;
 using RazorEngine.Configuration;
 using RazorEngine.Templating;
@@ -19,31 +20,29 @@ namespace Appy.Core
     public partial class App : MetroForm
     {
         WebView Browser;
-        HttpServer Server;
+        NancyHost Server;
 
-        public App(string url = "http://localhost/index")
-            : this(AppyServer.FromUrl(url), url) 
-        { 
-        }
-
-        public App(HttpServer server, string url)
+        public App(string url)
         {
             InitializeComponent();
 
-            LoadServer(server);
+            LoadServer(url);
 
             LoadBrowser(url);
-
-            LoadRazorEngine(); 
       
             LoadTheme();
 
             LoadIcon();
         }
 
-        void LoadServer(HttpServer server)
+        void LoadServer(string url)
         {
-            Server = server;
+            var config = new HostConfiguration
+            {
+                UrlReservations = new UrlReservations { CreateAutomatically = true }
+            };
+
+            Server = new NancyHost(config, new Uri(url));
             Server.Start();
             Disposed += (a, e) => Server.Dispose();
         }
@@ -53,12 +52,6 @@ namespace Appy.Core
             Browser = new WebView(url, new BrowserSettings());
             Browser.Dock = DockStyle.Fill;
             BrowserContainer.Controls.Add(Browser);
-        }
-
-        void LoadRazorEngine()
-        {
-            var razorConfig = new TemplateServiceConfiguration { Resolver = new TemplateResolver() };
-            Razor.SetTemplateService(new TemplateService(razorConfig));
         }
 
         void LoadTheme()
