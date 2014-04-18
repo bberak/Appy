@@ -1,7 +1,6 @@
-﻿@{
-    Layout = "master.html";
-}
+﻿@Master['master']
 
+@Section['Content']
 <h3>System Monitor</h3>
 
 <div id="cpu-load">
@@ -26,11 +25,12 @@
         </div>
     </div>
 </div>
+@EndSection
 
-@section scripts {  
-    <script type="text/javascript">
-        $(function () {
-            app.startMonitoring();
-        });
-    </script>
-}
+@Section['Scripts']
+<script type="text/javascript">
+    $(function () {
+        app.startMonitoring();
+    });
+</script>
+@EndSection

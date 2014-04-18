@@ -1,7 +1,6 @@
-﻿@{
-    Layout = "master.html";
-}
+﻿@Master['master']
 
+@Section['Content']
 <h3 style="margin-bottom:35px;">Choose a program below and hit run!</h3>
 <form action="/launcher/run" method="post" enctype="multipart/form-data">
     <input type="text" name="exe-input" placeholder="Enter an app name" />
@@ -18,4 +17,5 @@
         <input type="submit" value="Run" class="btn btn-large btn-block" style="width: 200px;" />
     </div>
 </form>
+@EndSection
 

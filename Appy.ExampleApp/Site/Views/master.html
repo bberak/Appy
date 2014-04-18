@@ -18,9 +18,9 @@
 </head>
 <body>
     <div class="container">
-        @Include("main_menu.html")
+         @Partial['main_menu'];
         <div class="span9" style="margin-left:35px;">
-            @RenderBody()
+            @Section['Content'];
         </div>
     </div>
     <!-- /container -->
@@ -45,6 +45,6 @@
         <script src="js/icon-font-ie7.js"></script>
         <script src="js/icon-font-ie7-24.js"></script>
     <![endif]-->
-    @RenderSection("scripts", false)  
+    @Section['Scripts'];
 </body>
 </html>
