@@ -1,7 +1,6 @@
-﻿@{
-    Layout = "master.html";
-}
+﻿@Master['master']
 
+@Section['Content']
 <h3>You have reached the testing area @Model times!</h3>
 
 <p>
@@ -10,7 +9,8 @@
 </p>
 
 <p>
-    <a href="/change-theme?theme=JaffasTheme">Change to JaffasTheme!</a><br />
-    <a href="/change-theme?theme=AppyTheme">Change to AppyTheme!</a>
+    <a href="/theme/change/JaffasTheme">Change to JaffasTheme!</a><br />
+    <a href="/theme/change/AppyTheme">Change to AppyTheme!</a>
 </p>
+@EndSection
 

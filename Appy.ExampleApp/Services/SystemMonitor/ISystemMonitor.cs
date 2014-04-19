@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Appy.ExampleApp
+namespace Appy.ExampleApp.Services
 {
     public interface ISystemMonitor
     {

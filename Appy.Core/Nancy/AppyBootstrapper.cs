@@ -8,9 +8,9 @@ using Nancy.TinyIoc;
 using Nancy.Bootstrapper;
 using Nancy.Conventions;
 
-namespace Appy.Core
+namespace Appy.Core.Nancy
 {
-    public class NancyConventionBootstrapper : DefaultNancyBootstrapper
+    public class AppyBootstrapper : DefaultNancyBootstrapper
     {
         protected override void ApplicationStartup(TinyIoCContainer container, IPipelines pipelines)
         {
