@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace Appy.Core
+namespace Appy.Core.Framework
 {
     public static class Files
     {

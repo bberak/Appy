@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using Appy.Core;
 using BB.Common.WinForms;
 using System.Drawing;
+using Appy.Core;
+using Appy.Core.Themes;
 
 namespace Appy.ExampleApp
 {

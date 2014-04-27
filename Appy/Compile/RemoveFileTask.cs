@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Appy.Common;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Appy
+namespace Appy.Compile
 {
     public class RemoveFileTask : ITask
     {

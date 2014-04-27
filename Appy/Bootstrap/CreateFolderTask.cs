@@ -4,8 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using Appy.Core;
+using Appy.Core.Framework;
+using Appy.Common;
 
-namespace Appy
+namespace Appy.Bootstrap
 {
     public class CreateFolderTask : ITask
     {

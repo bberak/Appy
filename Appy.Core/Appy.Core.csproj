@@ -62,9 +62,6 @@
     <Reference Include="CefSharp.WinForms">
       <HintPath>..\Packages-Indie\CefSharp-1.19.0\CefSharp.WinForms.dll</HintPath>
     </Reference>
-    <Reference Include="HttpMultipartParser">
-      <HintPath>..\Packages-Indie\HttpMultipartParser-1.0.0\HttpMultipartParser.dll</HintPath>
-    </Reference>
     <Reference Include="Nancy">
       <HintPath>..\packages\Nancy.0.22.2\lib\net40\Nancy.dll</HintPath>
     </Reference>
@@ -75,19 +72,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="RazorEngine">
-      <HintPath>..\packages\RazorEngine.3.2.0\lib\net40\RazorEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="SelfServe">
-      <HintPath>..\Packages-Indie\SelfServe-0.1.16\SelfServe.exe</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
-    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -105,37 +92,17 @@
     <Compile Include="App\App.Designer.cs">
       <DependentUpon>App.cs</DependentUpon>
     </Compile>
-    <Compile Include="App\AppyTheme.cs" />
+    <Compile Include="Themes\AppyTheme.cs" />
     <Compile Include="Framework\Debugging.cs" />
     <Compile Include="Framework\Dirs.cs" />
     <Compile Include="Framework\DisposableObject.cs" />
-    <Compile Include="Framework\HttpFile.cs" />
     <Compile Include="Framework\Json.cs" />
     <Compile Include="Framework\Web.cs" />
     <Compile Include="Nancy\AppyBootstrapper.cs" />
     <Compile Include="Nancy\Variables.cs" />
-    <Compile Include="Server\RequestAdapter.cs" />
-    <Compile Include="Server\ResponseAdapter.cs" />
-    <Compile Include="Server\TemplateResolver.cs" />
-    <Compile Include="Framework\BasicResponse.cs" />
-    <Compile Include="Framework\CatchesAttribute.cs" />
-    <Compile Include="Framework\Controller.cs" />
     <Compile Include="Framework\Extensions.cs" />
     <Compile Include="Framework\Files.cs" />
-    <Compile Include="Framework\Header.cs" />
-    <Compile Include="Framework\JsonResponse.cs" />
-    <Compile Include="Framework\RedirectResponse.cs" />
-    <Compile Include="Framework\Request.cs" />
-    <Compile Include="Framework\Response.cs" />
-    <Compile Include="Framework\UrlAttribute.cs" />
-    <Compile Include="Framework\ViewResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Server\AppyServer.cs" />
-    <Compile Include="Server\Extensions.cs" />
-    <Compile Include="Server\RouteNotFoundException.cs" />
-    <Compile Include="Server\Router.cs" />
-    <Compile Include="Server\Routes.cs" />
-    <Compile Include="Server\AppyRouter.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App\App.resx">

@@ -7,7 +7,7 @@ using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Appy.Core
+namespace Appy.Core.Framework
 {
     public static partial class Extensions
     {

@@ -4,15 +4,16 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Drawing;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using BB.Common.WinForms;
+using System.Drawing;
 using Appy.Core;
+using Appy.Core.Themes;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
@@ -62,7 +63,7 @@ namespace <#= this.AppNamespace #>
             //Application.SetCompatibleTextRenderingDefault(false);
             Control.CheckForIllegalCrossThreadCalls = false;
 
-			App app = new App("http://localhost:<#= this.GetRandomPort() #>/index");
+			App app = new App("http://localhost:<#= this.GetRandomPort() #>/");
 			app.Text = "<#= this.AppName #>";
             ThemeManager.ApplyTheme(GetMyTheme());
             Application.Run(app);

@@ -1,0 +1,21 @@
+﻿@Master['master']
+
+@Section['Content']
+<h3 style="margin-bottom:35px;">Choose a program below and hit run!</h3>
+<form action="/launcher/run" method="post" enctype="multipart/form-data">
+    <input type="text" name="exe-input" placeholder="Enter an app name" />
+    <span style="margin-left: 15px; margin-right: 15px;">Or choose from list:</span>
+    <select class="span3" tabindex="1" name="exe-select">
+        <option value="notepad.exe">Notepad</option>
+        <option value="calc.exe">Calculator</option>
+        <option value="firefox.exe">Firefox</option>
+        <option value="iexplore.exe">Internet Explorer</option>
+        <option value="chrome.exe" selected="selected">Chrome</option>
+    </select>
+    <hr />
+    <div>
+        <input type="submit" value="Run" class="btn btn-large btn-block" style="width: 200px;" />
+    </div>
+</form>
+@EndSection
+

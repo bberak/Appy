@@ -4,8 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using Appy.Core;
+using Appy.Common;
+using Appy.Core.Framework;
 
-namespace Appy
+namespace Appy.Bootstrap
 {
     public class BootstrapTask : CompositeTask
     {

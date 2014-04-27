@@ -2,7 +2,7 @@
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Appy.Tests
+namespace Appy.Compile.Tests
 {
     [TestClass]
     public class CompileTaskTests

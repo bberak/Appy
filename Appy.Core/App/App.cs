@@ -1,11 +1,9 @@
-﻿using BB.Common.WinForms;
+﻿using Appy.Core.Framework;
+using Appy.Core.Themes;
+using BB.Common.WinForms;
 using CefSharp;
 using CefSharp.WinForms;
 using Nancy.Hosting.Self;
-using RazorEngine;
-using RazorEngine.Configuration;
-using RazorEngine.Templating;
-using SelfServe;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

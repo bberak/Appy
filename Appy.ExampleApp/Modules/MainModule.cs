@@ -1,7 +1,4 @@
-﻿using Appy.Core;
-using Appy.Core.Nancy;
-using Appy.ExampleApp.Services;
-using BB.Common.WinForms;
+﻿using BB.Common.WinForms;
 using Nancy;
 using System;
 using System.Collections.Generic;
@@ -9,6 +6,10 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Appy.Core;
+using Appy.Core.Nancy;
+using Appy.Core.Themes;
+using Appy.ExampleApp.Services;
 
 namespace Appy.ExampleApp.Modules
 {

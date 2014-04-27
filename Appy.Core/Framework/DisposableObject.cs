@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Appy.Core
+namespace Appy.Core.Framework
 {
     public class DisposableObject : IDisposable
     {

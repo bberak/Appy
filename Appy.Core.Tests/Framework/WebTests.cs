@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Net;
 
-namespace Appy.Core.Tests.Framework
+namespace Appy.Core.Framework.Tests
 {
     [TestClass]
     public class WebTests

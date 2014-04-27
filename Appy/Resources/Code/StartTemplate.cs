@@ -29,22 +29,23 @@ namespace Appy
         public virtual string TransformText()
         {
             this.Write(@"using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Drawing;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using BB.Common.WinForms;
+using System.Drawing;
 using Appy.Core;
+using Appy.Core.Themes;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle(""");
             
-            #line 20 "C:\Dev\GitHub\Appy\Appy\Resources\Code\StartTemplate.tt"
+            #line 21 "C:\Dev\GitHub\Appy\Appy\Resources\Code\StartTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.AppNamespace));
             
             #line default
@@ -52,14 +53,14 @@ using Appy.Core;
             this.Write("\")]\r\n[assembly: AssemblyDescription(\"\")]\r\n[assembly: AssemblyConfiguration(\"\")]\r\n" +
                     "[assembly: AssemblyCompany(\"\")]\r\n[assembly: AssemblyProduct(\"");
             
-            #line 24 "C:\Dev\GitHub\Appy\Appy\Resources\Code\StartTemplate.tt"
+            #line 25 "C:\Dev\GitHub\Appy\Appy\Resources\Code\StartTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.AppNamespace));
             
             #line default
             #line hidden
             this.Write("\")]\r\n[assembly: AssemblyCopyright(\"Copyright ©  ");
             
-            #line 25 "C:\Dev\GitHub\Appy\Appy\Resources\Code\StartTemplate.tt"
+            #line 26 "C:\Dev\GitHub\Appy\Appy\Resources\Code\StartTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DateTime.Now.Year));
             
             #line default
@@ -76,7 +77,7 @@ using Appy.Core;
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid(""");
             
-            #line 35 "C:\Dev\GitHub\Appy\Appy\Resources\Code\StartTemplate.tt"
+            #line 36 "C:\Dev\GitHub\Appy\Appy\Resources\Code\StartTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Guid.NewGuid().ToString()));
             
             #line default
@@ -98,7 +99,7 @@ using Appy.Core;
 
 namespace ");
             
-            #line 50 "C:\Dev\GitHub\Appy\Appy\Resources\Code\StartTemplate.tt"
+            #line 51 "C:\Dev\GitHub\Appy\Appy\Resources\Code\StartTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.AppNamespace));
             
             #line default
@@ -120,14 +121,14 @@ namespace ");
 
 			App app = new App(""http://localhost:");
             
-            #line 65 "C:\Dev\GitHub\Appy\Appy\Resources\Code\StartTemplate.tt"
+            #line 66 "C:\Dev\GitHub\Appy\Appy\Resources\Code\StartTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.GetRandomPort()));
             
             #line default
             #line hidden
-            this.Write("/index\");\r\n\t\t\tapp.Text = \"");
+            this.Write("/\");\r\n\t\t\tapp.Text = \"");
             
-            #line 66 "C:\Dev\GitHub\Appy\Appy\Resources\Code\StartTemplate.tt"
+            #line 67 "C:\Dev\GitHub\Appy\Appy\Resources\Code\StartTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.AppName));
             
             #line default
@@ -159,7 +160,7 @@ namespace ");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 104 "C:\Dev\GitHub\Appy\Appy\Resources\Code\StartTemplate.tt"
+        #line 105 "C:\Dev\GitHub\Appy\Appy\Resources\Code\StartTemplate.tt"
 
 	public string AppName {get; set; }
 

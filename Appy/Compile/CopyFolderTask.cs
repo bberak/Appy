@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Appy.Core;
+using Appy.Common;
+using Appy.Core.Framework;
 
-namespace Appy
+namespace Appy.Compile
 {
     public class CopyFolderTask : ITask
     {

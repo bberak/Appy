@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 
-namespace Appy.Tests
+namespace Appy.Bootstrap.Tests
 {
     [TestClass]
     public class BootstrapTaskTests
