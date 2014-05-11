@@ -57,10 +57,10 @@
       <HintPath>..\Packages-Indie\BB.Common.WinForms-0.1.5\BB.Common.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="CefSharp">
-      <HintPath>..\Packages-Indie\CefSharp-1.19.0\CefSharp.dll</HintPath>
+      <HintPath>..\Packages-Indie\CefSharp-1.25.7\CefSharp.dll</HintPath>
     </Reference>
     <Reference Include="CefSharp.WinForms">
-      <HintPath>..\Packages-Indie\CefSharp-1.19.0\CefSharp.WinForms.dll</HintPath>
+      <HintPath>..\Packages-Indie\CefSharp-1.25.7\CefSharp.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="Nancy">
       <HintPath>..\packages\Nancy.0.22.2\lib\net40\Nancy.dll</HintPath>
