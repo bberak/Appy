@@ -52,7 +52,7 @@ namespace Appy.Common
             header.Add(@"         /:::/    /                                                                             ");
             header.Add(@"        /:::/    /                                                                              ");
             header.Add(@"        \::/    /                                                                               ");
-            header.Add(@"         \/____/                                                                  By Boris Berak");
+            header.Add(@"         \/____/                                                                      mit Nancy!");
             header.Add(@"                                                                                                ");
 
             Random rng = new Random(Environment.TickCount);
