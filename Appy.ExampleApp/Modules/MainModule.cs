@@ -6,7 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Appy.Core;
+using Appy.Core.Framework;
 using Appy.Core.Nancy;
 using Appy.Core.Themes;
 using Appy.ExampleApp.Services;

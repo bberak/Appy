@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Appy.Core.Nancy
+namespace Appy.Core.Framework
 {
     public sealed class Variables : ConcurrentDictionary<string, object>
     {

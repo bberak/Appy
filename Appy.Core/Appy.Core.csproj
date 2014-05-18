@@ -99,7 +99,7 @@
     <Compile Include="Framework\Json.cs" />
     <Compile Include="Framework\Web.cs" />
     <Compile Include="Nancy\AppyBootstrapper.cs" />
-    <Compile Include="Nancy\Variables.cs" />
+    <Compile Include="Framework\Variables.cs" />
     <Compile Include="Framework\Extensions.cs" />
     <Compile Include="Framework\Files.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
