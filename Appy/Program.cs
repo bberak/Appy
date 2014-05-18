@@ -76,7 +76,7 @@ namespace Appy
 
                 UI.Say("Compilation complete.");
 
-                if (UI.Ask("Would you like to (r)un you app?", "y,yes,r,run"))
+                if (UI.Ask("Would you like to (r)un your app?", "y,yes,r,run"))
                 {
                     ProcessStartInfo startInfo = new ProcessStartInfo(task.Settings.ExeOutputFile);
                     startInfo.WorkingDirectory = Path.GetDirectoryName(task.Settings.ExeOutputFile);
