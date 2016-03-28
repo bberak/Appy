@@ -3,12 +3,6 @@ Appy
 
 Repository for holding Appy - quick desktop apps for web developers! Like PhoneGap, but for the desktop.
 
-# Read This!
-
-* I have not provided a license for this work as of yet (mainly out of laziness).
-* If you would like to use this tool for commercial purposes just get in touch with me.
-* I will put up a more detailed guide with code-walkthroughs shortly.
-
 # What's the point of all this?
 
 * Build your desktop apps using the MVC pattern. Allows for better testability and maintainability.
