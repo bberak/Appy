@@ -1,7 +1,7 @@
 Appy
 ====================
 
-Repository for holding Appy - quick desktop apps for web developers! Like PhoneGap, but for the desktop.
+Repository for holding Appy - quick desktop apps for web developers! Like Electron, but powered by .NET and the ASP.NET Razor engine.
 
 # What's the point of all this?
 
